@@ -9,8 +9,6 @@
 Material em desenvolvimento. O trabalho associado está em fase de preparação.
 Comentários e contribuições são bem-vindos via Issues
 
-> Código, dados processados e figuras associados ao trabalho em desenvolvimento sobre localização de pontos de retirada em redes de e-commerce.
-
 Comparação empírica de quatro métodos algorítmicos para o problema de localização de pontos de retirada em e-commerce, utilizando 9.692 pedidos entregues na Região Metropolitana do Rio de Janeiro extraídos do dataset público Olist (2016–2018).
 
 ## Métodos comparados
