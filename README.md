@@ -20,27 +20,30 @@ Comparação empírica de quatro métodos algorítmicos para o problema de local
 4. **P-Median** — otimização via heurística de troca de Teitz & Bart (1968)
 
 ## Estrutura do repositório
-.
-├── data/                          # Dados processados (Olist filtrado para RMRJ)
-│   ├── demanda_por_cep.csv            # 829 pontos de demanda agregados
-│   ├── pedidos_rmrj_geo.csv           # 9.692 pedidos com geolocalização
-│   ├── clientes_rmrj.csv              # 10.107 clientes na RMRJ
-│   ├── geo_rmrj_agg.csv               # Coordenadas por CEP agregadas
-│   ├── results_full.csv               # Todas as 38 configurações experimentais
-│   └── results_clustering.csv         # Subconjunto: métodos de clustering
-├── scripts/
-│   ├── methods.py                 # Implementação dos quatro métodos + métricas
-│   ├── 01_prepare_data.py         # Filtra Olist cru para RMRJ e agrega por CEP
-│   ├── 02_run_experiments.py      # Roda as 38 configurações experimentais
-│   └── 03_plot_figures.py         # Gera as 5 figuras do artigo
-├── figures/                       # Figuras geradas
-│   ├── 01_exploracao_demanda.png
-│   ├── 02_cobertura_vs_K.png
-│   ├── 03_distancia_vs_K.png
-│   ├── 04_mapas_K15.png
-│   └── 05_tradeoff_cobertura.png
-└── notebooks/
-└── example.py                 # Exemplo de uso isolado
+
+**`data/`** — Dados processados (Olist filtrado para RMRJ)
+- `demanda_por_cep.csv` — 829 pontos de demanda agregados
+- `pedidos_rmrj_geo.csv` — 9.692 pedidos com geolocalização
+- `clientes_rmrj.csv` — 10.107 clientes na RMRJ
+- `geo_rmrj_agg.csv` — Coordenadas por CEP agregadas
+- `results_full.csv` — Todas as 38 configurações experimentais
+- `results_clustering.csv` — Subconjunto: métodos de clustering
+
+**`scripts/`** — Código-fonte
+- `methods.py` — Implementação dos quatro métodos + métricas
+- `01_prepare_data.py` — Filtra Olist cru para RMRJ e agrega por CEP
+- `02_run_experiments.py` — Roda as 38 configurações experimentais
+- `03_plot_figures.py` — Gera as 5 figuras do artigo
+
+**`figures/`** — Figuras geradas
+- `01_exploracao_demanda.png`
+- `02_cobertura_vs_K.png`
+- `03_distancia_vs_K.png`
+- `04_mapas_K15.png`
+- `05_tradeoff_cobertura.png`
+
+**`notebooks/`**
+- `example.py` — Exemplo de uso isolado
 
 ## Reproduzir os experimentos
 
