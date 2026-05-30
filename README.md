@@ -1,6 +1,15 @@
 # Localização de pontos de retirada na Região Metropolitana do Rio de Janeiro
 
-> Material suplementar do artigo *"Decisão de localização de pontos de retirada em redes de e-commerce: análise comparativa de métodos algorítmicos aplicada à Região Metropolitana do Rio de Janeiro"*
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)
+
+## Status
+
+Material em desenvolvimento. O trabalho associado está em fase de preparação.
+Comentários e contribuições são bem-vindos via Issues
+
+> Código, dados processados e figuras associados ao trabalho em desenvolvimento sobre localização de pontos de retirada em redes de e-commerce."*
 
 Comparação empírica de quatro métodos algorítmicos para o problema de localização de pontos de retirada em e-commerce, utilizando 9.692 pedidos entregues na Região Metropolitana do Rio de Janeiro extraídos do dataset público Olist (2016–2018).
 
@@ -97,4 +106,4 @@ Dataset original Olist está sob a licença [CC BY-NC-SA 4.0](https://creativeco
 
 ## Contato
 
-Bruno M. Moraes — _[seu e-mail acadêmico aqui]_
+Bruno M. Moraes — @brunomoraes87
