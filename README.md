@@ -4,11 +4,11 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)
 
+Comparação empírica de quatro métodos algorítmicos para o problema de localização de pontos de retirada em e-commerce, utilizando 9.692 pedidos entregues na Região Metropolitana do Rio de Janeiro extraídos do dataset público Olist (2016–2018).
+
 ## Status
 
 Material em desenvolvimento. O trabalho associado está em fase de preparação. Comentários e contribuições são bem-vindos via Issues.
-
-Comparação empírica de quatro métodos algorítmicos para o problema de localização de pontos de retirada em e-commerce, utilizando 9.692 pedidos entregues na Região Metropolitana do Rio de Janeiro extraídos do dataset público Olist (2016–2018).
 
 ## Métodos comparados
 
