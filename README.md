@@ -83,9 +83,8 @@ print(metrics)
   title  = {Pickup Points RMRJ: comparação de métodos algorítmicos
             para localização de pontos de retirada (material e código)},
   author = {Moraes, Bruno M.},
-  year   = {2025},
+  year   = {2026},
   url    = {https://github.com/brunomoraes87/pickup-points-rmrj}
-}
 }
 ```
 
