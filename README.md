@@ -79,14 +79,13 @@ print(metrics)
 ## Citação
 
 ```bibtex
-@article{moraes2025pickup,
-  title={Decisão de localização de pontos de retirada em redes de e-commerce:
-         análise comparativa de métodos algorítmicos aplicada à
-         Região Metropolitana do Rio de Janeiro},
-  author={Moraes, Bruno M.},
-  journal={Revista de Gestão e Secretariado},
-  year={2025},
-  note={Submetido}
+@software{moraes2025pickup,
+  title  = {Pickup Points RMRJ: comparação de métodos algorítmicos
+            para localização de pontos de retirada (material e código)},
+  author = {Moraes, Bruno M.},
+  year   = {2025},
+  url    = {https://github.com/brunomoraes87/pickup-points-rmrj}
+}
 }
 ```
 
