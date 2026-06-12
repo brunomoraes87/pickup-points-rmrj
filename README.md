@@ -1,47 +1,45 @@
 # Localização de pontos de retirada na Região Metropolitana do Rio de Janeiro
 
-![Python](https://img.shields.io/badge/python-3.10+-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)
+> Material suplementar do artigo *"Decisão de localização de pontos de retirada em redes de e-commerce: análise comparativa de métodos algorítmicos aplicada à Região Metropolitana do Rio de Janeiro"*
 
-Comparação empírica de quatro métodos algorítmicos para o problema de localização de pontos de retirada em e-commerce, utilizando 9.692 pedidos entregues na Região Metropolitana do Rio de Janeiro extraídos do dataset público Olist (2016–2018).
-
-## Status
-
-Material em desenvolvimento. O trabalho associado está em fase de preparação. Comentários e contribuições são bem-vindos via Issues.
+Comparação empírica de **sete paradigmas algorítmicos** para o problema de localização de pontos de retirada em e-commerce, utilizando 9.692 pedidos entregues na Região Metropolitana do Rio de Janeiro (RMRJ) extraídos do dataset público Olist (2016–2018). O estudo adota duas premissas operacionais explícitas — cobertura universal e minimização do deslocamento — e fundamenta a escolha do número de centroides nas métricas operacionais do problema.
 
 ## Métodos comparados
 
 1. **Agglomerative Hierarchical Clustering** — três variantes de *linkage* (average, complete, Ward)
 2. **DBSCAN** — clustering por densidade
-3. **K-Means demand-weighted** — baseline
-4. **P-Median** — otimização via heurística de troca de Teitz & Bart (1968)
+3. **K-Means demand-weighted** — K-Means com ponderação por demanda
+4. **P-Median** (Hakimi, 1964) — heurística de troca de Teitz & Bart (1968)
+5. **MCLP** (Church & ReVelle, 1974) — Maximal Covering Location Problem, heurística gulosa
 
 ## Estrutura do repositório
 
-**`data/`** — Dados processados (Olist filtrado para RMRJ)
-- `demanda_por_cep.csv` — 829 pontos de demanda agregados
-- `pedidos_rmrj_geo.csv` — 9.692 pedidos com geolocalização
-- `clientes_rmrj.csv` — 10.107 clientes na RMRJ
-- `geo_rmrj_agg.csv` — Coordenadas por CEP agregadas
-- `results_full.csv` — Todas as 38 configurações experimentais
-- `results_clustering.csv` — Subconjunto: métodos de clustering
-
-**`scripts/`** — Código-fonte
-- `methods.py` — Implementação dos quatro métodos + métricas
-- `01_prepare_data.py` — Filtra Olist cru para RMRJ e agrega por CEP
-- `02_run_experiments.py` — Roda as 38 configurações experimentais
-- `03_plot_figures.py` — Gera as 5 figuras do artigo
-
-**`figures/`** — Figuras geradas
-- `01_exploracao_demanda.png`
-- `02_cobertura_vs_K.png`
-- `03_distancia_vs_K.png`
-- `04_mapas_K15.png`
-- `05_tradeoff_cobertura.png`
-
-**`notebooks/`**
-- `example.py` — Exemplo de uso isolado
+```
+.
+├── data/                              # Dados processados (Olist filtrado para RMRJ)
+│   ├── demanda_por_cep.csv            # 829 pontos de demanda agregados
+│   ├── pedidos_rmrj_geo.csv           # 9.692 pedidos com geolocalização
+│   ├── clientes_rmrj.csv              # Clientes RMRJ
+│   ├── geo_rmrj_agg.csv               # Coordenadas por CEP agregadas
+│   ├── results_full.csv               # Todas as configurações experimentais
+│   └── results_clustering.csv         # Subconjunto: métodos de clustering
+├── scripts/
+│   ├── 01_prepare_data.py             # Pipeline: Olist → RMRJ filtrado
+│   ├── 02_run_experiments.py          # Roda todas as configurações
+│   ├── 03_plot_figures.py             # Gera todas as figuras
+│   └── methods.py                     # Implementação dos métodos + métricas
+├── figures/
+│   ├── 01_exploracao_demanda.png      # Distribuição da demanda na RMRJ
+│   ├── 02_cobertura_vs_K.png          # Cobertura efetiva em função de K
+│   ├── 03_distancia_vs_K.png          # Distância média ponderada em função de K
+│   ├── 04_mapas_K15.png               # Mapas espaciais em K=15 (exploratório)
+│   ├── 04_mapas_K70.png               # Mapas espaciais em K=70 (Figura 3 do paper)
+│   ├── 05_tradeoff_cobertura.png      # Trade-off cobertura × distância
+│   ├── 07_saturacao_K70.png           # Saturação K=70 (Figura 1 do paper)
+│   └── 08_dominancia_linkages.png     # Dominância intra-paradigma (Figura 2 do paper)
+└── notebooks/
+    └── example.py                     # Exemplo de uso da API
+```
 
 ## Reproduzir os experimentos
 
@@ -51,87 +49,91 @@ Material em desenvolvimento. O trabalho associado está em fase de preparação.
 pip install -r requirements.txt
 ```
 
-### Pipeline completo (do zero)
+### Dataset original
 
-O repositório segue um pipeline em 3 etapas. Cada script é executado a partir da pasta `scripts/`.
+O dataset Olist completo (~85 MB) deve ser baixado em [Kaggle: Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). Os dados já processados (filtrados para a RMRJ e agregados por CEP) estão disponíveis em `data/`.
 
-**Etapa 1 — Preparação dos dados** (opcional, já incluído em `data/`)
-
-Filtra o Olist cru para a RMRJ e agrega a demanda por CEP.
+### Pipeline completo
 
 ```bash
-# Baixar os 4 CSVs do Kaggle e colocar em ../olist_raw/
-cd scripts
-python 01_prepare_data.py
-# Gera: data/clientes_rmrj.csv, geo_rmrj_agg.csv, pedidos_rmrj_geo.csv, demanda_por_cep.csv
+# 1. Preparar dataset (Olist → RMRJ → CEPs agregados)
+python scripts/01_prepare_data.py
+
+# 2. Rodar todas as configurações experimentais
+python scripts/02_run_experiments.py
+
+# 3. Gerar todas as figuras do paper
+python scripts/03_plot_figures.py
 ```
 
-**Etapa 2 — Rodar os 38 experimentos**
-
-```bash
-cd scripts
-python 02_run_experiments.py
-# Gera: data/results_full.csv
-```
-
-**Etapa 3 — Gerar as 5 figuras**
-
-```bash
-cd scripts
-python 03_plot_figures.py
-# Gera: figures/01...05_*.png
-```
-
-### Uso rápido — exemplo isolado
-
-Para rodar os 4 métodos em uma configuração específica, veja `notebooks/example.py`:
+### Exemplo de uso da API
 
 ```python
 import pandas as pd
 import sys
 sys.path.insert(0, 'scripts')
-from methods import method_agglomerative, evaluate
+from methods import (method_agglomerative, method_dbscan,
+                     method_kmeans_weighted, method_pmedian_heuristic,
+                     method_mclp_heuristic, evaluate)
 
 df = pd.read_csv('data/demanda_por_cep.csv')
-labels, centers, rt = method_agglomerative(df, n_clusters=20, linkage='ward')
-print(evaluate(df, labels, centers))
+TOP = df.nlargest(100, 'n_pedidos').index.values
+
+# P-Median com K=70 (configuração final do paper)
+labels, centers, rt = method_pmedian_heuristic(df, p=70, candidates_idx=TOP)
+metrics = evaluate(df, labels, centers)
+print(metrics)
 ```
 
-### Dataset original
+## Principais resultados (configuração K=70)
 
-O dataset Olist completo (não incluído neste repositório por tamanho — ~85 MB) deve ser baixado em [Kaggle: Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+Comparação *apples-to-apples* dos métodos em K=70 (Tabela 1 do paper):
 
-Os dados processados (filtrados para a RMRJ e agregados por CEP) já estão disponíveis em `data/`.
+| Método | d̄w (km) | Cob. 3km | Cob. 5km | Cob. 10km | Área (km²) |
+|---|---|---|---|---|---|
+| K-Means weighted | 1,49 | 91,2% | 99,1% | 100,0% | 17,28 |
+| Agglomerative-Ward | 1,79 | 90,9% | 98,9% | 100,0% | **14,04** |
+| Agglomerative-complete | 1,92 | 85,4% | 99,8% | 100,0% | 14,40 |
+| Agglomerative-average | 2,18 | 75,0% | 94,5% | 100,0% | 15,82 |
+| P-Median | **1,46** | 88,8% | 96,2% | 99,3% | 21,46 |
+| MCLP — R=3 km | 1,76 | **92,6%** | 96,4% | 99,4% | 6,84 |
 
-## Principais resultados (configuração K=20)
+Distribuição completa de distâncias — a importância da cauda (Tabela 2 do paper):
 
-| Método | d̄w (km) | Cob. 3km | Cob. 5km | Cob. 10km |
+| Método | mediana | P95 | P99 | máximo |
 |---|---|---|---|---|
-| K-Means ponderado | **4,01** | 39,9% | 73,1% | **97,2%** |
-| Agglomerative-Ward | 4,49 | 27,8% | 66,2% | 96,0% |
-| P-Median | 4,56 | **61,4%** | **77,6%** | 90,1% |
-| Agglomerative-complete | 5,12 | 22,5% | 53,0% | 95,3% |
-| Agglomerative-average | 6,77 | 14,3% | 29,7% | 88,1% |
+| K-Means weighted | 1,26 | 3,33 | 4,82 | 15,14 |
+| Agglomerative-Ward | 1,73 | 3,33 | 5,15 | 8,48 |
+| Agglomerative-complete | 1,86 | 3,83 | **4,65** | **6,26** |
+| Agglomerative-average | 2,14 | 4,05 | 4,52 | 6,79 |
+| P-Median | **1,06** | 4,31 | 8,60 | 160,78 |
+| MCLP — R=3 km | 1,59 | 4,28 | 8,60 | 160,78 |
+
+Três finalistas emergem com filosofias gerenciais distintas: **K-Means weighted** (cliente médio), **Agglomerative-Ward** (consistência) e **Agglomerative-complete** (controle democrático). A recomendação final depende do SLA contratual da rede.
 
 ## Citação
 
 ```bibtex
-@software{moraes2026pickup,
-  title  = {Pickup Points RMRJ: comparação de métodos algorítmicos
-            para localização de pontos de retirada (material e código)},
+@article{moraes2026pickup,
+  title  = {Decisão de localização de pontos de retirada em redes de e-commerce:
+            análise comparativa de métodos algorítmicos aplicada à
+            Região Metropolitana do Rio de Janeiro},
   author = {Moraes, Bruno M.},
+  journal= {Revista de Gestão e Secretariado},
   year   = {2026},
-  url    = {https://github.com/brunomoraes87/pickup-points-rmrj}
+  note   = {Submetido}
 }
 ```
 
 ## Licença
 
-[MIT License](LICENSE) — para o código.
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — para os dados processados.
-
-Dataset original Olist está sob a licença [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — verifique no Kaggle.
+- **Código**: [MIT License](LICENSE)
+- **Dados processados**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **Dataset original Olist**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — verifique no Kaggle.
 
 ## Contato
 
-Bruno M. Moraes — [@brunomoraes87](https://github.com/brunomoraes87)
+Bruno M. Moraes — Pesquisador Independente, Niterói, RJ, Brasil
+- ORCID: [0009-0007-3756-2081](https://orcid.org/0009-0007-3756-2081)
+- Lattes: [5771797960530611](http://lattes.cnpq.br/5771797960530611)
+- LinkedIn: [brunom-moraes](https://www.linkedin.com/in/brunom-moraes/)

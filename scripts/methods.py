@@ -194,3 +194,58 @@ def method_pmedian_heuristic(df, p, candidates_idx=None, max_iter=100):
     D_sel = D[:, selected]
     labels = D_sel.argmin(axis=1)
     return labels, centers, time.time()-t0
+
+
+def method_mclp_heuristic(df, p, radius_km, candidates_idx=None):
+    """
+    Maximal Covering Location Problem (MCLP) — Church & ReVelle (1974).
+    Maximiza demanda coberta dentro de raio R, dado orçamento p de facilities.
+    Heurística gulosa: a cada passo, abre a facility que cobre maior demanda ainda nao coberta.
+
+    Parâmetros:
+        df: DataFrame com lat, lng, n_pedidos
+        p: numero de facilities
+        radius_km: raio de cobertura (km)
+        candidates_idx: indices candidatos (default: todos)
+    Retorna:
+        labels, centers, runtime
+    """
+    t0 = time.time()
+    coords = df[['lat','lng']].values
+    weights = df['n_pedidos'].values.astype(float)
+    n = len(df)
+    if candidates_idx is None:
+        candidates_idx = np.arange(n)
+    candidates_idx = np.asarray(candidates_idx)
+    m = len(candidates_idx)
+
+    D_full = haversine_pairwise(coords[:,0], coords[:,1])
+    D = D_full[:, candidates_idx]
+    covers = D <= radius_km                    # n x m: True se candidato j cobre demanda i
+
+    selected = []
+    covered = np.zeros(n, dtype=bool)
+    available = list(range(m))
+
+    for _ in range(p):
+        best_j, best_gain = None, -1
+        for j in available:
+            new_covered = covers[:, j] & ~covered
+            gain = float(weights[new_covered].sum())
+            if gain > best_gain:
+                best_gain, best_j = gain, j
+        if best_j is None or best_gain <= 0:
+            break
+        selected.append(best_j)
+        covered = covered | covers[:, best_j]
+        available.remove(best_j)
+
+    centers = coords[candidates_idx[selected]] if selected else np.empty((0, 2))
+
+    # Atribui labels: cada demanda vai pra facility aberta mais proxima
+    if len(selected) > 0:
+        D_sel = D[:, selected]
+        labels = D_sel.argmin(axis=1)
+    else:
+        labels = np.full(n, -1)
+    return labels, centers, time.time() - t0

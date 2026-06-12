@@ -2,19 +2,7 @@
 03_plot_figures.py
 ==================
 Gera as 5 figuras do artigo a partir dos dados processados e resultados.
-
-Entrada:
-  - data/demanda_por_cep.csv
-  - data/results_full.csv
-
-Saída em figures/:
-  - 01_exploracao_demanda.png
-  - 02_cobertura_vs_K.png
-  - 03_distancia_vs_K.png
-  - 04_mapas_K15.png
-  - 05_tradeoff_cobertura.png
-
-Execução: python 03_plot_figures.py  (a partir de scripts/)
+Inclui MCLP como baseline matematico para cobertura.
 """
 import sys
 from pathlib import Path
@@ -24,7 +12,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from methods import (method_agglomerative, method_kmeans_weighted,
-                      method_pmedian_heuristic)
+                      method_pmedian_heuristic, method_mclp_heuristic)
 
 DATA = Path("../data")
 FIGS = Path("../figures")
@@ -38,14 +26,16 @@ COLORS = {
     'Agglomerative-complete': '#9467bd',
     'KMeans-weighted':        '#2ca02c',
     'P-Median':               '#d62728',
+    'MCLP':                   '#ff7f0e',
 }
 MARKERS = {
     'Agglomerative-ward':     'o',
     'Agglomerative-complete': 's',
     'KMeans-weighted':        '^',
     'P-Median':               'D',
+    'MCLP':                   'P',
 }
-METHODS = list(COLORS.keys())
+METHODS = ['Agglomerative-ward', 'Agglomerative-complete', 'KMeans-weighted', 'P-Median']
 
 
 def fig01_exploracao(demanda):
@@ -61,8 +51,7 @@ def fig01_exploracao(demanda):
     axes[1].hist(demanda['n_pedidos'], bins=50, color='steelblue', edgecolor='black')
     axes[1].set(xlabel='Nº pedidos por CEP', ylabel='Frequência (CEPs)',
                 title='Distribuição de demanda por CEP')
-    axes[1].set_yscale('log')
-    axes[1].grid(alpha=0.3)
+    axes[1].set_yscale('log'); axes[1].grid(alpha=0.3)
     plt.tight_layout()
     plt.savefig(FIGS / '01_exploracao_demanda.png', dpi=130, bbox_inches='tight')
     plt.close()
@@ -70,17 +59,25 @@ def fig01_exploracao(demanda):
 
 def fig02_cobertura_vs_K(res):
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
-    for ax, metric, title in zip(axes,
-                                  ['coverage_3km_%','coverage_5km_%','coverage_10km_%'],
-                                  ['Cobertura 3 km','Cobertura 5 km','Cobertura 10 km']):
+    for ax, metric, title, R in zip(axes,
+                                     ['coverage_3km_%','coverage_5km_%','coverage_10km_%'],
+                                     ['Cobertura 3 km','Cobertura 5 km','Cobertura 10 km'],
+                                     [3, 5, 10]):
         for m in METHODS:
             sub = res[res['method']==m].sort_values('K_target')
             ax.plot(sub['K_target'], sub[metric], '-',
                     color=COLORS[m], marker=MARKERS[m], label=m,
                     linewidth=2, markersize=7)
+        # MCLP — apenas a série que otimiza exatamente esse raio
+        mclp = res[res['method']==f'MCLP-R{R}km'].sort_values('K_target')
+        ax.plot(mclp['K_target'], mclp[metric], '-',
+                color=COLORS['MCLP'], marker=MARKERS['MCLP'],
+                label=f'MCLP (R={R}km, ótimo)', linewidth=2.5, markersize=9,
+                markeredgecolor='black', markeredgewidth=0.5)
+        # DBSCAN
         dbs = res[res['method']=='DBSCAN'].sort_values('n_facilities')
         ax.plot(dbs['n_facilities'], dbs[metric], '--', color='gray',
-                marker='x', label='DBSCAN', alpha=0.7)
+                marker='x', label='DBSCAN', alpha=0.6)
         ax.set(xlabel='Número de pontos de retirada (K)',
                ylabel='% da demanda coberta', title=title, ylim=(0,105))
         ax.grid(alpha=0.3); ax.legend(fontsize=8, loc='lower right')
@@ -96,9 +93,15 @@ def fig03_distancia_vs_K(res):
         ax.plot(sub['K_target'], sub['weighted_avg_distance_km'],
                 color=COLORS[m], marker=MARKERS[m], label=m,
                 linewidth=2, markersize=7)
+    # MCLP-R5km como referência (raio intermediário)
+    mclp = res[res['method']=='MCLP-R5km'].sort_values('K_target')
+    ax.plot(mclp['K_target'], mclp['weighted_avg_distance_km'],
+            color=COLORS['MCLP'], marker=MARKERS['MCLP'],
+            label='MCLP (R=5km)', linewidth=2, markersize=8,
+            markeredgecolor='black', markeredgewidth=0.5)
     dbs = res[res['method']=='DBSCAN'].sort_values('n_facilities')
     ax.plot(dbs['n_facilities'], dbs['weighted_avg_distance_km'],
-            '--', color='gray', marker='x', label='DBSCAN', alpha=0.7)
+            '--', color='gray', marker='x', label='DBSCAN', alpha=0.6)
     ax.set(xlabel='Número de pontos de retirada (K)',
            ylabel='Distância média ponderada (km)',
            title='Distância média ponderada por demanda vs número de pontos')
@@ -109,7 +112,7 @@ def fig03_distancia_vs_K(res):
 
 
 def fig04_mapas_K15(demanda):
-    fig, axes = plt.subplots(2, 2, figsize=(13, 11))
+    fig, axes = plt.subplots(2, 3, figsize=(18, 11))
     TOP = demanda.nlargest(100, 'n_pedidos').index.values
     K = 15
     configs = [
@@ -117,6 +120,8 @@ def fig04_mapas_K15(demanda):
         ('Agglomerative-complete', lambda d: method_agglomerative(d, n_clusters=K, linkage='complete')[:2]),
         ('KMeans-weighted',        lambda d: method_kmeans_weighted(d, n_clusters=K)[:2]),
         ('P-Median',               lambda d: method_pmedian_heuristic(d, p=K, candidates_idx=TOP)[:2]),
+        ('MCLP (R=3 km)',          lambda d: method_mclp_heuristic(d, p=K, radius_km=3, candidates_idx=TOP)[:2]),
+        ('MCLP (R=5 km)',          lambda d: method_mclp_heuristic(d, p=K, radius_km=5, candidates_idx=TOP)[:2]),
     ]
     for ax, (name, fn) in zip(axes.flat, configs):
         labels, centers = fn(demanda)
@@ -140,7 +145,7 @@ def fig04_mapas_K15(demanda):
 
 
 def fig05_tradeoff(res):
-    fig, ax = plt.subplots(figsize=(8.5, 6))
+    fig, ax = plt.subplots(figsize=(9, 6))
     for m in METHODS:
         sub = res[res['method']==m].sort_values('K_target')
         ax.plot(sub['coverage_3km_%'], sub['coverage_10km_%'],
@@ -149,13 +154,25 @@ def fig05_tradeoff(res):
         for _, r in sub.iterrows():
             ax.annotate(f'K={int(r["K_target"])}',
                         (r['coverage_3km_%'], r['coverage_10km_%']),
-                        fontsize=7, alpha=0.7, xytext=(3,3), textcoords='offset points')
+                        fontsize=7, alpha=0.6, xytext=(3,3), textcoords='offset points')
+    # MCLP-R3km — ótimo da cobertura curta
+    mclp3 = res[res['method']=='MCLP-R3km'].sort_values('K_target')
+    ax.plot(mclp3['coverage_3km_%'], mclp3['coverage_10km_%'],
+            color=COLORS['MCLP'], marker=MARKERS['MCLP'],
+            linestyle='-', label='MCLP (R=3km, ótimo cobertura curta)',
+            linewidth=2.5, markersize=10, markeredgecolor='black', markeredgewidth=0.5)
+    # MCLP-R10km — ótimo da cobertura longa
+    mclp10 = res[res['method']=='MCLP-R10km'].sort_values('K_target')
+    ax.plot(mclp10['coverage_3km_%'], mclp10['coverage_10km_%'],
+            color='#ffb87a', marker=MARKERS['MCLP'],
+            linestyle='--', label='MCLP (R=10km, ótimo cobertura longa)',
+            linewidth=2, markersize=10, markeredgecolor='black', markeredgewidth=0.5)
     dbs = res[res['method']=='DBSCAN']
     ax.scatter(dbs['coverage_3km_%'], dbs['coverage_10km_%'],
                color='gray', marker='x', s=60, label='DBSCAN', alpha=0.6)
     ax.set(xlabel='Cobertura 3 km (%)', ylabel='Cobertura 10 km (%)',
-           title='Trade-off cobertura curta vs longa')
-    ax.grid(alpha=0.3); ax.legend()
+           title='Trade-off cobertura curta vs longa\n(linhas MCLP delimitam a fronteira de Pareto)')
+    ax.grid(alpha=0.3); ax.legend(fontsize=8, loc='lower right')
     plt.tight_layout()
     plt.savefig(FIGS / '05_tradeoff_cobertura.png', dpi=130, bbox_inches='tight')
     plt.close()
@@ -164,11 +181,11 @@ def fig05_tradeoff(res):
 def main():
     demanda = pd.read_csv(DATA / 'demanda_por_cep.csv')
     res = pd.read_csv(DATA / 'results_full.csv')
-    print("Gerando Figura 1 (exploração)...");  fig01_exploracao(demanda)
-    print("Gerando Figura 2 (cobertura vs K)..."); fig02_cobertura_vs_K(res)
-    print("Gerando Figura 3 (distância vs K)..."); fig03_distancia_vs_K(res)
-    print("Gerando Figura 4 (mapas K=15)..."); fig04_mapas_K15(demanda)
-    print("Gerando Figura 5 (trade-off)..."); fig05_tradeoff(res)
+    print("Gerando Figura 1..."); fig01_exploracao(demanda)
+    print("Gerando Figura 2..."); fig02_cobertura_vs_K(res)
+    print("Gerando Figura 3..."); fig03_distancia_vs_K(res)
+    print("Gerando Figura 4..."); fig04_mapas_K15(demanda)
+    print("Gerando Figura 5..."); fig05_tradeoff(res)
     print(f"\nTodas as figuras salvas em {FIGS}/")
 
 if __name__ == "__main__":
