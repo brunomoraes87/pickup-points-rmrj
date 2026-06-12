@@ -1,10 +1,14 @@
 """
-methods.py - Metodos comparados para localizacao de pontos de retirada (RMRJ).
-1) Agglomerative Hierarchical Clustering
-2) DBSCAN
-3) K-Means demand-weighted (baseline)
-4) P-Median exato (MILP via PuLP)
-Distancias: Haversine (km).
+methods.py — Métodos comparados para localização de pontos de retirada (RMRJ).
+Paradigmas implementados:
+  1) Agglomerative Hierarchical Clustering (linkages: average, complete, ward)
+  2) DBSCAN (clustering por densidade)
+  3) K-Means demand-weighted (com peso por demanda)
+  4) P-Median — formulação exata (MILP via PuLP) e heurística de troca (Teitz & Bart, 1968)
+  5) MCLP — Maximal Covering Location Problem (heurística gulosa, Church & ReVelle, 1974)
+
+Distâncias: Haversine (km). Avaliação inclui distância média ponderada,
+máximo, P95 e cobertura efetiva em raios configuráveis.
 """
 import numpy as np
 import pandas as pd

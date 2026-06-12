@@ -5,14 +5,19 @@ type: software
 authors:
   - family-names: Moraes
     given-names: Bruno M.
-repository-code: "https://github.com/SEU_USUARIO/pickup-points-rmrj"
+    orcid: "https://orcid.org/0009-0007-3756-2081"
+repository-code: "https://github.com/brunomoraes87/pickup-points-rmrj"
 keywords:
   - facility-location
   - p-median
+  - mclp
+  - maximal-covering-location-problem
   - hierarchical-clustering
   - dbscan
+  - k-means
   - e-commerce
   - last-mile-delivery
   - rio-de-janeiro
+  - olist
 license: MIT
-date-released: 2025
+date-released: 2026
