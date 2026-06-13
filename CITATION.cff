@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Pickup Points RMRJ — Comparação de métodos algorítmicos para localização de pontos de retirada"
+message: "Se você utilizar este código, por favor cite o artigo associado."
+type: software
+authors:
+  - family-names: Moraes
+    given-names: Bruno M.
+    orcid: "https://orcid.org/0009-0007-3756-2081"
+repository-code: "https://github.com/brunomoraes87/pickup-points-rmrj"
+keywords:
+  - facility-location
+  - p-median
+  - mclp
+  - maximal-covering-location-problem
+  - hierarchical-clustering
+  - dbscan
+  - k-means
+  - e-commerce
+  - last-mile-delivery
+  - rio-de-janeiro
+  - olist
+license: MIT
+date-released: 2026
