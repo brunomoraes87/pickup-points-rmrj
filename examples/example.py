@@ -13,7 +13,7 @@ df = pd.read_csv('../data/demanda_por_cep.csv')
 print(f"Pontos de demanda: {len(df)}, total de pedidos: {df['n_pedidos'].sum()}")
 
 K = 70
-TOP = df.nlargest(100, 'n_pedidos').index.values
+TOP = df.nlargest(300, 'n_pedidos').index.values
 
 results = []
 

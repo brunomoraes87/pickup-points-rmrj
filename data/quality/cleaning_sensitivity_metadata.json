@@ -1,0 +1,10 @@
+{
+  "baseline_commit": "f9956c30c1ca8a5c9bf638cec0dfc9e2d5fdecd9",
+  "K": 70,
+  "candidate_count": 300,
+  "input_sha256": {
+    "before_cleaning": "2180357769554c30b0c11ea3ec819a164d4ba2abbf0b04043da741dbf11e4e6d",
+    "after_cleaning": "c17045e618581238b6eb56c6617cbd1179219948f8e1a68855f7b0767a02b161"
+  },
+  "policy": "Only data preparation differs. Same six method implementations, candidate ranking, seed42 and order-weighted nearest-facility metrics."
+}

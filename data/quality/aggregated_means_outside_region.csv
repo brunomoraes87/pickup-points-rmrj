@@ -1,0 +1,4 @@
+customer_zip_code_prefix,lat,lng,city_norm,n_pedidos,valor_total,freight_total,mean_inside_region,audit_reason
+21941,-22.8338340042933,-43.24885668973881,rio de janeiro,21,6635.849999999999,515.45,False,derived_mean_outside_region_not_an_address
+22291,-22.942311951383264,-43.166780906762526,rio de janeiro,10,1070.37,198.23000000000002,False,derived_mean_outside_region_not_an_address
+24370,-22.924664773806036,-43.09986986144608,niteroi,4,2545.9,105.53,False,derived_mean_outside_region_not_an_address

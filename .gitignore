@@ -36,3 +36,5 @@ product_category_name_translation.csv
 # Outputs locais
 *.log
 *.tmp
+# Full row-level audit is reproduced locally (93322 rows)
+data/quality/geolocation_audit.csv

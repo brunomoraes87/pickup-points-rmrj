@@ -132,18 +132,47 @@ def method_pmedian(df, p, candidates_idx=None, time_limit=60):
 
 
 def evaluate(df, labels, centers, coverage_radii_km=(3, 5, 10)):
+    """Nearest-center Haversine evaluation; tails weighted by delivered orders.
+
+    Native labels are diagnostics and need not equal the nearest-center
+    assignment. Percentiles use linear interpolation over individual orders.
+    """
     coords = df[['lat','lng']].values
     weights = df['n_pedidos'].values.astype(float); total = weights.sum()
     if len(centers) == 0:
         return {'n_facilities': 0, 'weighted_avg_distance_km': np.nan,
-                'max_distance_km': np.nan, 'p95_distance_km': np.nan,
+                'max_distance_km': np.nan, 'median_distance_km': np.nan,
+                'p95_distance_km': np.nan, 'p99_distance_km': np.nan,
+                'p95_CEPs_distance_km': np.nan, 'p99_CEPs_distance_km': np.nan,
+                'assigned_orders_pct': 0.0, 'native_assigned_orders_pct': 0.0,
+                'CEPs_reassigned_to_nearest': 0, 'orders_reassigned_to_nearest': 0,
+                'native_max_distance_km': np.nan,
                 **{f'coverage_{r}km_%': 0.0 for r in coverage_radii_km}}
     D = haversine_to_centers(coords[:,0], coords[:,1], centers[:,0], centers[:,1])
     min_d = D.min(axis=1)
+    counts = weights.astype(int)
+    if not np.isfinite(weights).all() or not np.array_equal(weights, counts) or np.any(counts <= 0):
+        raise ValueError('n_pedidos must contain positive integer order counts')
+    order_distances = np.repeat(min_d, counts)
+    native_labels = np.asarray(labels)
+    if native_labels.shape != (len(df),):
+        raise ValueError('labels and demand must have the same length')
+    assigned = (native_labels >= 0) & (native_labels < len(centers))
+    native_distances = D[np.flatnonzero(assigned), native_labels[assigned].astype(int)]
+    changed = assigned & (native_labels != D.argmin(axis=1))
     m = {'n_facilities': int(len(centers)),
          'weighted_avg_distance_km': float(np.average(min_d, weights=weights)),
          'max_distance_km': float(min_d.max()),
-         'p95_distance_km': float(np.percentile(min_d, 95))}
+         'median_distance_km': float(np.percentile(order_distances, 50)),
+         'p95_distance_km': float(np.percentile(order_distances, 95)),
+         'p99_distance_km': float(np.percentile(order_distances, 99)),
+         'p95_CEPs_distance_km': float(np.percentile(min_d, 95)),
+         'p99_CEPs_distance_km': float(np.percentile(min_d, 99)),
+         'assigned_orders_pct': 100.0,
+         'native_assigned_orders_pct': float(weights[assigned].sum()/total*100),
+         'CEPs_reassigned_to_nearest': int(changed.sum()),
+         'orders_reassigned_to_nearest': int(weights[changed].sum()),
+         'native_max_distance_km': float(native_distances.max()) if assigned.any() else np.nan}
     for r in coverage_radii_km:
         m[f'coverage_{r}km_%'] = float(weights[min_d <= r].sum() / total * 100)
     return m
