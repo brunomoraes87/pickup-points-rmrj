@@ -17,6 +17,7 @@ DATA = REPO / "data"
 FIGS = REPO / "figures"
 CANDIDATES = 300
 BOUNDARIES = []
+MEAN_WARNINGS = np.empty((0,2))
 NAMES = ["KMeans-weighted", "Agglomerative-ward", "Agglomerative-complete",
          "Agglomerative-average", "P-Median", "MCLP-R3km"]
 COLORS = dict(zip(NAMES, ["#238b45", "#2171b5", "#756bb1", "#8c564b", "#cb181d", "#e6550d"]))
@@ -60,6 +61,9 @@ def map_panel(ax, df, labels, centers, title):
     geo_axis(ax, title)
     ax.scatter(df.lng, df.lat, s=np.sqrt(df.n_pedidos)*3,
                c=point_colors, alpha=.75, linewidths=0, zorder=2)
+    if len(MEAN_WARNINGS):
+        ax.scatter(MEAN_WARNINGS[:,1], MEAN_WARNINGS[:,0], s=75, marker="s",
+                   facecolors="none", edgecolors="#d00000", linewidths=1.2, zorder=4)
     ax.scatter(centers[:, 1], centers[:, 0], s=26, marker="x",
                c="#111111", linewidths=.9, zorder=3)
 
@@ -71,7 +75,8 @@ def figures_maps(df):
             nearest = d.argmin(axis=1)
             map_panel(ax, df, nearest, centers, f"{name} | {len(centers)} pontos")
         fig.suptitle(f"Atribuição ao ponto mais próximo | referência K={k}\n"
-                     "Demanda por prefixo de CEP; cruzes: instalações propostas; limites: IBGE",
+                     "Demanda por prefixo de CEP; cruzes: instalações propostas; limites: IBGE\n"
+                     "Quadrados vermelhos: médias derivadas fora da união municipal",
                      fontsize=13)
         save(fig, f"04_mapas_K{k}.png")
 
@@ -197,7 +202,7 @@ def assignment_diagnostic():
     pd.DataFrame(examples).to_csv(DATA / "native_assignment_examples.csv", index=False)
 
 def main():
-    global DATA, FIGS, CANDIDATES, BOUNDARIES
+    global DATA, FIGS, CANDIDATES, BOUNDARIES, MEAN_WARNINGS
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, default=DATA)
     parser.add_argument("--figures-dir", type=Path, default=FIGS)
@@ -213,6 +218,7 @@ def main():
         geom = feature["geometry"]
         polygons = [geom["coordinates"]] if geom["type"] == "Polygon" else geom["coordinates"]
         BOUNDARIES.extend(ring for poly in polygons for ring in poly)
+    MEAN_WARNINGS = pd.read_csv(DATA / "quality/aggregated_means_outside_region.csv")[["lat","lng"]].to_numpy()
     df = pd.read_csv(DATA / "demanda_por_cep.csv")
     res = pd.read_csv(DATA / "results_full.csv")
     for name, fn in [

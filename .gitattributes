@@ -1,0 +1,6 @@
+# Preserve versioned bytes checked by audit hashes.
+*.csv -text
+*.json -text
+*.geojson -text
+*.py -text
+*.md text eol=lf
