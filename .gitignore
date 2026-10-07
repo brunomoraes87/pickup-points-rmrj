@@ -38,3 +38,6 @@ product_category_name_translation.csv
 *.tmp
 # Full row-level audit is reproduced locally (93322 rows)
 data/quality/geolocation_audit.csv
+
+# Reproducible local model checkpoints; compact result CSVs are versioned
+data/service_selection/checkpoints/

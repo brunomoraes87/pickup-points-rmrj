@@ -1,0 +1,16 @@
+scope,method,radius_km,seed,first_feasible_K,last_k_tested,status
+main,KMeans-weighted,3.0,42,81,82,target_reached
+main,KMeans-weighted,3.0,0,78,82,target_reached
+main,KMeans-weighted,3.0,1,79,82,target_reached
+main,KMeans-weighted,3.0,2,79,82,target_reached
+main,KMeans-weighted,3.0,3,80,82,target_reached
+main,KMeans-weighted,5.0,42,39,40,target_reached
+main,KMeans-weighted,5.0,0,39,40,target_reached
+main,KMeans-weighted,5.0,1,39,40,target_reached
+main,KMeans-weighted,5.0,2,40,40,target_reached
+main,KMeans-weighted,5.0,3,38,40,target_reached
+main,KMeans-weighted,10.0,42,16,17,target_reached
+main,KMeans-weighted,10.0,0,15,17,target_reached
+main,KMeans-weighted,10.0,1,15,17,target_reached
+main,KMeans-weighted,10.0,2,16,17,target_reached
+main,KMeans-weighted,10.0,3,16,17,target_reached

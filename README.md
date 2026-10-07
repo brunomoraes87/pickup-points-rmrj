@@ -4,18 +4,39 @@ Material de reprodução da versão revisada do manuscrito de Bruno M. Moraes.
 O experimento usa **9.691 pedidos entregues, agregados em 828 prefixos de CEP**.
 O recorte inclui os 22 municípios da Lei Complementar estadual 184/2018.
 
-## Métodos e comparação
+## Métodos e seleção por cobertura
 
-Quatro famílias com K controlável geram seis configurações principais:
-K-Means ponderado, Agglomerative (Ward, complete, average), p-median por trocas
-e MCLP por heurística gulosa. DBSCAN é a quinta família, explorada separadamente.
-A tabela principal usa **K=70 para os seis métodos**. Isso é um cenário de
-referência e não uma quantidade ótima de instalações demonstrada.
+A comparação principal busca, para cada configuração, o **primeiro K inteiro
+encontrado que cobre pelo menos 95% dos pedidos** nos cenários exploratórios
+R=3, 5 e 10 km. Cada método pode selecionar uma quantidade diferente de PUs.
+Os raios não são SLAs validados e o K selecionado não é um ótimo econômico
+nem prova do mínimo global do problema.
 
-P-median e MCLP usam os mesmos **300 prefixos de maior demanda** como candidatos.
-Os métodos de clustering podem posicionar centros fora desse conjunto.
-Assim, comparam-se configurações espaciais com escolhas de modelagem distintas,
-sem alegar superioridade geral de um algoritmo ou solução globalmente ótima.
+Quatro famílias produzem seis configurações: K-Means ponderado, aglomerativo
+(Ward, complete, average), p-mediana por construção/trocas e MCLP guloso.
+DBSCAN permanece exploratório: uma busca comparável de epsilon/min_samples
+e política para o ruído não foi implementada.
+
+A busca testa cada inteiro desde 1, sem presumir monotonicidade. K-Means usa
+sementes 42, 0, 1, 2 e 3 e 10 inicializações por ajuste; o K escolhido deve cumprir a
+meta nas cinco sementes. Exportam-se mínimos por semente, intervalos observados
+e o ajuste42 representativo. Essa checagem não é uma garantia probabilística.
+
+P-mediana e MCLP usam os mesmos 300 prefixos de maior demanda como candidatos,
+mantendo os 828 pontos na avaliação. O teto de cobertura desse conjunto em 3 km
+é 93,685%: ambos são estruturalmente inviáveis para 95% nessa condição.
+A sensibilidade com todos 828 candidatos é exportada separadamente em 3 km.
+Os centros contínuos do clustering e os candidatos derivados de CEP não foram
+validados como imóveis ou endereços comerciais implementáveis.
+
+P-mediana mantém a heurística original e até 100 iterações; seu motivo de
+término não é exposto pela função legada. MCLP usa o raio de cada cenário e
+os prefixos de uma única trajetória gulosa equivalente à implementação original,
+registrando instalações efetivamente abertas. Tempo do prefixo e da trajetória
+completa são distintos; avaliação/exportação ficam fora desses tempos.
+
+A comparação histórica em **K=70** e as curvas antigas permanecem disponíveis
+como referência suplementar de orçamento fixo.
 
 ## Saneamento antes da média por CEP
 
@@ -49,28 +70,61 @@ Coloque-os em olist_raw/ ou forneça --raw-dir. As entradas são lidas e permane
     python scripts/02_run_experiments.py
     python scripts/03_plot_figures.py
     python scripts/04_compare_cleaning.py
+    python scripts/05_select_service_k.py
+    python scripts/06_plot_service.py
 
 Os caminhos padrão são relativos ao repositório; a execução pode começar em
 qualquer diretório. Há opções --data-dir, --k-values e --candidates.
-O script de figuras gera curvas K=10 a160 em passos10 e mapas do cenário70.
+O script03 conserva as figuras históricas K=70 e as curvas K10–160.
+O script05 salva a análise nova em data/service_selection, com checkpoint
+local por ajuste e assinatura dos dados, código, versões e parâmetros.
+Uma alteração dessa assinatura exige outro diretório de saída.
+O script06 gera seis figuras em figures/service_selection e diagnósticos
+municipais a partir do município de cada pedido, sem multiplicar a demanda.
+É possível fornecer --out-dir/--results-dir/--figures-dir.
 
 ## Métricas e atribuição
 
-Todas as métricas operacionais usam distância de Haversine à instalação mais
-próxima. Atribuir 100% dos pedidos é construção dessa avaliação; cobertura em
-3/5/10km é a fração de pedidos dentro de cada raio.
-Mediana/P95/P99 são ponderados pelos pedidos, com interpolação linear sobre
-np.repeat(distâncias,n_pedidos). Os percentis não ponderados por CEP são
-exportados separadamente. P95/P99 são indicadores posteriores à formação,
-sem restrição de distância máxima implementada.
+Todas as métricas operacionais usam distância de Haversine ao PU mais próximo.
+A cobertura conta pedidos com distância <=R. Nesta base,95% exige pelo menos
+**9.207 dos 9.691 pedidos**. P95/P99 empíricos usam a inversa da distribuição
+acumulada por pedidos: primeira distância observada que alcança ceil(q*N).
+Essa definição mantém P95<=R equivalente à meta, sem interpolação na decisão.
 
-Os rótulos nativos dos grupos também são exportados. A área de convex hull
-usa os grupos nativos, projeção EPSG:31983 e inclui área zero para grupos com
-menos de três pontos. É descrição espacial, não área real de atendimento.
-Ward/KMeans ajustam coordenadas angulares euclidianas; complete/average usam
-Haversine. A avaliação comum usa Haversine para todos.
+Percentis lineares são exportados para compatibilidade com a revisão anterior.
+Na análise histórica K70, mediana/P95/P99 usam interpolação linear sobre
+np.repeat(distâncias,n_pedidos), com percentis não ponderados de CEP à parte.
+Os arquivos novos identificam claramente as duas convenções.
 
-## Resultados em K=70
+A seleção é externa aos ajustes: **P95 global não delimita cada cluster,
+não elimina pontos distantes e não garante 95% em cada município**.
+Todos os pedidos permanecem atribuídos, inclusive os além do raio.
+P99, máximo, pedidos fora, mapas e diagnóstico municipal expõem essa cauda.
+Grupos nativos e atribuição operacional são exportados separadamente.
+
+Ward/KMeans ajustam graus euclidianos; complete/average usam Haversine.
+A avaliação usa Haversine para todos. A área de convex hull do experimento
+histórico descreve os grupos nativos em EPSG31983, não território operacional.
+
+## Instalações selecionadas por cenário
+
+| Configuração | Candidatos | K em 3 km | K em 5 km | K em 10 km |
+|---|---|---:|---:|---:|
+| K-Means | centros contínuos | 82 | 40 | 17 |
+| Ward | centros contínuos | 80 | 42 | 17 |
+| Complete | centros contínuos | 88 | 46 | 19 |
+| Average | centros contínuos | 99 | 53 | 24 |
+| P-mediana | 300 | inviável* | 55 | 23 |
+| MCLP | 300 | inviável* | 40 | 15 |
+| P-mediana (sensibilidade) |828 |90 |— |— |
+| MCLP (sensibilidade) |828 |64 |— |— |
+
+*Inviabilidade estrutural do conjunto300 em 3 km; teto93,685%, antes da busca.
+A sensibilidade828 é outra condição, não parte do ranking300.
+Os números são mínimos encontrados pelas soluções produzidas e a regra de
+sementes, não mínimos globais ou economicamente ótimos.
+
+## Referência histórica em K=70
 
 | Método | Média km | Cobertura3km % | P95km | P99km | Máximo km |
 |---|---:|---:|---:|---:|---:|
@@ -97,6 +151,14 @@ entre K-Means e Ward; as conclusões dependem de K e da prioridade operacional.
 - data/reference_curves_K10_K160.csv: valores usados na figura de sensibilidade.
 - data/experiment_metadata.json: hashes, versões, candidatos, semente e convenções.
 - figures/09_grupos_nativos_vs_ponto_proximo.png: exemplos das diferenças de atribuição.
+- data/service_selection/service_curves.csv: cadaK/semente/raio testado.
+- data/service_selection/service_selection.csv: seleções e inviabilidade estrutural.
+- data/service_selection/service_seed_first_k.csv: primeiroK viável de cada semente.
+- data/service_selection/service_facilities.csv e service_assignments.csv: redes selecionadas e todos os pedidos.
+- data/service_selection/service_tails.csv e service_by_municipality.csv: cauda e cobertura municipal.
+- data/service_selection/service_map_extremes.csv e service_native_examples.csv: exemplos visuais verificáveis.
+- data/service_selection/service_metadata.json: assinatura, hashes, convenções e limites.
+- figures/service_selection/: contagens, caudas, mapas3/5/10 e formação versus PU próximo.
 - scripts/ e tests/: implementação e verificações analíticas.
 
 ## Limites
