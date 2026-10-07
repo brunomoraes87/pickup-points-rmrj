@@ -1,6 +1,6 @@
 """Select the first tested integer K meeting order-weighted 95% radius coverage.
 
-This experiment preserves the v20 fitting functions. P95/P99 use the empirical
+This experiment preserves the v21 main configuration. P95/P99 use the empirical
 inverse CDF for the decision, with linear percentiles retained as diagnostics.
 A K-Means configuration must meet the target at all five specified seeds.
 MCLP prefixes reuse one deterministic greedy trajectory per radius; the tie
@@ -19,6 +19,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
+from candidate_sets import select_candidate_indices
 
 from methods import (
     EARTH_R_KM, haversine_pairwise, haversine_to_centers,
@@ -34,6 +35,7 @@ METHODS = (
 TARGET = Fraction(95, 100)
 METRIC_INTERVALS = (
     "coverage_pct", "covered_orders", "weighted_avg_distance_km",
+    "median_empirical_km",
     "p95_empirical_km", "p99_empirical_km", "p95_linear_km",
     "p99_linear_km", "max_distance_km", "n_facilities", "runtime_s",
 )
@@ -216,9 +218,10 @@ class ServiceSearch:
             raise ValueError("Candidate, iteration and K limits must be positive")
         self.limit = min(max_k or len(self.df), len(self.df))
         self.pmedian_max_iter = pmedian_max_iter
+        self.fit_diagnostics = {}
         self.total = int(self.weights.sum())
         self.minimum = required_orders(self.total)
-        self.top = self.df.nlargest(min(candidates, len(self.df)), "n_pedidos").index.to_numpy()
+        self.top = select_candidate_indices(self.df, min(candidates, len(self.df)))
         self.D = haversine_pairwise(self.coords[:, 0], self.coords[:, 1])
         self.out = Path(out_dir)
         self.out.mkdir(parents=True, exist_ok=True)
@@ -227,10 +230,13 @@ class ServiceSearch:
         versions = {"python": platform.python_version()}
         for package in ("numpy", "pandas", "scikit-learn", "scipy", "shapely", "pyproj"):
             versions[package] = importlib.metadata.version(package)
-        source_paths = [Path(__file__).resolve(), REPO / "scripts" / "methods.py"]
+        source_paths = [Path(__file__).resolve(), REPO / "scripts" / "methods.py",
+                        REPO / "scripts" / "candidate_sets.py"]
         protocol = {
             "radii_km": list(self.radii), "target": str(TARGET),
             "seeds": list(SEEDS), "n_init": 10, "max_k": self.limit,
+            "kmeans_parameters": {"init": "k-means++", "max_iter": 300, "tol": 1e-4, "algorithm": "lloyd"},
+            "candidate_tie_rule": "demand descending, postal prefix ascending",
             "pmedian_max_iter": pmedian_max_iter,
             "candidate_indices": self.top.tolist(), "candidate_count": len(self.top),
             "candidate_CEPs": self.df.loc[self.top, "CEP"].astype(str).tolist(),
@@ -255,12 +261,12 @@ class ServiceSearch:
             "selection": "first feasible K after testing each smaller integer; no monotonicity assumption",
             "kmeans_rule": "all five seeds meet target at same K; representative seed 42",
             "seed_scope": "five fixed seeds are sensitivity, not a probabilistic guarantee",
-            "main_candidates": "v20 nlargest(n_pedidos), ties keep first demand row",
+            "main_candidates": "demand descending, postal prefix ascending; identical to v21 on the audited prefix-sorted demand CSV",
             "sensitivity": "all demand-point candidates only for structurally infeasible main scenarios",
-            "pmedian_termination": "termination not exposed by legacy function",
+            "pmedian_termination": "instrumented: no_improving_swap or iteration_limit; passes include final no-improvement pass, swaps count accepted first-improvement exchanges",
             "mclp_runtime": "cumulative greedy trajectory computation through selected prefix; excludes shared distance matrix",
             "mclp_search_runtime": "cumulative[-1] of full greedy trajectory through final chosen candidate, including construction beyond selected K; not a sum of prefix cumulative times; excludes final no-gain check, shared distance matrix, evaluation and exports",
-            "other_runtime": "legacy fitting only; hardware dependent; no evaluation/export time",
+            "other_runtime": "fitting only; p-median uses a shared precomputed distance matrix and an equivalent cached exchange implementation; excludes shared matrix construction, evaluation and exports; hardware dependent",
             "facility_count": "returned centers; unique coordinates and native clusters also reported",
             "evaluation_assignment": "nearest returned facility by Haversine",
             "native_assignment": "original fitted labels retained separately",
@@ -313,22 +319,30 @@ class ServiceSearch:
         path = self.checkpoint_dir / name
         if path.exists():
             with np.load(path, allow_pickle=False) as cached:
+                self.fit_diagnostics[(scope, method, k, seed)] = (json.loads(str(cached["diagnostics_json"].item()))
+                                                               if "diagnostics_json" in cached.files else {})
                 return (cached["labels"], cached["centers"],
                         float(cached["runtime_s"].item()))
+        diagnostics = {}
         if method == "KMeans-weighted":
             start = time.perf_counter()
-            model = KMeans(n_clusters=k, n_init=10, random_state=seed)
+            model = KMeans(n_clusters=k, n_init=10, random_state=seed,
+                           init="k-means++", max_iter=300, tol=1e-4, algorithm="lloyd")
             labels = model.fit_predict(self.coords, sample_weight=self.weights.astype(float))
             result = labels, model.cluster_centers_, time.perf_counter() - start
         elif method.startswith("Agglomerative-"):
             result = method_agglomerative(self.df, n_clusters=k, linkage=method.split("-")[1])
         elif method == "P-Median":
-            result = method_pmedian_heuristic(
-                self.df, p=k, candidates_idx=candidates, max_iter=self.pmedian_max_iter)
+            augmented = method_pmedian_heuristic(
+                self.df, p=k, candidates_idx=candidates, max_iter=self.pmedian_max_iter,
+                distance_matrix=self.D, return_diagnostics=True)
+            result, diagnostics = augmented[:3], augmented[3]
         else:
             raise ValueError("MCLP requires a radius-specific greedy trajectory")
         temporary = path.with_name(path.name + ".tmp.npz")
-        np.savez_compressed(temporary, labels=result[0], centers=result[1], runtime_s=result[2])
+        self.fit_diagnostics[(scope, method, k, seed)] = diagnostics
+        np.savez_compressed(temporary, labels=result[0], centers=result[1], runtime_s=result[2],
+                            diagnostics_json=np.array(json.dumps(diagnostics, sort_keys=True)))
         temporary.replace(path)
         return result
 
@@ -346,6 +360,8 @@ class ServiceSearch:
             "n_native_clusters": len(np.unique(np.asarray(labels)[np.asarray(labels) >= 0])),
             **radius_metrics(distances, self.weights, radius),
         }
+        row.update({name: value for name, value in self.fit_diagnostics.get((scope, method, k, seed), {}).items()
+                    if name != "pmedian_candidate_indices"})
         key = self.row_key(row)
         if key not in self.curve_keys:
             self.curves.append(row)
@@ -370,6 +386,9 @@ class ServiceSearch:
             "search_runtime_s": (self.selection[key]["search_runtime_s"] if method == "MCLP"
                                  else float(sum(float(row["runtime_s"]) for row in curve_rows))),
         })
+        if method == "P-Median":
+            self.selection[key].update({name: reference[name] for name in reference if name.startswith("pmedian_")})
+            self.selection[key]["termination_status"] = reference.get("pmedian_termination_status", "not_instrumented")
         for name in METRIC_INTERVALS:
             self.selection[key][name + "_min"] = min(row[name] for row in rows)
             self.selection[key][name + "_max"] = max(row[name] for row in rows)

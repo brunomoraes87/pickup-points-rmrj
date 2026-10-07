@@ -87,7 +87,8 @@ def method_dbscan(df, eps_km=2.0, min_samples=3, weighted=True):
 def method_kmeans_weighted(df, n_clusters):
     t0 = time.time()
     coords = df[['lat','lng']].values; weights = df['n_pedidos'].values.astype(float)
-    model = KMeans(n_clusters=n_clusters, n_init=10, random_state=42)
+    model = KMeans(n_clusters=n_clusters, n_init=10, random_state=42,
+                   init='k-means++', max_iter=300, tol=1e-4, algorithm='lloyd')
     labels = model.fit_predict(coords, sample_weight=weights)
     return labels, model.cluster_centers_, time.time()-t0
 
@@ -178,11 +179,14 @@ def evaluate(df, labels, centers, coverage_radii_km=(3, 5, 10)):
     return m
 
 
-def method_pmedian_heuristic(df, p, candidates_idx=None, max_iter=100):
+def method_pmedian_heuristic(df, p, candidates_idx=None, max_iter=100,
+                            distance_matrix=None, return_diagnostics=False):
     """
-    P-median via heuristica de troca (Teitz & Bart, 1968).
-    Constroi solucao gulosa e melhora por trocas locais.
-    Significativamente mais rapida que MILP para n>500.
+    Construção gulosa própria seguida de trocas inspiradas em Teitz e Bart.
+
+    Preserva a ordem de candidatos, a primeira melhoria e a tolerância da v21.
+    Reduções de distância reutilizadas evitam reconstruir cada matriz de troca.
+    O retorno padrão de três elementos permanece compatível com o legado.
     """
     t0 = time.time()
     coords = df[['lat','lng']].values
@@ -190,43 +194,60 @@ def method_pmedian_heuristic(df, p, candidates_idx=None, max_iter=100):
     n = len(df)
     if candidates_idx is None:
         candidates_idx = np.arange(n)
-    candidates_idx = np.asarray(candidates_idx)
-    D_full = haversine_pairwise(coords[:,0], coords[:,1])
+    candidates_idx = np.asarray(candidates_idx, dtype=int)
+    if (not isinstance(p, (int, np.integer)) or p <= 0 or p > len(candidates_idx)
+            or max_iter <= 0 or len(np.unique(candidates_idx)) != len(candidates_idx)
+            or (candidates_idx < 0).any() or (candidates_idx >= n).any()):
+        raise ValueError('Positive p within the unique candidate set and positive iteration limit required')
+    if not np.isfinite(weights).all() or (weights <= 0).any():
+        raise ValueError('Positive finite demand weights required')
+    D_full = (haversine_pairwise(coords[:,0], coords[:,1]) if distance_matrix is None
+              else np.asarray(distance_matrix, dtype=float))
+    if D_full.shape != (n, n) or not np.isfinite(D_full).all() or (D_full < 0).any():
+        raise ValueError('Distance matrix must be finite, nonnegative and square on demand rows')
     D = D_full[:, candidates_idx]
-
-    def obj(selected):
-        min_d = D[:, selected].min(axis=1)
-        return float(np.sum(weights * min_d))
 
     # Greedy construction
     selected = []
     available = list(range(len(candidates_idx)))
+    minimum = np.full(n, np.inf)
     for _ in range(p):
         best_j, best_val = None, np.inf
         for j in available:
-            val = obj(selected + [j])
+            val = float(np.sum(weights * np.minimum(minimum, D[:, j])))
             if val < best_val:
                 best_val, best_j = val, j
         selected.append(best_j); available.remove(best_j)
+        minimum = np.minimum(minimum, D[:, best_j])
 
     # Local search (interchange)
-    improved = True; it = 0
+    improved = True; it = 0; swaps = 0
     while improved and it < max_iter:
         improved = False; it += 1
         for k, jin in enumerate(list(selected)):
-            current_val = obj(selected)
+            current_val = float(np.sum(weights * D[:, selected].min(axis=1)))
+            remaining = selected[:k] + selected[k+1:]
+            without_k = (D[:, remaining].min(axis=1) if remaining
+                         else np.full(n, np.inf))
             for jout in available:
-                trial = selected.copy(); trial[k] = jout
-                trial_val = obj(trial)
+                trial_val = float(np.sum(weights * np.minimum(without_k, D[:, jout])))
                 if trial_val < current_val - 1e-9:
+                    trial = selected.copy(); trial[k] = jout
                     selected = trial
                     available.remove(jout); available.append(jin)
-                    current_val = trial_val; improved = True; break
+                    current_val = trial_val; improved = True; swaps += 1; break
 
     centers = coords[candidates_idx[selected]]
     D_sel = D[:, selected]
     labels = D_sel.argmin(axis=1)
-    return labels, centers, time.time()-t0
+    result = labels, centers, time.time()-t0
+    if return_diagnostics:
+        return (*result, {'pmedian_passes': it, 'pmedian_swaps': swaps,
+                         'pmedian_converged': not improved,
+                         'pmedian_termination_status': 'no_improving_swap' if not improved else 'iteration_limit',
+                         'pmedian_objective_weighted_km': float(np.sum(weights * D_sel.min(axis=1))),
+                         'pmedian_candidate_indices': candidates_idx[selected].tolist()})
+    return result
 
 
 def method_mclp_heuristic(df, p, radius_km, candidates_idx=None):
