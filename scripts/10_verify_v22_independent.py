@@ -64,11 +64,25 @@ def select_output_manifest(metadata, directory):
     """Choose the declared final manifest before checking any file hashes.
 
     Consolidated F2 keeps its historical output_hashes and final raw_output_hashes;
-    their provenance must match the preserved initial metadata. Native cold runs
-    have their own final output_hashes and need no consolidation exception.
+    their provenance must match the preserved initial metadata. Native v22 runs
+    declare only raw_output_hashes; validate their signed schema before selection.
     """
     if "raw_output_hashes" not in metadata:
         return metadata.get("output_hashes",{}),None
+    if "output_hashes" not in metadata and "initial_execution_signature" not in metadata:
+        required={"signature_sha256","input_hashes","code_hashes","config","environment","complete","scientific_output_hashes"}
+        if not required.issubset(metadata) or metadata["complete"] is not True:
+            raise ValueError("Native manifest lacks completed signed execution schema")
+        environment=dict(metadata["environment"])
+        environment.pop("executable",None)
+        signed=dict(input_hashes=metadata["input_hashes"],code_hashes=metadata["code_hashes"],
+                    config=metadata["config"],environment=environment)
+        digest=hashlib.sha256(json.dumps(signed,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
+        if digest!=metadata["signature_sha256"]:
+            raise ValueError("Native manifest signature differs from execution configuration")
+        if not isinstance(metadata["raw_output_hashes"],dict) or not metadata["raw_output_hashes"]:
+            raise ValueError("Native manifest lacks final output hashes")
+        return metadata["raw_output_hashes"],None
     directory=Path(directory)
     candidates=[directory/"metadata_initial_execution.json",
                 directory/"provenance/metadata_initial_execution.json"]
@@ -595,7 +609,7 @@ class Auditor:
             self.evidence.append(dict(section="sensitivity_manifest",selected="raw_output_hashes",
                 reason="Consolidated F2; initial signature and historical manifest match preserved provenance",
                 preserved_initial_metadata=str(provenance.resolve()),sha256=sha(provenance)))
-        else:self.evidence.append(dict(section="sensitivity_manifest",selected="output_hashes",reason="Native execution final manifest"))
+        else:self.evidence.append(dict(section="sensitivity_manifest",selected="raw_output_hashes" if "raw_output_hashes" in meta else "output_hashes",reason="Native execution final manifest; signature checked for native v22 schema"))
         for name,expected in final_hashes.items():
             self.check(sha(p/name)==expected,"Sensitivity declared hash:"+name)
         selection=self.read_csv(p/"sensitivity_selection.csv")

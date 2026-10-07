@@ -128,6 +128,23 @@ class IndependentVerificationTests(unittest.TestCase):
         auditor.network("fixture",row,demand,orders,facilities,assignment)
         self.assertEqual([x["check"] for x in auditor.failures],["fixture: exported loads"])
 
+    def test_native_raw_manifest_validates_signature_before_file_hashes(self):
+        import json,hashlib
+        from copy import deepcopy
+        signed=dict(input_hashes={"raw/input.csv":"input"},code_hashes={"scripts/model.py":"model"},
+                    config={"radius":3},environment={"python":"3.12"})
+        digest=hashlib.sha256(json.dumps(signed,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
+        native=dict(**signed,signature_sha256=digest,complete=True,raw_output_hashes={"result.csv":"final"},scientific_output_hashes={"result.csv":"scientific"})
+        native["environment"]={**signed["environment"],"executable":"host/python.exe"}
+        with tempfile.TemporaryDirectory() as folder:
+            self.assertEqual(v.select_output_manifest(native,Path(folder)),(native["raw_output_hashes"],None))
+            for change in [dict(complete=False),dict(signature_sha256="wrong"),dict(raw_output_hashes={}),dict(initial_execution_signature="old"),dict(output_hashes={"result.csv":"old"})]:
+                with self.subTest(change=change):
+                    bad=deepcopy(native);bad.update(change)
+                    with self.assertRaises(ValueError):v.select_output_manifest(bad,Path(folder))
+            bad=deepcopy(native);bad["config"]["radius"]=5
+            with self.assertRaises(ValueError):v.select_output_manifest(bad,Path(folder))
+
     def test_independent_milp_matches_finite_enumeration(self):
         coords=np.array([[0,0],[0,.01],[0,.02],[0,.03],[0,.1]],float)
         w=np.array([2,3,5,1,1]);R=1.2
