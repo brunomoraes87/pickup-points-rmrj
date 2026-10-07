@@ -1,0 +1,2783 @@
+{
+  "passed": true,
+  "n_checks": 344,
+  "checks": [
+    {
+      "job_id": "partial_J300_R5",
+      "field": "covered_orders",
+      "observed": 9228.0,
+      "expected": 9228.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "coverage_pct",
+      "observed": 95.22237127231452,
+      "expected": 95.22237127231452,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.021608154986084,
+      "expected": 3.0216081549860854,
+      "absolute_difference": 1.3322676295501878e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "median_empirical_km",
+      "observed": 2.9202114421056438,
+      "expected": 2.920211442105644,
+      "absolute_difference": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.93726011141345,
+      "expected": 4.93726011141345,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "p99_empirical_km",
+      "observed": 13.291079712245425,
+      "expected": 13.291079712245423,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "max_distance_km",
+      "observed": 36.526178157887244,
+      "expected": 36.52617815788724,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "covered_orders",
+      "observed": 9212.0,
+      "expected": 9212.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "coverage_pct",
+      "observed": 95.05726963161696,
+      "expected": 95.05726963161696,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.003501522088649,
+      "expected": 6.003501522088642,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "median_empirical_km",
+      "observed": 5.651251723106653,
+      "expected": 5.651251723106653,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.946857539413896,
+      "expected": 9.9468575394141,
+      "absolute_difference": 2.042810365310288e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "p99_empirical_km",
+      "observed": 22.55773476316851,
+      "expected": 22.55773476316851,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "max_distance_km",
+      "observed": 50.4789120536817,
+      "expected": 50.4789120536817,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 9.0,
+      "expected": 9.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "covered_orders",
+      "observed": 9208.0,
+      "expected": 9208.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "coverage_pct",
+      "observed": 95.01599422144258,
+      "expected": 95.01599422144258,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.049023372158336,
+      "expected": 3.04902337215834,
+      "absolute_difference": 3.9968028886505635e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "median_empirical_km",
+      "observed": 2.939375805442713,
+      "expected": 2.939375805442713,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.989007203569308,
+      "expected": 4.989007203569308,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "p99_empirical_km",
+      "observed": 13.291079712245425,
+      "expected": 13.291079712245423,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "max_distance_km",
+      "observed": 36.526178157887244,
+      "expected": 36.52617815788724,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "covered_orders",
+      "observed": 9240.0,
+      "expected": 9240.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "coverage_pct",
+      "observed": 95.34619750283768,
+      "expected": 95.34619750283768,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.0742761747705,
+      "expected": 6.074276174770492,
+      "absolute_difference": 7.993605777301127e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "median_empirical_km",
+      "observed": 5.8158168062066675,
+      "expected": 5.815816806206668,
+      "absolute_difference": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.946857539413896,
+      "expected": 9.9468575394141,
+      "absolute_difference": 2.042810365310288e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "p99_empirical_km",
+      "observed": 22.55773476316851,
+      "expected": 22.55773476316851,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "max_distance_km",
+      "observed": 50.4789120536817,
+      "expected": 50.4789120536817,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J300_reverse_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 8.0,
+      "expected": 8.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "covered_orders",
+      "observed": 9208.0,
+      "expected": 9208.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "coverage_pct",
+      "observed": 95.01599422144258,
+      "expected": 95.01599422144258,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.9811175110497676,
+      "expected": 1.981117511049772,
+      "absolute_difference": 4.440892098500626e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "median_empirical_km",
+      "observed": 1.9604576104760019,
+      "expected": 1.9604576104760012,
+      "absolute_difference": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "p99_empirical_km",
+      "observed": 9.730211445405722,
+      "expected": 9.730211445405722,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "max_distance_km",
+      "observed": 26.950553178813895,
+      "expected": 26.950553178813895,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R3",
+      "field": "zero_coverage_municipalities",
+      "observed": 5.0,
+      "expected": 5.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "covered_orders",
+      "observed": 9221.0,
+      "expected": 9221.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "coverage_pct",
+      "observed": 95.15013930450934,
+      "expected": 95.15013930450934,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.452332461033845,
+      "expected": 3.452332461033845,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "median_empirical_km",
+      "observed": 3.112060794677386,
+      "expected": 3.112060794677386,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.963935466929743,
+      "expected": 4.963935466929743,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "p99_empirical_km",
+      "observed": 20.980251855288525,
+      "expected": 20.98025185528853,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "max_distance_km",
+      "observed": 39.46953633205768,
+      "expected": 39.469536332057686,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "covered_orders",
+      "observed": 9250.0,
+      "expected": 9250.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "coverage_pct",
+      "observed": 95.44938602827365,
+      "expected": 95.44938602827364,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.527054190528721,
+      "expected": 6.5270541905287125,
+      "absolute_difference": 8.881784197001252e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "median_empirical_km",
+      "observed": 6.326726363381239,
+      "expected": 6.326726363381027,
+      "absolute_difference": 2.113864638886298e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.970570200379786,
+      "expected": 9.970570200379475,
+      "absolute_difference": 3.1086244689504383e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "p99_empirical_km",
+      "observed": 21.721042658849402,
+      "expected": 21.7210426588494,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "max_distance_km",
+      "observed": 51.880329773104854,
+      "expected": 51.88032977310485,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "covered_orders",
+      "observed": 9208.0,
+      "expected": 9208.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "coverage_pct",
+      "observed": 95.01599422144258,
+      "expected": 95.01599422144258,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.9811175110497676,
+      "expected": 1.981117511049772,
+      "absolute_difference": 4.440892098500626e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "median_empirical_km",
+      "observed": 1.9604576104760019,
+      "expected": 1.9604576104760012,
+      "absolute_difference": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "p99_empirical_km",
+      "observed": 9.730211445405722,
+      "expected": 9.730211445405722,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "max_distance_km",
+      "observed": 26.950553178813895,
+      "expected": 26.950553178813895,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R3",
+      "field": "zero_coverage_municipalities",
+      "observed": 5.0,
+      "expected": 5.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "covered_orders",
+      "observed": 9221.0,
+      "expected": 9221.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "coverage_pct",
+      "observed": 95.15013930450934,
+      "expected": 95.15013930450934,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.461131279386186,
+      "expected": 3.461131279386186,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "median_empirical_km",
+      "observed": 3.1212902765810218,
+      "expected": 3.1212902765810213,
+      "absolute_difference": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.983905289200703,
+      "expected": 4.983905289200704,
+      "absolute_difference": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "p99_empirical_km",
+      "observed": 20.980251855288525,
+      "expected": 20.98025185528853,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "max_distance_km",
+      "observed": 39.46953633205768,
+      "expected": 39.469536332057686,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "covered_orders",
+      "observed": 9275.0,
+      "expected": 9275.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "coverage_pct",
+      "observed": 95.70735734186358,
+      "expected": 95.70735734186358,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.204596771765372,
+      "expected": 6.204596771765363,
+      "absolute_difference": 8.881784197001252e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "median_empirical_km",
+      "observed": 5.810546204588812,
+      "expected": 5.810546204588812,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.946857539413896,
+      "expected": 9.9468575394141,
+      "absolute_difference": 2.042810365310288e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "p99_empirical_km",
+      "observed": 21.721042658849402,
+      "expected": 21.7210426588494,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "max_distance_km",
+      "observed": 51.880329773104854,
+      "expected": 51.88032977310485,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "covered_orders",
+      "observed": 9218.0,
+      "expected": 9218.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "coverage_pct",
+      "observed": 95.11918274687855,
+      "expected": 95.11918274687856,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "weighted_avg_distance_km",
+      "observed": 2.2054871641959024,
+      "expected": 2.205487164195891,
+      "absolute_difference": 1.1546319456101628e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "median_empirical_km",
+      "observed": 1.9604688929401473,
+      "expected": 1.960468892940092,
+      "absolute_difference": 5.5289106626332796e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "p95_empirical_km",
+      "observed": 2.9953604792777133,
+      "expected": 2.995360479277676,
+      "absolute_difference": 3.730349362740526e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "p99_empirical_km",
+      "observed": 12.891355309296642,
+      "expected": 12.891355309296642,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "max_distance_km",
+      "observed": 36.115359549337896,
+      "expected": 36.115359549337896,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R3",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "covered_orders",
+      "observed": 9207.0,
+      "expected": 9207.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "coverage_pct",
+      "observed": 95.00567536889898,
+      "expected": 95.00567536889898,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.5901489793438115,
+      "expected": 3.590148979343794,
+      "absolute_difference": 1.7319479184152442e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "median_empirical_km",
+      "observed": 3.29360667337452,
+      "expected": 3.2936066733738945,
+      "absolute_difference": 6.257216966787382e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.99409201768597,
+      "expected": 4.99409201768597,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "p99_empirical_km",
+      "observed": 18.951497816101895,
+      "expected": 18.95149781610189,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "max_distance_km",
+      "observed": 38.92163082588659,
+      "expected": 38.921630825886304,
+      "absolute_difference": 2.8421709430404007e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "covered_orders",
+      "observed": 9259.0,
+      "expected": 9259.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "coverage_pct",
+      "observed": 95.54225570116603,
+      "expected": 95.54225570116604,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 7.339016749438782,
+      "expected": 7.339016749438802,
+      "absolute_difference": 1.9539925233402755e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "median_empirical_km",
+      "observed": 7.269717190947503,
+      "expected": 7.269717190947503,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.927684226719753,
+      "expected": 9.927684226719752,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "p99_empirical_km",
+      "observed": 20.966112071862547,
+      "expected": 20.966112071862543,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "max_distance_km",
+      "observed": 50.39938371141701,
+      "expected": 50.3993837114167,
+      "absolute_difference": 3.126388037344441e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid1000_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 8.0,
+      "expected": 8.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "covered_orders",
+      "observed": 9218.0,
+      "expected": 9218.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "coverage_pct",
+      "observed": 95.11918274687855,
+      "expected": 95.11918274687856,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "weighted_avg_distance_km",
+      "observed": 2.2054871641959024,
+      "expected": 2.205487164195891,
+      "absolute_difference": 1.1546319456101628e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "median_empirical_km",
+      "observed": 1.9604688929401473,
+      "expected": 1.960468892940092,
+      "absolute_difference": 5.5289106626332796e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "p95_empirical_km",
+      "observed": 2.9953604792777133,
+      "expected": 2.995360479277676,
+      "absolute_difference": 3.730349362740526e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "p99_empirical_km",
+      "observed": 12.891355309296642,
+      "expected": 12.891355309296642,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "max_distance_km",
+      "observed": 36.115359549337896,
+      "expected": 36.115359549337896,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R3",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "covered_orders",
+      "observed": 9207.0,
+      "expected": 9207.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "coverage_pct",
+      "observed": 95.00567536889898,
+      "expected": 95.00567536889898,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.5901489793438115,
+      "expected": 3.590148979343794,
+      "absolute_difference": 1.7319479184152442e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "median_empirical_km",
+      "observed": 3.29360667337452,
+      "expected": 3.2936066733738945,
+      "absolute_difference": 6.257216966787382e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.99409201768597,
+      "expected": 4.99409201768597,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "p99_empirical_km",
+      "observed": 18.951497816101895,
+      "expected": 18.95149781610189,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "max_distance_km",
+      "observed": 38.92163082588659,
+      "expected": 38.921630825886304,
+      "absolute_difference": 2.8421709430404007e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "covered_orders",
+      "observed": 9259.0,
+      "expected": 9259.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "coverage_pct",
+      "observed": 95.54225570116603,
+      "expected": 95.54225570116604,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 7.360777453915189,
+      "expected": 7.360777453915206,
+      "absolute_difference": 1.7763568394002505e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "median_empirical_km",
+      "observed": 7.291836808414515,
+      "expected": 7.291836808414515,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.931650955542809,
+      "expected": 9.931650955542471,
+      "absolute_difference": 3.375077994860476e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "p99_empirical_km",
+      "observed": 20.966112071862547,
+      "expected": 20.966112071862543,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "max_distance_km",
+      "observed": 50.39938371141701,
+      "expected": 50.3993837114167,
+      "absolute_difference": 3.126388037344441e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid1000_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 8.0,
+      "expected": 8.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "covered_orders",
+      "observed": 9213.0,
+      "expected": 9213.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "coverage_pct",
+      "observed": 95.06758848416057,
+      "expected": 95.06758848416057,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "weighted_avg_distance_km",
+      "observed": 2.2503858279419178,
+      "expected": 2.2503858279419067,
+      "absolute_difference": 1.1102230246251565e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "median_empirical_km",
+      "observed": 2.012814844139322,
+      "expected": 2.012814844139322,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "p95_empirical_km",
+      "observed": 2.9981574452767523,
+      "expected": 2.9981574452767523,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "p99_empirical_km",
+      "observed": 12.621257622034726,
+      "expected": 12.621257622034085,
+      "absolute_difference": 6.412648190234904e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "max_distance_km",
+      "observed": 35.81813515840818,
+      "expected": 35.81813515840818,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R3",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "covered_orders",
+      "observed": 9235.0,
+      "expected": 9235.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "coverage_pct",
+      "observed": 95.2946032401197,
+      "expected": 95.2946032401197,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.714575036559583,
+      "expected": 3.7145750365595656,
+      "absolute_difference": 1.7319479184152442e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "median_empirical_km",
+      "observed": 3.5018488376350914,
+      "expected": 3.501848837635092,
+      "absolute_difference": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.990955175401151,
+      "expected": 4.990955175401151,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "p99_empirical_km",
+      "observed": 16.456502384525603,
+      "expected": 16.456502384525603,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "max_distance_km",
+      "observed": 38.441156809621326,
+      "expected": 38.441156809621326,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "covered_orders",
+      "observed": 9261.0,
+      "expected": 9261.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "coverage_pct",
+      "observed": 95.56289340625322,
+      "expected": 95.56289340625322,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 7.266348377882783,
+      "expected": 7.266348377882812,
+      "absolute_difference": 2.930988785010413e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "median_empirical_km",
+      "observed": 7.0931400994533345,
+      "expected": 7.093140099453333,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.960386719729586,
+      "expected": 9.960386719728923,
+      "absolute_difference": 6.625811010962934e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "p99_empirical_km",
+      "observed": 20.785159762236454,
+      "expected": 20.7851597622372,
+      "absolute_difference": 7.460698725481052e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "max_distance_km",
+      "observed": 50.39938371141701,
+      "expected": 50.3993837114167,
+      "absolute_difference": 3.126388037344441e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J828_grid500_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 8.0,
+      "expected": 8.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "covered_orders",
+      "observed": 9213.0,
+      "expected": 9213.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "coverage_pct",
+      "observed": 95.06758848416057,
+      "expected": 95.06758848416057,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "weighted_avg_distance_km",
+      "observed": 2.2503858279419178,
+      "expected": 2.2503858279419067,
+      "absolute_difference": 1.1102230246251565e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "median_empirical_km",
+      "observed": 2.012814844139322,
+      "expected": 2.012814844139322,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "p95_empirical_km",
+      "observed": 2.9981574452767523,
+      "expected": 2.9981574452767523,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "p99_empirical_km",
+      "observed": 12.621257622034726,
+      "expected": 12.621257622034085,
+      "absolute_difference": 6.412648190234904e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "max_distance_km",
+      "observed": 35.81813515840818,
+      "expected": 35.81813515840818,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R3",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "covered_orders",
+      "observed": 9235.0,
+      "expected": 9235.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "coverage_pct",
+      "observed": 95.2946032401197,
+      "expected": 95.2946032401197,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.714575036559583,
+      "expected": 3.7145750365595656,
+      "absolute_difference": 1.7319479184152442e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "median_empirical_km",
+      "observed": 3.5018488376350914,
+      "expected": 3.501848837635092,
+      "absolute_difference": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "p95_empirical_km",
+      "observed": 4.990955175401151,
+      "expected": 4.990955175401151,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "p99_empirical_km",
+      "observed": 16.456502384525603,
+      "expected": 16.456502384525603,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "max_distance_km",
+      "observed": 38.441156809621326,
+      "expected": 38.441156809621326,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R5",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "covered_orders",
+      "observed": 9264.0,
+      "expected": 9264.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "coverage_pct",
+      "observed": 95.59384996388401,
+      "expected": 95.593849963884,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "weighted_avg_distance_km",
+      "observed": 7.344256991400145,
+      "expected": 7.344256991400182,
+      "absolute_difference": 3.730349362740526e-14,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "median_empirical_km",
+      "observed": 7.2689596156472325,
+      "expected": 7.268959615647232,
+      "absolute_difference": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "p95_empirical_km",
+      "observed": 9.967065372545989,
+      "expected": 9.967065372546328,
+      "absolute_difference": 3.3928415632544784e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "p99_empirical_km",
+      "observed": 21.047938641450102,
+      "expected": 21.047938641450106,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "max_distance_km",
+      "observed": 50.39938371141701,
+      "expected": 50.3993837114167,
+      "absolute_difference": 3.126388037344441e-13,
+      "passed": true
+    },
+    {
+      "job_id": "partial_J825_grid500_R10",
+      "field": "zero_coverage_municipalities",
+      "observed": 8.0,
+      "expected": 8.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "covered_orders",
+      "observed": 9315.0,
+      "expected": 9315.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "coverage_pct",
+      "observed": 96.12011144360747,
+      "expected": 96.12011144360748,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "weighted_avg_distance_km",
+      "observed": 2.809945567914094,
+      "expected": 2.8099455679141068,
+      "absolute_difference": 1.2878587085651816e-14,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "median_empirical_km",
+      "observed": 2.837253540417379,
+      "expected": 2.837253540417511,
+      "absolute_difference": 1.3233858453531866e-13,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "p95_empirical_km",
+      "observed": 4.8822675965540805,
+      "expected": 4.882267596554133,
+      "absolute_difference": 5.240252676230739e-14,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "p99_empirical_km",
+      "observed": 9.206283272614339,
+      "expected": 9.20628327261434,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "max_distance_km",
+      "observed": 16.550308693700245,
+      "expected": 16.550308693700245,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R5_K39",
+      "field": "zero_coverage_municipalities",
+      "observed": 3.0,
+      "expected": 3.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "covered_orders",
+      "observed": 9351.0,
+      "expected": 9351.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "coverage_pct",
+      "observed": 96.49159013517696,
+      "expected": 96.49159013517696,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "weighted_avg_distance_km",
+      "observed": 5.978062536343399,
+      "expected": 5.978062536343357,
+      "absolute_difference": 4.1744385725905886e-14,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "median_empirical_km",
+      "observed": 6.030380904939012,
+      "expected": 6.0303809049392205,
+      "absolute_difference": 2.0872192862952943e-13,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "p95_empirical_km",
+      "observed": 9.816220999726234,
+      "expected": 9.8162209997264,
+      "absolute_difference": 1.6697754290362354e-13,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "p99_empirical_km",
+      "observed": 18.411919746517366,
+      "expected": 18.41191974651748,
+      "absolute_difference": 1.1368683772161603e-13,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "max_distance_km",
+      "observed": 36.526178157887244,
+      "expected": 36.52617815788724,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J300_R10_K14",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "covered_orders",
+      "observed": 9254.0,
+      "expected": 9254.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "coverage_pct",
+      "observed": 95.49066143844804,
+      "expected": 95.49066143844804,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.9545727061522473,
+      "expected": 1.954572706152252,
+      "absolute_difference": 4.6629367034256575e-15,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "median_empirical_km",
+      "observed": 1.9462968146704682,
+      "expected": 1.946296814670468,
+      "absolute_difference": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "p95_empirical_km",
+      "observed": 2.9873448150199233,
+      "expected": 2.9873448150199238,
+      "absolute_difference": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "p99_empirical_km",
+      "observed": 9.730211445405722,
+      "expected": 9.730211445405722,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "max_distance_km",
+      "observed": 26.950553178813895,
+      "expected": 26.950553178813895,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "maximal_J828_R3_K63",
+      "field": "zero_coverage_municipalities",
+      "observed": 5.0,
+      "expected": 5.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "covered_orders",
+      "observed": 9691.0,
+      "expected": 9691.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "coverage_pct",
+      "observed": 100.0,
+      "expected": 100.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "weighted_avg_distance_km",
+      "observed": 0.7281625462272079,
+      "expected": 0.7281625462271942,
+      "absolute_difference": 1.3655743202889425e-14,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "median_empirical_km",
+      "observed": 0.596925217929542,
+      "expected": 0.596925217929542,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "p95_empirical_km",
+      "observed": 2.1597517344969805,
+      "expected": 2.15975173449698,
+      "absolute_difference": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "p99_empirical_km",
+      "observed": 2.678361927211665,
+      "expected": 2.678361927211665,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "max_distance_km",
+      "observed": 2.999851786916445,
+      "expected": 2.999851786916445,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "existence_J825_R3_K300",
+      "field": "zero_coverage_municipalities",
+      "observed": 0.0,
+      "expected": 0.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "covered_orders",
+      "observed": 9208.0,
+      "expected": 9208.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "coverage_pct",
+      "observed": 95.01599422144258,
+      "expected": 95.01599422144258,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.9811175110497676,
+      "expected": 1.981117511049772,
+      "absolute_difference": 4.440892098500626e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "median_empirical_km",
+      "observed": 1.9604576104760019,
+      "expected": 1.9604576104760012,
+      "absolute_difference": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "p99_empirical_km",
+      "observed": 9.730211445405722,
+      "expected": 9.730211445405722,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "max_distance_km",
+      "observed": 26.950553178813895,
+      "expected": 26.950553178813895,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_Tnone",
+      "field": "zero_coverage_municipalities",
+      "observed": 5.0,
+      "expected": 5.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "covered_orders",
+      "observed": 9212.0,
+      "expected": 9212.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "coverage_pct",
+      "observed": 95.05726963161696,
+      "expected": 95.05726963161696,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.8997020117285173,
+      "expected": 1.8997020117285224,
+      "absolute_difference": 5.10702591327572e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "median_empirical_km",
+      "observed": 1.9604576104760019,
+      "expected": 1.9604576104760012,
+      "absolute_difference": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "p99_empirical_km",
+      "observed": 7.918090060874419,
+      "expected": 7.918090060874419,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "max_distance_km",
+      "observed": 14.686243442503162,
+      "expected": 14.686243442503162,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T15",
+      "field": "zero_coverage_municipalities",
+      "observed": 2.0,
+      "expected": 2.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "covered_orders",
+      "observed": 9207.0,
+      "expected": 9207.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "coverage_pct",
+      "observed": 95.00567536889898,
+      "expected": 95.00567536889898,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.8754449548132732,
+      "expected": 1.8754449548132783,
+      "absolute_difference": 5.10702591327572e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "median_empirical_km",
+      "observed": 1.9462968146704682,
+      "expected": 1.946296814670468,
+      "absolute_difference": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "p99_empirical_km",
+      "observed": 7.2019453688523996,
+      "expected": 7.2019453688524,
+      "absolute_difference": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "max_distance_km",
+      "observed": 9.742452884601027,
+      "expected": 9.742452884601027,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T10",
+      "field": "zero_coverage_municipalities",
+      "observed": 1.0,
+      "expected": 1.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "covered_orders",
+      "observed": 9211.0,
+      "expected": 9211.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "coverage_pct",
+      "observed": 95.04695077907337,
+      "expected": 95.04695077907336,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.85997564219701,
+      "expected": 1.8599756421970148,
+      "absolute_difference": 4.884981308350689e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "median_empirical_km",
+      "observed": 1.937643302876497,
+      "expected": 1.937643302876497,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "p99_empirical_km",
+      "observed": 6.705932682755194,
+      "expected": 6.705932682755194,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "max_distance_km",
+      "observed": 7.958941237349202,
+      "expected": 7.958941237349202,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T8",
+      "field": "zero_coverage_municipalities",
+      "observed": 1.0,
+      "expected": 1.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "covered_orders",
+      "observed": 9215.0,
+      "expected": 9215.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "coverage_pct",
+      "observed": 95.08822618924775,
+      "expected": 95.08822618924776,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.7906213664765143,
+      "expected": 1.7906213664765176,
+      "absolute_difference": 3.3306690738754696e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "median_empirical_km",
+      "observed": 1.9558577388063034,
+      "expected": 1.9558577388063036,
+      "absolute_difference": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "p95_empirical_km",
+      "observed": 2.9992824574219865,
+      "expected": 2.999282457421771,
+      "absolute_difference": 2.1538326677728037e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "p99_empirical_km",
+      "observed": 4.523320741756038,
+      "expected": 4.523320741756038,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "max_distance_km",
+      "observed": 4.998153004588749,
+      "expected": 4.998153004588749,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R3_T5",
+      "field": "zero_coverage_municipalities",
+      "observed": 0.0,
+      "expected": 0.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "covered_orders",
+      "observed": 9221.0,
+      "expected": 9221.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "coverage_pct",
+      "observed": 95.15013930450934,
+      "expected": 95.15013930450934,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.452332461033845,
+      "expected": 3.452332461033845,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "median_empirical_km",
+      "observed": 3.112060794677386,
+      "expected": 3.112060794677386,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "p95_empirical_km",
+      "observed": 4.963935466929743,
+      "expected": 4.963935466929743,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "p99_empirical_km",
+      "observed": 20.980251855288525,
+      "expected": 20.98025185528853,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "max_distance_km",
+      "observed": 39.46953633205768,
+      "expected": 39.469536332057686,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_Tnone",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "covered_orders",
+      "observed": 9238.0,
+      "expected": 9238.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "coverage_pct",
+      "observed": 95.32555979775049,
+      "expected": 95.32555979775049,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.195402480982862,
+      "expected": 3.1954024809828607,
+      "absolute_difference": 1.3322676295501878e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "median_empirical_km",
+      "observed": 3.112060794677386,
+      "expected": 3.112060794677386,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "p95_empirical_km",
+      "observed": 4.957229675267759,
+      "expected": 4.95722967526776,
+      "absolute_difference": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "p99_empirical_km",
+      "observed": 12.03537286329598,
+      "expected": 12.03537286329598,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "max_distance_km",
+      "observed": 14.692513294317518,
+      "expected": 14.692513294317518,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T15",
+      "field": "zero_coverage_municipalities",
+      "observed": 3.0,
+      "expected": 3.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "covered_orders",
+      "observed": 9222.0,
+      "expected": 9222.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "coverage_pct",
+      "observed": 95.16045815705293,
+      "expected": 95.16045815705291,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.230672698626983,
+      "expected": 3.2306726986269814,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "median_empirical_km",
+      "observed": 3.282296876815682,
+      "expected": 3.282296876815682,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "p95_empirical_km",
+      "observed": 4.963935466929743,
+      "expected": 4.963935466929743,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "p99_empirical_km",
+      "observed": 7.79635709419785,
+      "expected": 7.79635709419785,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "max_distance_km",
+      "observed": 9.851494006668085,
+      "expected": 9.851494006668084,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T10",
+      "field": "zero_coverage_municipalities",
+      "observed": 2.0,
+      "expected": 2.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "covered_orders",
+      "observed": 9249.0,
+      "expected": 9249.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "coverage_pct",
+      "observed": 95.43906717573006,
+      "expected": 95.43906717573006,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.1521831435865453,
+      "expected": 3.152183143586539,
+      "absolute_difference": 6.217248937900877e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "median_empirical_km",
+      "observed": 3.232920314910892,
+      "expected": 3.232920314910892,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "p95_empirical_km",
+      "observed": 4.963935466929743,
+      "expected": 4.963935466929743,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "p99_empirical_km",
+      "observed": 7.111290430786833,
+      "expected": 7.111290430786833,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "max_distance_km",
+      "observed": 7.924471886252309,
+      "expected": 7.924471886252309,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R5_T8",
+      "field": "zero_coverage_municipalities",
+      "observed": 1.0,
+      "expected": 1.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "covered_orders",
+      "observed": 9250.0,
+      "expected": 9250.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "coverage_pct",
+      "observed": 95.44938602827365,
+      "expected": 95.44938602827364,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.527054190528721,
+      "expected": 6.5270541905287125,
+      "absolute_difference": 8.881784197001252e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "median_empirical_km",
+      "observed": 6.326726363381239,
+      "expected": 6.326726363381027,
+      "absolute_difference": 2.113864638886298e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "p95_empirical_km",
+      "observed": 9.970570200379786,
+      "expected": 9.970570200379475,
+      "absolute_difference": 3.1086244689504383e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "p99_empirical_km",
+      "observed": 21.721042658849402,
+      "expected": 21.7210426588494,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "max_distance_km",
+      "observed": 51.880329773104854,
+      "expected": 51.88032977310485,
+      "absolute_difference": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_Tnone",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "covered_orders",
+      "observed": 9247.0,
+      "expected": 9247.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "coverage_pct",
+      "observed": 95.41842947064286,
+      "expected": 95.41842947064286,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.173544022037904,
+      "expected": 6.173544022037896,
+      "absolute_difference": 7.993605777301127e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "median_empirical_km",
+      "observed": 5.786114898486631,
+      "expected": 5.786114898486866,
+      "absolute_difference": 2.3447910280083306e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "p95_empirical_km",
+      "observed": 9.97165116480169,
+      "expected": 9.97165116480169,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "p99_empirical_km",
+      "observed": 20.446713793215395,
+      "expected": 20.446713793215395,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "max_distance_km",
+      "observed": 27.021167576072415,
+      "expected": 27.02116757607241,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T30",
+      "field": "zero_coverage_municipalities",
+      "observed": 7.0,
+      "expected": 7.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "covered_orders",
+      "observed": 9274.0,
+      "expected": 9274.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "coverage_pct",
+      "observed": 95.69703848932,
+      "expected": 95.69703848932,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "weighted_avg_distance_km",
+      "observed": 6.062072532494373,
+      "expected": 6.06207253249436,
+      "absolute_difference": 1.2434497875801753e-14,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "median_empirical_km",
+      "observed": 6.017586261000917,
+      "expected": 6.017586261000917,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "p95_empirical_km",
+      "observed": 9.946857539413896,
+      "expected": 9.9468575394141,
+      "absolute_difference": 2.042810365310288e-13,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "p99_empirical_km",
+      "observed": 18.11890615453263,
+      "expected": 18.11890615453263,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "max_distance_km",
+      "observed": 19.959656237681255,
+      "expected": 19.95965623768125,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T20",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "covered_orders",
+      "observed": 9313.0,
+      "expected": 9313.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "coverage_pct",
+      "observed": 96.09947373852027,
+      "expected": 96.09947373852027,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "weighted_avg_distance_km",
+      "observed": 5.824304990776539,
+      "expected": 5.824304990776526,
+      "absolute_difference": 1.2434497875801753e-14,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "median_empirical_km",
+      "observed": 5.859274489841024,
+      "expected": 5.859274489841024,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "p95_empirical_km",
+      "observed": 9.929840530344427,
+      "expected": 9.929840530344428,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "p99_empirical_km",
+      "observed": 12.381821817142125,
+      "expected": 12.381821817142123,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "max_distance_km",
+      "observed": 14.696871043718403,
+      "expected": 14.696871043718405,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "proximity_J828_R10_T15",
+      "field": "zero_coverage_municipalities",
+      "observed": 3.0,
+      "expected": 3.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "covered_orders",
+      "observed": 9223.0,
+      "expected": 9223.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "coverage_pct",
+      "observed": 95.17077700959653,
+      "expected": 95.17077700959652,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.7178934999156896,
+      "expected": 1.7178934999156827,
+      "absolute_difference": 6.8833827526759706e-15,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "median_empirical_km",
+      "observed": 1.4119980094677078,
+      "expected": 1.4119980094677078,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "p95_empirical_km",
+      "observed": 4.93726011141345,
+      "expected": 4.93726011141345,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "p99_empirical_km",
+      "observed": 8.743826266691455,
+      "expected": 8.743826266691455,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "max_distance_km",
+      "observed": 16.550308693700245,
+      "expected": 16.550308693700245,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K54",
+      "field": "zero_coverage_municipalities",
+      "observed": 3.0,
+      "expected": 3.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "covered_orders",
+      "observed": 9223.0,
+      "expected": 9223.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "coverage_pct",
+      "observed": 95.17077700959653,
+      "expected": 95.17077700959652,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "weighted_avg_distance_km",
+      "observed": 1.697388976792854,
+      "expected": 1.6973889767928454,
+      "absolute_difference": 8.659739592076221e-15,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "median_empirical_km",
+      "observed": 1.3978898938764108,
+      "expected": 1.3978898938764108,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "p95_empirical_km",
+      "observed": 4.930784028022416,
+      "expected": 4.930784028022416,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "p99_empirical_km",
+      "observed": 8.743826266691455,
+      "expected": 8.743826266691455,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "max_distance_km",
+      "observed": 16.550308693700245,
+      "expected": 16.550308693700245,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R5_K55",
+      "field": "zero_coverage_municipalities",
+      "observed": 3.0,
+      "expected": 3.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "covered_orders",
+      "observed": 9193.0,
+      "expected": 9193.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "coverage_pct",
+      "observed": 94.86121143328862,
+      "expected": 94.86121143328862,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.326134347435365,
+      "expected": 3.326134347435361,
+      "absolute_difference": 3.9968028886505635e-15,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "median_empirical_km",
+      "observed": 2.44417264641706,
+      "expected": 2.44417264641706,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "p95_empirical_km",
+      "observed": 10.305222759760541,
+      "expected": 10.30522275976054,
+      "absolute_difference": 1.7763568394002505e-15,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "p99_empirical_km",
+      "observed": 17.73728270898471,
+      "expected": 17.73728270898471,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "max_distance_km",
+      "observed": 28.687629604511976,
+      "expected": 28.687629604511976,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K22",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "covered_orders",
+      "observed": 9223.0,
+      "expected": 9223.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "coverage_pct",
+      "observed": 95.17077700959653,
+      "expected": 95.17077700959652,
+      "absolute_difference": 1.4210854715202004e-14,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "weighted_avg_distance_km",
+      "observed": 3.2230405932518167,
+      "expected": 3.223040593251813,
+      "absolute_difference": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "median_empirical_km",
+      "observed": 2.443233127282843,
+      "expected": 2.443233127282843,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "p95_empirical_km",
+      "observed": 9.568198139105784,
+      "expected": 9.568198139105784,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "p99_empirical_km",
+      "observed": 17.73728270898471,
+      "expected": 17.73728270898471,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "max_distance_km",
+      "observed": 28.687629604511976,
+      "expected": 28.687629604511976,
+      "absolute_difference": 0.0,
+      "passed": true
+    },
+    {
+      "job_id": "pmedian_J300_R10_K23",
+      "field": "zero_coverage_municipalities",
+      "observed": 6.0,
+      "expected": 6.0,
+      "absolute_difference": 0.0,
+      "passed": true
+    }
+  ],
+  "omitted_no_optimum": [
+    {
+      "job_id": "partial_J300_R3",
+      "candidate_set": "J300",
+      "radius_km": 3.0,
+      "status": 2,
+      "certified_infeasible": true,
+      "candidate_ceiling_orders": 9079.0,
+      "required_orders": 9207,
+      "message": "Candidate set cannot meet required coverage/proximity",
+      "reason": "No certified finite optimum; no scientific point fabricated."
+    },
+    {
+      "job_id": "partial_J300_reverse_R3",
+      "candidate_set": "J300_reverse",
+      "radius_km": 3.0,
+      "status": 2,
+      "certified_infeasible": true,
+      "candidate_ceiling_orders": 9125.0,
+      "required_orders": 9207,
+      "message": "Candidate set cannot meet required coverage/proximity",
+      "reason": "No certified finite optimum; no scientific point fabricated."
+    }
+  ],
+  "method": "Own vectorized Haversine and integer-weight empirical quantiles; municipality counts from order-level city fields."
+}

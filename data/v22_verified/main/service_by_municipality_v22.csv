@@ -1,0 +1,397 @@
+scope,method,radius_km,K_selected,city_norm,orders,orders_covered,orders_outside,coverage_pct
+main,KMeans-weighted,3.0,82,belford roxo,104,97,7,93.26923076923077
+main,KMeans-weighted,3.0,82,cachoeiras de macacu,20,19,1,95.0
+main,KMeans-weighted,3.0,82,duque de caxias,250,215,35,86.0
+main,KMeans-weighted,3.0,82,guapimirim,21,15,6,71.42857142857143
+main,KMeans-weighted,3.0,82,itaborai,56,47,9,83.92857142857143
+main,KMeans-weighted,3.0,82,itaguai,46,38,8,82.6086956521739
+main,KMeans-weighted,3.0,82,japeri,34,16,18,47.05882352941177
+main,KMeans-weighted,3.0,82,mage,104,78,26,75.0
+main,KMeans-weighted,3.0,82,marica,133,117,16,87.96992481203007
+main,KMeans-weighted,3.0,82,mesquita,75,75,0,100.0
+main,KMeans-weighted,3.0,82,nilopolis,103,103,0,100.0
+main,KMeans-weighted,3.0,82,niteroi,824,815,9,98.90776699029126
+main,KMeans-weighted,3.0,82,nova iguacu,423,390,33,92.19858156028369
+main,KMeans-weighted,3.0,82,paracambi,35,35,0,100.0
+main,KMeans-weighted,3.0,82,petropolis,234,184,50,78.63247863247864
+main,KMeans-weighted,3.0,82,queimados,53,51,2,96.22641509433963
+main,KMeans-weighted,3.0,82,rio bonito,27,27,0,100.0
+main,KMeans-weighted,3.0,82,rio de janeiro,6601,6434,167,97.47008029086503
+main,KMeans-weighted,3.0,82,sao goncalo,385,363,22,94.28571428571429
+main,KMeans-weighted,3.0,82,sao joao de meriti,124,118,6,95.16129032258064
+main,KMeans-weighted,3.0,82,seropedica,33,26,7,78.78787878787878
+main,KMeans-weighted,3.0,82,tangua,6,0,6,0.0
+main,KMeans-weighted,5.0,40,belford roxo,104,84,20,80.76923076923077
+main,KMeans-weighted,5.0,40,cachoeiras de macacu,20,19,1,95.0
+main,KMeans-weighted,5.0,40,duque de caxias,250,214,36,85.6
+main,KMeans-weighted,5.0,40,guapimirim,21,4,17,19.047619047619047
+main,KMeans-weighted,5.0,40,itaborai,56,43,13,76.78571428571429
+main,KMeans-weighted,5.0,40,itaguai,46,42,4,91.30434782608695
+main,KMeans-weighted,5.0,40,japeri,34,10,24,29.41176470588235
+main,KMeans-weighted,5.0,40,mage,104,49,55,47.11538461538461
+main,KMeans-weighted,5.0,40,marica,133,114,19,85.71428571428571
+main,KMeans-weighted,5.0,40,mesquita,75,75,0,100.0
+main,KMeans-weighted,5.0,40,nilopolis,103,103,0,100.0
+main,KMeans-weighted,5.0,40,niteroi,824,802,22,97.33009708737865
+main,KMeans-weighted,5.0,40,nova iguacu,423,374,49,88.4160756501182
+main,KMeans-weighted,5.0,40,paracambi,35,35,0,100.0
+main,KMeans-weighted,5.0,40,petropolis,234,200,34,85.47008547008546
+main,KMeans-weighted,5.0,40,queimados,53,52,1,98.11320754716981
+main,KMeans-weighted,5.0,40,rio bonito,27,27,0,100.0
+main,KMeans-weighted,5.0,40,rio de janeiro,6601,6505,96,98.54567489774277
+main,KMeans-weighted,5.0,40,sao goncalo,385,341,44,88.57142857142857
+main,KMeans-weighted,5.0,40,sao joao de meriti,124,124,0,100.0
+main,KMeans-weighted,5.0,40,seropedica,33,23,10,69.6969696969697
+main,KMeans-weighted,5.0,40,tangua,6,0,6,0.0
+main,KMeans-weighted,10.0,17,belford roxo,104,104,0,100.0
+main,KMeans-weighted,10.0,17,cachoeiras de macacu,20,1,19,5.0
+main,KMeans-weighted,10.0,17,duque de caxias,250,216,34,86.4
+main,KMeans-weighted,10.0,17,guapimirim,21,4,17,19.047619047619047
+main,KMeans-weighted,10.0,17,itaborai,56,0,56,0.0
+main,KMeans-weighted,10.0,17,itaguai,46,0,46,0.0
+main,KMeans-weighted,10.0,17,japeri,34,34,0,100.0
+main,KMeans-weighted,10.0,17,mage,104,92,12,88.46153846153847
+main,KMeans-weighted,10.0,17,marica,133,103,30,77.44360902255639
+main,KMeans-weighted,10.0,17,mesquita,75,75,0,100.0
+main,KMeans-weighted,10.0,17,nilopolis,103,103,0,100.0
+main,KMeans-weighted,10.0,17,niteroi,824,824,0,100.0
+main,KMeans-weighted,10.0,17,nova iguacu,423,410,13,96.92671394799055
+main,KMeans-weighted,10.0,17,paracambi,35,0,35,0.0
+main,KMeans-weighted,10.0,17,petropolis,234,209,25,89.31623931623932
+main,KMeans-weighted,10.0,17,queimados,53,50,3,94.33962264150944
+main,KMeans-weighted,10.0,17,rio bonito,27,27,0,100.0
+main,KMeans-weighted,10.0,17,rio de janeiro,6601,6510,91,98.62142099681867
+main,KMeans-weighted,10.0,17,sao goncalo,385,385,0,100.0
+main,KMeans-weighted,10.0,17,sao joao de meriti,124,124,0,100.0
+main,KMeans-weighted,10.0,17,seropedica,33,11,22,33.333333333333336
+main,KMeans-weighted,10.0,17,tangua,6,0,6,0.0
+main,Agglomerative-ward,3.0,80,belford roxo,104,94,10,90.38461538461539
+main,Agglomerative-ward,3.0,80,cachoeiras de macacu,20,20,0,100.0
+main,Agglomerative-ward,3.0,80,duque de caxias,250,235,15,94.0
+main,Agglomerative-ward,3.0,80,guapimirim,21,17,4,80.95238095238095
+main,Agglomerative-ward,3.0,80,itaborai,56,47,9,83.92857142857143
+main,Agglomerative-ward,3.0,80,itaguai,46,46,0,100.0
+main,Agglomerative-ward,3.0,80,japeri,34,20,14,58.8235294117647
+main,Agglomerative-ward,3.0,80,mage,104,89,15,85.57692307692308
+main,Agglomerative-ward,3.0,80,marica,133,107,26,80.45112781954887
+main,Agglomerative-ward,3.0,80,mesquita,75,75,0,100.0
+main,Agglomerative-ward,3.0,80,nilopolis,103,103,0,100.0
+main,Agglomerative-ward,3.0,80,niteroi,824,764,60,92.71844660194175
+main,Agglomerative-ward,3.0,80,nova iguacu,423,406,17,95.98108747044917
+main,Agglomerative-ward,3.0,80,paracambi,35,35,0,100.0
+main,Agglomerative-ward,3.0,80,petropolis,234,209,25,89.31623931623932
+main,Agglomerative-ward,3.0,80,queimados,53,52,1,98.11320754716981
+main,Agglomerative-ward,3.0,80,rio bonito,27,27,0,100.0
+main,Agglomerative-ward,3.0,80,rio de janeiro,6601,6374,227,96.56112710195426
+main,Agglomerative-ward,3.0,80,sao goncalo,385,341,44,88.57142857142857
+main,Agglomerative-ward,3.0,80,sao joao de meriti,124,124,0,100.0
+main,Agglomerative-ward,3.0,80,seropedica,33,31,2,93.93939393939394
+main,Agglomerative-ward,3.0,80,tangua,6,0,6,0.0
+main,Agglomerative-ward,5.0,42,belford roxo,104,100,4,96.15384615384616
+main,Agglomerative-ward,5.0,42,cachoeiras de macacu,20,19,1,95.0
+main,Agglomerative-ward,5.0,42,duque de caxias,250,225,25,90.0
+main,Agglomerative-ward,5.0,42,guapimirim,21,17,4,80.95238095238095
+main,Agglomerative-ward,5.0,42,itaborai,56,43,13,76.78571428571429
+main,Agglomerative-ward,5.0,42,itaguai,46,42,4,91.30434782608695
+main,Agglomerative-ward,5.0,42,japeri,34,25,9,73.52941176470588
+main,Agglomerative-ward,5.0,42,mage,104,99,5,95.1923076923077
+main,Agglomerative-ward,5.0,42,marica,133,129,4,96.99248120300751
+main,Agglomerative-ward,5.0,42,mesquita,75,75,0,100.0
+main,Agglomerative-ward,5.0,42,nilopolis,103,103,0,100.0
+main,Agglomerative-ward,5.0,42,niteroi,824,808,16,98.05825242718447
+main,Agglomerative-ward,5.0,42,nova iguacu,423,403,20,95.27186761229315
+main,Agglomerative-ward,5.0,42,paracambi,35,35,0,100.0
+main,Agglomerative-ward,5.0,42,petropolis,234,200,34,85.47008547008546
+main,Agglomerative-ward,5.0,42,queimados,53,53,0,100.0
+main,Agglomerative-ward,5.0,42,rio bonito,27,27,0,100.0
+main,Agglomerative-ward,5.0,42,rio de janeiro,6601,6358,243,96.31873958491138
+main,Agglomerative-ward,5.0,42,sao goncalo,385,349,36,90.64935064935065
+main,Agglomerative-ward,5.0,42,sao joao de meriti,124,124,0,100.0
+main,Agglomerative-ward,5.0,42,seropedica,33,13,20,39.39393939393939
+main,Agglomerative-ward,5.0,42,tangua,6,0,6,0.0
+main,Agglomerative-ward,10.0,17,belford roxo,104,104,0,100.0
+main,Agglomerative-ward,10.0,17,cachoeiras de macacu,20,1,19,5.0
+main,Agglomerative-ward,10.0,17,duque de caxias,250,245,5,98.0
+main,Agglomerative-ward,10.0,17,guapimirim,21,8,13,38.095238095238095
+main,Agglomerative-ward,10.0,17,itaborai,56,4,52,7.142857142857143
+main,Agglomerative-ward,10.0,17,itaguai,46,46,0,100.0
+main,Agglomerative-ward,10.0,17,japeri,34,34,0,100.0
+main,Agglomerative-ward,10.0,17,mage,104,92,12,88.46153846153847
+main,Agglomerative-ward,10.0,17,marica,133,129,4,96.99248120300751
+main,Agglomerative-ward,10.0,17,mesquita,75,75,0,100.0
+main,Agglomerative-ward,10.0,17,nilopolis,103,103,0,100.0
+main,Agglomerative-ward,10.0,17,niteroi,824,824,0,100.0
+main,Agglomerative-ward,10.0,17,nova iguacu,423,419,4,99.05437352245863
+main,Agglomerative-ward,10.0,17,paracambi,35,0,35,0.0
+main,Agglomerative-ward,10.0,17,petropolis,234,209,25,89.31623931623932
+main,Agglomerative-ward,10.0,17,queimados,53,53,0,100.0
+main,Agglomerative-ward,10.0,17,rio bonito,27,0,27,0.0
+main,Agglomerative-ward,10.0,17,rio de janeiro,6601,6358,243,96.31873958491138
+main,Agglomerative-ward,10.0,17,sao goncalo,385,385,0,100.0
+main,Agglomerative-ward,10.0,17,sao joao de meriti,124,124,0,100.0
+main,Agglomerative-ward,10.0,17,seropedica,33,11,22,33.333333333333336
+main,Agglomerative-ward,10.0,17,tangua,6,6,0,100.0
+main,Agglomerative-complete,3.0,88,belford roxo,104,104,0,100.0
+main,Agglomerative-complete,3.0,88,cachoeiras de macacu,20,20,0,100.0
+main,Agglomerative-complete,3.0,88,duque de caxias,250,241,9,96.4
+main,Agglomerative-complete,3.0,88,guapimirim,21,21,0,100.0
+main,Agglomerative-complete,3.0,88,itaborai,56,48,8,85.71428571428571
+main,Agglomerative-complete,3.0,88,itaguai,46,46,0,100.0
+main,Agglomerative-complete,3.0,88,japeri,34,20,14,58.8235294117647
+main,Agglomerative-complete,3.0,88,mage,104,93,11,89.42307692307692
+main,Agglomerative-complete,3.0,88,marica,133,131,2,98.49624060150376
+main,Agglomerative-complete,3.0,88,mesquita,75,75,0,100.0
+main,Agglomerative-complete,3.0,88,nilopolis,103,100,3,97.0873786407767
+main,Agglomerative-complete,3.0,88,niteroi,824,766,58,92.96116504854369
+main,Agglomerative-complete,3.0,88,nova iguacu,423,400,23,94.56264775413712
+main,Agglomerative-complete,3.0,88,paracambi,35,35,0,100.0
+main,Agglomerative-complete,3.0,88,petropolis,234,224,10,95.72649572649573
+main,Agglomerative-complete,3.0,88,queimados,53,50,3,94.33962264150944
+main,Agglomerative-complete,3.0,88,rio bonito,27,27,0,100.0
+main,Agglomerative-complete,3.0,88,rio de janeiro,6601,6305,296,95.51583093470687
+main,Agglomerative-complete,3.0,88,sao goncalo,385,358,27,92.98701298701299
+main,Agglomerative-complete,3.0,88,sao joao de meriti,124,124,0,100.0
+main,Agglomerative-complete,3.0,88,seropedica,33,31,2,93.93939393939394
+main,Agglomerative-complete,3.0,88,tangua,6,6,0,100.0
+main,Agglomerative-complete,5.0,46,belford roxo,104,99,5,95.1923076923077
+main,Agglomerative-complete,5.0,46,cachoeiras de macacu,20,20,0,100.0
+main,Agglomerative-complete,5.0,46,duque de caxias,250,250,0,100.0
+main,Agglomerative-complete,5.0,46,guapimirim,21,17,4,80.95238095238095
+main,Agglomerative-complete,5.0,46,itaborai,56,46,10,82.14285714285714
+main,Agglomerative-complete,5.0,46,itaguai,46,42,4,91.30434782608695
+main,Agglomerative-complete,5.0,46,japeri,34,30,4,88.23529411764706
+main,Agglomerative-complete,5.0,46,mage,104,99,5,95.1923076923077
+main,Agglomerative-complete,5.0,46,marica,133,120,13,90.22556390977444
+main,Agglomerative-complete,5.0,46,mesquita,75,75,0,100.0
+main,Agglomerative-complete,5.0,46,nilopolis,103,103,0,100.0
+main,Agglomerative-complete,5.0,46,niteroi,824,808,16,98.05825242718447
+main,Agglomerative-complete,5.0,46,nova iguacu,423,406,17,95.98108747044917
+main,Agglomerative-complete,5.0,46,paracambi,35,35,0,100.0
+main,Agglomerative-complete,5.0,46,petropolis,234,215,19,91.88034188034187
+main,Agglomerative-complete,5.0,46,queimados,53,46,7,86.79245283018868
+main,Agglomerative-complete,5.0,46,rio bonito,27,27,0,100.0
+main,Agglomerative-complete,5.0,46,rio de janeiro,6601,6299,302,95.42493561581578
+main,Agglomerative-complete,5.0,46,sao goncalo,385,346,39,89.87012987012987
+main,Agglomerative-complete,5.0,46,sao joao de meriti,124,99,25,79.83870967741936
+main,Agglomerative-complete,5.0,46,seropedica,33,28,5,84.84848484848484
+main,Agglomerative-complete,5.0,46,tangua,6,6,0,100.0
+main,Agglomerative-complete,10.0,19,belford roxo,104,77,27,74.03846153846153
+main,Agglomerative-complete,10.0,19,cachoeiras de macacu,20,19,1,95.0
+main,Agglomerative-complete,10.0,19,duque de caxias,250,210,40,84.0
+main,Agglomerative-complete,10.0,19,guapimirim,21,8,13,38.095238095238095
+main,Agglomerative-complete,10.0,19,itaborai,56,56,0,100.0
+main,Agglomerative-complete,10.0,19,itaguai,46,46,0,100.0
+main,Agglomerative-complete,10.0,19,japeri,34,34,0,100.0
+main,Agglomerative-complete,10.0,19,mage,104,69,35,66.34615384615384
+main,Agglomerative-complete,10.0,19,marica,133,131,2,98.49624060150376
+main,Agglomerative-complete,10.0,19,mesquita,75,75,0,100.0
+main,Agglomerative-complete,10.0,19,nilopolis,103,103,0,100.0
+main,Agglomerative-complete,10.0,19,niteroi,824,819,5,99.39320388349515
+main,Agglomerative-complete,10.0,19,nova iguacu,423,410,13,96.92671394799055
+main,Agglomerative-complete,10.0,19,paracambi,35,35,0,100.0
+main,Agglomerative-complete,10.0,19,petropolis,234,229,5,97.86324786324786
+main,Agglomerative-complete,10.0,19,queimados,53,14,39,26.41509433962264
+main,Agglomerative-complete,10.0,19,rio bonito,27,27,0,100.0
+main,Agglomerative-complete,10.0,19,rio de janeiro,6601,6477,124,98.12149674291774
+main,Agglomerative-complete,10.0,19,sao goncalo,385,305,80,79.22077922077922
+main,Agglomerative-complete,10.0,19,sao joao de meriti,124,107,17,86.29032258064517
+main,Agglomerative-complete,10.0,19,seropedica,33,20,13,60.60606060606061
+main,Agglomerative-complete,10.0,19,tangua,6,6,0,100.0
+main,Agglomerative-average,3.0,99,belford roxo,104,94,10,90.38461538461539
+main,Agglomerative-average,3.0,99,cachoeiras de macacu,20,20,0,100.0
+main,Agglomerative-average,3.0,99,duque de caxias,250,248,2,99.2
+main,Agglomerative-average,3.0,99,guapimirim,21,21,0,100.0
+main,Agglomerative-average,3.0,99,itaborai,56,54,2,96.42857142857143
+main,Agglomerative-average,3.0,99,itaguai,46,46,0,100.0
+main,Agglomerative-average,3.0,99,japeri,34,34,0,100.0
+main,Agglomerative-average,3.0,99,mage,104,101,3,97.11538461538461
+main,Agglomerative-average,3.0,99,marica,133,131,2,98.49624060150376
+main,Agglomerative-average,3.0,99,mesquita,75,75,0,100.0
+main,Agglomerative-average,3.0,99,nilopolis,103,103,0,100.0
+main,Agglomerative-average,3.0,99,niteroi,824,809,15,98.17961165048544
+main,Agglomerative-average,3.0,99,nova iguacu,423,400,23,94.56264775413712
+main,Agglomerative-average,3.0,99,paracambi,35,35,0,100.0
+main,Agglomerative-average,3.0,99,petropolis,234,218,16,93.16239316239316
+main,Agglomerative-average,3.0,99,queimados,53,53,0,100.0
+main,Agglomerative-average,3.0,99,rio bonito,27,27,0,100.0
+main,Agglomerative-average,3.0,99,rio de janeiro,6601,6208,393,94.04635661263445
+main,Agglomerative-average,3.0,99,sao goncalo,385,381,4,98.96103896103897
+main,Agglomerative-average,3.0,99,sao joao de meriti,124,118,6,95.16129032258064
+main,Agglomerative-average,3.0,99,seropedica,33,31,2,93.93939393939394
+main,Agglomerative-average,3.0,99,tangua,6,6,0,100.0
+main,Agglomerative-average,5.0,53,belford roxo,104,104,0,100.0
+main,Agglomerative-average,5.0,53,cachoeiras de macacu,20,20,0,100.0
+main,Agglomerative-average,5.0,53,duque de caxias,250,235,15,94.0
+main,Agglomerative-average,5.0,53,guapimirim,21,17,4,80.95238095238095
+main,Agglomerative-average,5.0,53,itaborai,56,51,5,91.07142857142857
+main,Agglomerative-average,5.0,53,itaguai,46,42,4,91.30434782608695
+main,Agglomerative-average,5.0,53,japeri,34,25,9,73.52941176470588
+main,Agglomerative-average,5.0,53,mage,104,104,0,100.0
+main,Agglomerative-average,5.0,53,marica,133,128,5,96.2406015037594
+main,Agglomerative-average,5.0,53,mesquita,75,75,0,100.0
+main,Agglomerative-average,5.0,53,nilopolis,103,103,0,100.0
+main,Agglomerative-average,5.0,53,niteroi,824,820,4,99.51456310679612
+main,Agglomerative-average,5.0,53,nova iguacu,423,413,10,97.63593380614657
+main,Agglomerative-average,5.0,53,paracambi,35,35,0,100.0
+main,Agglomerative-average,5.0,53,petropolis,234,218,16,93.16239316239316
+main,Agglomerative-average,5.0,53,queimados,53,53,0,100.0
+main,Agglomerative-average,5.0,53,rio bonito,27,27,0,100.0
+main,Agglomerative-average,5.0,53,rio de janeiro,6601,6316,285,95.68247235267384
+main,Agglomerative-average,5.0,53,sao goncalo,385,373,12,96.88311688311688
+main,Agglomerative-average,5.0,53,sao joao de meriti,124,122,2,98.38709677419355
+main,Agglomerative-average,5.0,53,seropedica,33,33,0,100.0
+main,Agglomerative-average,5.0,53,tangua,6,6,0,100.0
+main,Agglomerative-average,10.0,24,belford roxo,104,101,3,97.11538461538461
+main,Agglomerative-average,10.0,24,cachoeiras de macacu,20,20,0,100.0
+main,Agglomerative-average,10.0,24,duque de caxias,250,160,90,64.0
+main,Agglomerative-average,10.0,24,guapimirim,21,21,0,100.0
+main,Agglomerative-average,10.0,24,itaborai,56,56,0,100.0
+main,Agglomerative-average,10.0,24,itaguai,46,46,0,100.0
+main,Agglomerative-average,10.0,24,japeri,34,34,0,100.0
+main,Agglomerative-average,10.0,24,mage,104,104,0,100.0
+main,Agglomerative-average,10.0,24,marica,133,131,2,98.49624060150376
+main,Agglomerative-average,10.0,24,mesquita,75,75,0,100.0
+main,Agglomerative-average,10.0,24,nilopolis,103,103,0,100.0
+main,Agglomerative-average,10.0,24,niteroi,824,819,5,99.39320388349515
+main,Agglomerative-average,10.0,24,nova iguacu,423,356,67,84.16075650118204
+main,Agglomerative-average,10.0,24,paracambi,35,0,35,0.0
+main,Agglomerative-average,10.0,24,petropolis,234,234,0,100.0
+main,Agglomerative-average,10.0,24,queimados,53,51,2,96.22641509433963
+main,Agglomerative-average,10.0,24,rio bonito,27,27,0,100.0
+main,Agglomerative-average,10.0,24,rio de janeiro,6601,6558,43,99.34858354794729
+main,Agglomerative-average,10.0,24,sao goncalo,385,305,80,79.22077922077922
+main,Agglomerative-average,10.0,24,sao joao de meriti,124,124,0,100.0
+main,Agglomerative-average,10.0,24,seropedica,33,33,0,100.0
+main,Agglomerative-average,10.0,24,tangua,6,6,0,100.0
+main,P-Median,5.0,55,belford roxo,104,81,23,77.88461538461539
+main,P-Median,5.0,55,cachoeiras de macacu,20,19,1,95.0
+main,P-Median,5.0,55,duque de caxias,250,163,87,65.2
+main,P-Median,5.0,55,guapimirim,21,17,4,80.95238095238095
+main,P-Median,5.0,55,itaborai,56,37,19,66.07142857142857
+main,P-Median,5.0,55,itaguai,46,38,8,82.6086956521739
+main,P-Median,5.0,55,japeri,34,0,34,0.0
+main,P-Median,5.0,55,mage,104,74,30,71.15384615384616
+main,P-Median,5.0,55,marica,133,92,41,69.17293233082707
+main,P-Median,5.0,55,mesquita,75,75,0,100.0
+main,P-Median,5.0,55,nilopolis,103,103,0,100.0
+main,P-Median,5.0,55,niteroi,824,815,9,98.90776699029126
+main,P-Median,5.0,55,nova iguacu,423,400,23,94.56264775413712
+main,P-Median,5.0,55,paracambi,35,35,0,100.0
+main,P-Median,5.0,55,petropolis,234,194,40,82.90598290598291
+main,P-Median,5.0,55,queimados,53,30,23,56.60377358490566
+main,P-Median,5.0,55,rio bonito,27,27,0,100.0
+main,P-Median,5.0,55,rio de janeiro,6601,6562,39,99.409180427208
+main,P-Median,5.0,55,sao goncalo,385,348,37,90.3896103896104
+main,P-Median,5.0,55,sao joao de meriti,124,124,0,100.0
+main,P-Median,5.0,55,seropedica,33,0,33,0.0
+main,P-Median,5.0,55,tangua,6,0,6,0.0
+main,P-Median,10.0,23,belford roxo,104,104,0,100.0
+main,P-Median,10.0,23,cachoeiras de macacu,20,0,20,0.0
+main,P-Median,10.0,23,duque de caxias,250,183,67,73.2
+main,P-Median,10.0,23,guapimirim,21,0,21,0.0
+main,P-Median,10.0,23,itaborai,56,0,56,0.0
+main,P-Median,10.0,23,itaguai,46,0,46,0.0
+main,P-Median,10.0,23,japeri,34,14,20,41.1764705882353
+main,P-Median,10.0,23,mage,104,60,44,57.69230769230769
+main,P-Median,10.0,23,marica,133,100,33,75.18796992481202
+main,P-Median,10.0,23,mesquita,75,75,0,100.0
+main,P-Median,10.0,23,nilopolis,103,103,0,100.0
+main,P-Median,10.0,23,niteroi,824,809,15,98.17961165048544
+main,P-Median,10.0,23,nova iguacu,423,409,14,96.6903073286052
+main,P-Median,10.0,23,paracambi,35,35,0,100.0
+main,P-Median,10.0,23,petropolis,234,191,43,81.62393162393163
+main,P-Median,10.0,23,queimados,53,3,50,5.660377358490566
+main,P-Median,10.0,23,rio bonito,27,27,0,100.0
+main,P-Median,10.0,23,rio de janeiro,6601,6601,0,100.0
+main,P-Median,10.0,23,sao goncalo,385,385,0,100.0
+main,P-Median,10.0,23,sao joao de meriti,124,124,0,100.0
+main,P-Median,10.0,23,seropedica,33,0,33,0.0
+main,P-Median,10.0,23,tangua,6,0,6,0.0
+main,MCLP,5.0,40,belford roxo,104,91,13,87.5
+main,MCLP,5.0,40,cachoeiras de macacu,20,0,20,0.0
+main,MCLP,5.0,40,duque de caxias,250,163,87,65.2
+main,MCLP,5.0,40,guapimirim,21,0,21,0.0
+main,MCLP,5.0,40,itaborai,56,37,19,66.07142857142857
+main,MCLP,5.0,40,itaguai,46,38,8,82.6086956521739
+main,MCLP,5.0,40,japeri,34,0,34,0.0
+main,MCLP,5.0,40,mage,104,74,30,71.15384615384616
+main,MCLP,5.0,40,marica,133,92,41,69.17293233082707
+main,MCLP,5.0,40,mesquita,75,75,0,100.0
+main,MCLP,5.0,40,nilopolis,103,103,0,100.0
+main,MCLP,5.0,40,niteroi,824,820,4,99.51456310679612
+main,MCLP,5.0,40,nova iguacu,423,390,33,92.19858156028369
+main,MCLP,5.0,40,paracambi,35,35,0,100.0
+main,MCLP,5.0,40,petropolis,234,216,18,92.3076923076923
+main,MCLP,5.0,40,queimados,53,30,23,56.60377358490566
+main,MCLP,5.0,40,rio bonito,27,27,0,100.0
+main,MCLP,5.0,40,rio de janeiro,6601,6547,54,99.1819421299803
+main,MCLP,5.0,40,sao goncalo,385,363,22,94.28571428571429
+main,MCLP,5.0,40,sao joao de meriti,124,124,0,100.0
+main,MCLP,5.0,40,seropedica,33,0,33,0.0
+main,MCLP,5.0,40,tangua,6,0,6,0.0
+main,MCLP,10.0,15,belford roxo,104,104,0,100.0
+main,MCLP,10.0,15,cachoeiras de macacu,20,0,20,0.0
+main,MCLP,10.0,15,duque de caxias,250,246,4,98.4
+main,MCLP,10.0,15,guapimirim,21,0,21,0.0
+main,MCLP,10.0,15,itaborai,56,0,56,0.0
+main,MCLP,10.0,15,itaguai,46,32,14,69.56521739130434
+main,MCLP,10.0,15,japeri,34,0,34,0.0
+main,MCLP,10.0,15,mage,104,0,104,0.0
+main,MCLP,10.0,15,marica,133,109,24,81.95488721804512
+main,MCLP,10.0,15,mesquita,75,75,0,100.0
+main,MCLP,10.0,15,nilopolis,103,103,0,100.0
+main,MCLP,10.0,15,niteroi,824,824,0,100.0
+main,MCLP,10.0,15,nova iguacu,423,423,0,100.0
+main,MCLP,10.0,15,paracambi,35,0,35,0.0
+main,MCLP,10.0,15,petropolis,234,209,25,89.31623931623932
+main,MCLP,10.0,15,queimados,53,52,1,98.11320754716981
+main,MCLP,10.0,15,rio bonito,27,0,27,0.0
+main,MCLP,10.0,15,rio de janeiro,6601,6568,33,99.50007574609907
+main,MCLP,10.0,15,sao goncalo,385,382,3,99.22077922077922
+main,MCLP,10.0,15,sao joao de meriti,124,124,0,100.0
+main,MCLP,10.0,15,seropedica,33,0,33,0.0
+main,MCLP,10.0,15,tangua,6,0,6,0.0
+all_candidates_sensitivity,P-Median,3.0,90,belford roxo,104,93,11,89.42307692307692
+all_candidates_sensitivity,P-Median,3.0,90,cachoeiras de macacu,20,19,1,95.0
+all_candidates_sensitivity,P-Median,3.0,90,duque de caxias,250,185,65,74.0
+all_candidates_sensitivity,P-Median,3.0,90,guapimirim,21,17,4,80.95238095238095
+all_candidates_sensitivity,P-Median,3.0,90,itaborai,56,34,22,60.714285714285715
+all_candidates_sensitivity,P-Median,3.0,90,itaguai,46,35,11,76.08695652173913
+all_candidates_sensitivity,P-Median,3.0,90,japeri,34,19,15,55.88235294117647
+all_candidates_sensitivity,P-Median,3.0,90,mage,104,75,29,72.11538461538461
+all_candidates_sensitivity,P-Median,3.0,90,marica,133,96,37,72.18045112781955
+all_candidates_sensitivity,P-Median,3.0,90,mesquita,75,75,0,100.0
+all_candidates_sensitivity,P-Median,3.0,90,nilopolis,103,103,0,100.0
+all_candidates_sensitivity,P-Median,3.0,90,niteroi,824,815,9,98.90776699029126
+all_candidates_sensitivity,P-Median,3.0,90,nova iguacu,423,375,48,88.65248226950355
+all_candidates_sensitivity,P-Median,3.0,90,paracambi,35,35,0,100.0
+all_candidates_sensitivity,P-Median,3.0,90,petropolis,234,193,41,82.47863247863248
+all_candidates_sensitivity,P-Median,3.0,90,queimados,53,49,4,92.45283018867924
+all_candidates_sensitivity,P-Median,3.0,90,rio bonito,27,27,0,100.0
+all_candidates_sensitivity,P-Median,3.0,90,rio de janeiro,6601,6481,120,98.18209362217846
+all_candidates_sensitivity,P-Median,3.0,90,sao goncalo,385,349,36,90.64935064935065
+all_candidates_sensitivity,P-Median,3.0,90,sao joao de meriti,124,101,23,81.45161290322581
+all_candidates_sensitivity,P-Median,3.0,90,seropedica,33,31,2,93.93939393939394
+all_candidates_sensitivity,P-Median,3.0,90,tangua,6,0,6,0.0
+all_candidates_sensitivity,MCLP,3.0,64,belford roxo,104,91,13,87.5
+all_candidates_sensitivity,MCLP,3.0,64,cachoeiras de macacu,20,0,20,0.0
+all_candidates_sensitivity,MCLP,3.0,64,duque de caxias,250,205,45,82.0
+all_candidates_sensitivity,MCLP,3.0,64,guapimirim,21,0,21,0.0
+all_candidates_sensitivity,MCLP,3.0,64,itaborai,56,35,21,62.5
+all_candidates_sensitivity,MCLP,3.0,64,itaguai,46,38,8,82.6086956521739
+all_candidates_sensitivity,MCLP,3.0,64,japeri,34,0,34,0.0
+all_candidates_sensitivity,MCLP,3.0,64,mage,104,67,37,64.42307692307692
+all_candidates_sensitivity,MCLP,3.0,64,marica,133,109,24,81.95488721804512
+all_candidates_sensitivity,MCLP,3.0,64,mesquita,75,73,2,97.33333333333333
+all_candidates_sensitivity,MCLP,3.0,64,nilopolis,103,100,3,97.0873786407767
+all_candidates_sensitivity,MCLP,3.0,64,niteroi,824,813,11,98.66504854368932
+all_candidates_sensitivity,MCLP,3.0,64,nova iguacu,423,376,47,88.88888888888889
+all_candidates_sensitivity,MCLP,3.0,64,paracambi,35,35,0,100.0
+all_candidates_sensitivity,MCLP,3.0,64,petropolis,234,205,29,87.6068376068376
+all_candidates_sensitivity,MCLP,3.0,64,queimados,53,51,2,96.22641509433963
+all_candidates_sensitivity,MCLP,3.0,64,rio bonito,27,27,0,100.0
+all_candidates_sensitivity,MCLP,3.0,64,rio de janeiro,6601,6485,116,98.24269050143917
+all_candidates_sensitivity,MCLP,3.0,64,sao goncalo,385,375,10,97.40259740259741
+all_candidates_sensitivity,MCLP,3.0,64,sao joao de meriti,124,122,2,98.38709677419355
+all_candidates_sensitivity,MCLP,3.0,64,seropedica,33,0,33,0.0
+all_candidates_sensitivity,MCLP,3.0,64,tangua,6,0,6,0.0

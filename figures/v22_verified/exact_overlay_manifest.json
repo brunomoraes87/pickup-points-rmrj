@@ -1,0 +1,56 @@
+{
+  "source_files": {
+    "curves": "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\03_Versao_v22\\Auditoria_v22\\Reproducoes_v22\\run_A\\outputs\\results\\main\\frontier_curves_v22.csv",
+    "exact_results": "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\03_Versao_v22\\Auditoria_v22\\Reproducoes_v22\\run_A\\outputs\\results\\exact\\exact_results.csv",
+    "exact_facilities": "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\03_Versao_v22\\Auditoria_v22\\Reproducoes_v22\\run_A\\outputs\\results\\exact\\exact_facilities.csv",
+    "demand": "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\03_Versao_v22\\Auditoria_v22\\Reproducoes_v22\\run_A\\outputs\\processed\\demanda_por_cep.csv",
+    "orders": "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\03_Versao_v22\\Auditoria_v22\\Reproducoes_v22\\run_A\\outputs\\processed\\pedidos_rmrj_geo.csv"
+  },
+  "source_hashes": {
+    "curves": "2300aed52f96867a3a0ac771dd738b662a60de81d92f4f05ba0d67a49750da9b",
+    "exact_results": "446cd29db63a1b8b99db39ef8d28ad9ad98bfea89648d761cbe988ae6f2999e4",
+    "exact_facilities": "34b84cc4942834c90fd50abc74ee069a78691d7f39f508350e8140fb74e48920",
+    "demand": "c17045e618581238b6eb56c6617cbd1179219948f8e1a68855f7b0767a02b161",
+    "orders": "fe289571f201d40669b15c0c5f92f28ef5d40dc6dacfe06f2d36729eabfb47be"
+  },
+  "helper_sha256": "129702a1f04e3dddf9b3d6ffcb0d056e98984e04f24bdcf9ec796bc30e694632",
+  "figures": [
+    {
+      "file": "14_referencias_exatas_R3.png",
+      "sha256": "ea067bdbf5834c034db9054226d38d101d34dc0d788ffec04a93df1296627d1e",
+      "radius_km": 3.0,
+      "curve_rows": 621,
+      "certified_exact_points": 13,
+      "note": "Exact distance/municipal profiles are one certified solution, not unique or optimized by those criteria."
+    },
+    {
+      "file": "14_referencias_exatas_R5.png",
+      "sha256": "fbf59f410245be266d2b441e98021bafe8dbec1fbf2cfd48ebd9483492b59481",
+      "radius_km": 5.0,
+      "curve_rows": 545,
+      "certified_exact_points": 15,
+      "note": "Exact distance/municipal profiles are one certified solution, not unique or optimized by those criteria."
+    },
+    {
+      "file": "14_referencias_exatas_R10.png",
+      "sha256": "cd8a46a1ac94b1e7afd9e84cb156e9da23bb4b03710f2a4940c45ba492275dd8",
+      "radius_km": 10.0,
+      "curve_rows": 524,
+      "certified_exact_points": 15,
+      "note": "Exact distance/municipal profiles are one certified solution, not unique or optimized by those criteria."
+    }
+  ],
+  "outputs": {
+    "exact_overlay_metrics.csv": "c2f916221429c18fac7a9e291a22db84dd750ad95e8e4b6e6519ff0d3509411b",
+    "exact_overlay_plotted_values.csv": "1ee6216b6496258becc183abda3c7ea8989fd434102be812c8a30ee14bc94867"
+  },
+  "interpretation": [
+    "All exact markers have solver_certified_optimal=True and independently matching exported metrics.",
+    "Only J300 curves and J300 references, or J828 curves and J828 references, share a candidate space.",
+    "J300_reverse, J825 and hybrid grids are alternative candidate spaces shown separately; differences are not optimality gaps.",
+    "Partial covering optimizes K, maximal covering optimizes coverage at fixed K, and p-median optimizes mean distance at fixed K.",
+    "Other indicators of an exact solution need not be optimal or identical across multiple optima.",
+    "Administrative candidate filtering is not a dry-land, access or commercial-viability certificate.",
+    "The continuous curves are observed heuristic/cluster solutions; no continuous global optimum is supplied."
+  ]
+}

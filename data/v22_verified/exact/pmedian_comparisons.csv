@@ -1,0 +1,5 @@
+job_id,R,K,candidate_set,heuristic_covered_orders,exact_covered_orders,heuristic_mean_km,exact_mean_km,distance_objective_gap_pct,same_distance_objective_K_candidates,note
+pmedian_J300_R5_K54,5,54,J300,9202,9223,1.7283661302374544,1.7178934999156827,0.6096204637997639,True,Does not establish the first feasible K of the sequence of exact p-median optima
+pmedian_J300_R5_K55,5,55,J300,9234,9223,1.71148250888735,1.6973889767928454,0.8303065642109765,True,Does not establish the first feasible K of the sequence of exact p-median optima
+pmedian_J300_R10_K22,10,22,J300,9140,9193,3.3409886461755787,3.326134347435361,0.4465934682304916,True,Does not establish the first feasible K of the sequence of exact p-median optima
+pmedian_J300_R10_K23,10,23,J300,9223,9223,3.223040593251813,3.223040593251813,0.0,True,Does not establish the first feasible K of the sequence of exact p-median optima

@@ -1,0 +1,4 @@
+radius_km,method_a,method_b,a_min,a_max,b_min,b_max,classification,statistical_claim
+3,K-Means,Ward,82,84,80,88,absence_of_robust_descriptive_separation,none
+5,K-Means,Ward,40,42,41,45,absence_of_robust_descriptive_separation,none
+10,K-Means,Ward,16,17,16,17,absence_of_robust_descriptive_separation,none

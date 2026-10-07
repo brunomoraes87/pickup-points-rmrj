@@ -1,0 +1,4 @@
+cohort,N_orders,N_prefixes,N_unique_buyers,required_orders,main_coordinates_preserved,interpretation
+main,9691,828,9347,9207,True,unchanged v21 main
+D16,9707,830,9362,9222,True,"Exploratory inference, not validated individual addresses; existing means preserved"
+D22,9713,832,9368,9228,True,"Exploratory inference, not validated individual addresses; existing means preserved"

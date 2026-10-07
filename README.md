@@ -97,6 +97,7 @@ verifica versões e executa, em ordem:
 | 08_run_sensitivities.py | Geometria, métricas, candidatos, coortes e sementes |
 | 09_plot_v22.py | Figuras, municípios, máscara, curvas e fronteiras observadas |
 | 10_verify_v22_independent.py | Recomputação sem importar módulos do repositório |
+| 11_export_paper_values.py | Catálogo de valores do manuscrito a partir dos resultados |
 
 Cada etapa tem log, comando, tempo e código de saída. Os arquivos originais
 são apenas lidos e seus hashes conferidos antes/depois. Não há push, PR ou
@@ -135,3 +136,33 @@ e legendas. Anos bibliográficos, parâmetros e numeração estrutural têm font
 de metadados separadas. A auditoria registra leitura integral das referências,
 duas execuções frias, hashes, diferenças e inspeção visual de todas as páginas.
 O DOCX/PDF final permanece na pasta de versões do artigo.
+
+## Saídas verificadas para revisão do artigo v22
+
+`data/v22_verified/` e `figures/v22_verified/` contêm cópias dos CSVs/JSONs e
+figuras da reprodução A concluída, com os metadados originais de proveniência.
+Os caminhos locais nesses metadados identificam a execução; uma nova reprodução
+usa seu próprio `--work-dir`. Microdados por pedido, caches e PDFs acadêmicos
+permanecem no material local. A cópia integral dos CSVs públicos Olist é lida em
+`02_Versao_revisada/Dados_Olist/Originais` e seus hashes são conferidos.
+
+As reproduções A/B partiram do arquivo Git 859023d9, com diretórios de saída
+vazios. A etapa de sensibilidades foi interrompida e retomada apenas com seus
+próprios checkpoints. O verificador foi corrigido instrumentalmente no commit
+273f846 para resolver as chaves canônicas pelos caminhos de entrada registrados;
+o commit ab2f061 distingue ainda o manifesto nativo assinado do lote consolidado,
+sem aceitar hashes divergentes. Os algoritmos científicos congelados permaneceram
+intactos. As tentativas FAILED do verificador foram preservadas. Não são execuções
+ininterruptas, e os valores de tempo incluem essa circunstância quando indicado.
+A auditoria local registra a comparação A/B e o SHA de cada versão.
+
+Os três overlays de referências exatas são gerados separadamente:
+
+```text
+python scripts/12_plot_exact_overlays_v22.py --scientific-root /caminho/novo_run --out-dir /caminho/overlays
+```
+
+A verificação independente usa o mesmo SciPy/HiGHS, não um segundo solver.
+A união dos municípios também não certifica terra seca ou acesso comercial.
+O conjunto J300 é uma condição exploratória preservada, acompanhado de
+sensibilidades; não foi transformado em cadastro de locais elegíveis.
