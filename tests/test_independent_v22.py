@@ -90,6 +90,33 @@ class IndependentVerificationTests(unittest.TestCase):
         auditor.compare(10**10+1,10**10,"integer",0)
         self.assertEqual(len(auditor.failures),1)
 
+    def test_canonical_input_keys_resolve_locations_without_changing_hash(self):
+        with tempfile.TemporaryDirectory() as folder:
+            source=Path(folder)/"olist_geolocation_dataset.csv"
+            source.write_text("coordinate\n",encoding="utf-8")
+            key="raw/olist_geolocation_dataset.csv";digest=v.sha(source)
+            for field in ("input_locations","input_paths"):
+                actual,expected=v.resolve_input_location({"input_hashes":{key:digest},field:{key:str(source)}},source.name)
+                self.assertEqual(actual,source);self.assertEqual(expected,digest)
+            actual,expected=v.resolve_input_location({"input_hashes":{str(source):digest}},source.name)
+            self.assertEqual(actual,source);self.assertEqual(expected,digest)
+            with self.assertRaises(ValueError):v.resolve_input_location({"input_hashes":{key:digest}},source.name)
+
+    def test_final_manifest_requires_explicit_preserved_provenance(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            native={"output_hashes":{"result.csv":"native"}}
+            self.assertEqual(v.select_output_manifest(native,root),(native["output_hashes"],None))
+            consolidated={"output_hashes":{"result.csv":"old"},"raw_output_hashes":{"result.csv":"final"},
+                          "initial_execution_signature":"initial"}
+            with self.assertRaises(ValueError):v.select_output_manifest(consolidated,root)
+            initial=root/"metadata_initial_execution.json"
+            initial.write_text(json.dumps({"signature_sha256":"initial","output_hashes":consolidated["output_hashes"]}),encoding="utf-8")
+            self.assertEqual(v.select_output_manifest(consolidated,root),(consolidated["raw_output_hashes"],initial))
+            initial.write_text(json.dumps({"signature_sha256":"other","output_hashes":consolidated["output_hashes"]}),encoding="utf-8")
+            with self.assertRaises(ValueError):v.select_output_manifest(consolidated,root)
+
     def test_detects_corrupted_facility_load(self):
         demand,orders=self.fixture()
         auditor=v.Auditor(SimpleNamespace())

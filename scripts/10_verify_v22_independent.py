@@ -47,6 +47,41 @@ def prefixes(values):
     return pd.Series(values, dtype="string").str.replace(r"\.0$", "", regex=True).str.zfill(5)
 
 
+def resolve_input_location(metadata, filename):
+    """Resolve physical input independently of canonical scientific hash keys."""
+    hashes=metadata["input_hashes"]
+    keys=[key for key in hashes if Path(key).name==filename]
+    if len(keys)!=1:raise ValueError("Expected one hashed input named "+filename)
+    key=keys[0]
+    locations=metadata.get("input_locations",{}) or metadata.get("input_paths",{})
+    source=Path(locations.get(key,key))
+    if not source.is_absolute() and key not in locations:
+        raise ValueError("Canonical input key has no recorded physical location: "+key)
+    return source,hashes[key]
+
+
+def select_output_manifest(metadata, directory):
+    """Choose the declared final manifest before checking any file hashes.
+
+    Consolidated F2 keeps its historical output_hashes and final raw_output_hashes;
+    their provenance must match the preserved initial metadata. Native cold runs
+    have their own final output_hashes and need no consolidation exception.
+    """
+    if "raw_output_hashes" not in metadata:
+        return metadata.get("output_hashes",{}),None
+    directory=Path(directory)
+    candidates=[directory/"metadata_initial_execution.json",
+                directory/"provenance/metadata_initial_execution.json"]
+    existing=[p for p in candidates if p.is_file()]
+    if not existing:raise ValueError("Consolidated manifest lacks preserved initial metadata")
+    initial=json.loads(existing[0].read_text(encoding="utf-8-sig"))
+    if not metadata.get("initial_execution_signature") or initial.get("signature_sha256")!=metadata["initial_execution_signature"]:
+        raise ValueError("Consolidated manifest initial signature differs from provenance")
+    if initial.get("output_hashes")!=metadata.get("output_hashes"):
+        raise ValueError("Historical output_hashes differ from preserved initial manifest")
+    return metadata["raw_output_hashes"],existing[0]
+
+
 def validated_weights(weights):
     values = np.asarray(weights)
     if values.ndim != 1 or not len(values) or not np.isfinite(values.astype(float)).all():
@@ -530,9 +565,8 @@ class Auditor:
 
     def retained_raw_records(self,metadata):
         if "raw_retained" in self.cache:return self.cache["raw_retained"]
-        paths=metadata["input_hashes"]
-        source=next(Path(p) for p in paths if Path(p).name=="olist_geolocation_dataset.csv")
-        self.check(sha(source)==paths[str(source)],"Raw geolocation declared hash")
+        source,expected_hash=resolve_input_location(metadata,"olist_geolocation_dataset.csv")
+        self.check(sha(source)==expected_hash,"Raw geolocation declared hash")
         raw=self.read_csv(source)
         raw["source_row_number"]=np.arange(len(raw))+2
         raw["CEP"]=prefixes(raw.geolocation_zip_code_prefix).to_numpy()
@@ -555,7 +589,14 @@ class Auditor:
         meta=self.read_json(p/"metadata.json")
         if not meta.get("complete",False):
             self.pending.append("Sensitivity execution incomplete; its active CSVs were not read");return
-        for name,expected in meta.get("output_hashes",{}).items():
+        final_hashes,provenance=select_output_manifest(meta,p)
+        if provenance is not None:
+            self.files[str(provenance.resolve())]=sha(provenance)
+            self.evidence.append(dict(section="sensitivity_manifest",selected="raw_output_hashes",
+                reason="Consolidated F2; initial signature and historical manifest match preserved provenance",
+                preserved_initial_metadata=str(provenance.resolve()),sha256=sha(provenance)))
+        else:self.evidence.append(dict(section="sensitivity_manifest",selected="output_hashes",reason="Native execution final manifest"))
+        for name,expected in final_hashes.items():
             self.check(sha(p/name)==expected,"Sensitivity declared hash:"+name)
         selection=self.read_csv(p/"sensitivity_selection.csv")
         fac=self.subsets(self.read_csv(p/"sensitivity_facilities.csv"),["case","method","radius_km"])
