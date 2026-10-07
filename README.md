@@ -166,3 +166,57 @@ A verificação independente usa o mesmo SciPy/HiGHS, não um segundo solver.
 A união dos municípios também não certifica terra seca ou acesso comercial.
 O conjunto J300 é uma condição exploratória preservada, acompanhado de
 sensibilidades; não foi transformado em cadastro de locais elegíveis.
+
+## V23: perfis de atendimento e alternativas certificadas
+
+A v23 preserva os ajustes, a coorte e os cenários principais da v22. A conclusão
+passa a distinguir prioridades: quantidade de instalações, deslocamento médio,
+pior caso/cauda e atendimento municipal. As alternativas abaixo foram escolhidas
+após o parecer, para verificar os perfis observados; não são pré-registro.
+
+`data/v23_verified/profiles/` contém 17 modelos de cobertura parcial em J825,
+com proximidade obrigatória opcional, e a comparação com redes congeladas.
+São exportados vetores primais y/z, coordenadas, índices, atribuições, cobertura
+municipal, status, limite dual e gap. Todos os 17 casos tiveram gap zero; a
+verificação separada recalculou 38 redes e 2.174 checagens, sem falhas.
+
+Os perfis de distância e de atendimento municipal pertencem a um ótimo de
+quantidade encontrado. Não são objetivos otimizados nem perfis únicos.
+Uma melhora em K e máximo pode piorar média, P99 ou municípios. Os exemplos
+MCLP J300 em R5/K39 e R10/K14 também permitem verificar melhorias em relação
+ao Greedy Adding sem alterar o conjunto candidato. Grades internas fornecem
+limites de quantidade para cobertura; esses limites não preservam os demais
+indicadores das redes de agrupamento.
+
+Com o ambiente fixado em `requirements-test.txt`, verificar as saídas entregues:
+
+```text
+python -m pytest -q
+python scripts/14_verify_service_profiles_v23.py --profiles data/v23_verified/profiles --repo-root . --report verification_profiles_v23.json
+```
+
+Gerar novos casos em um diretório vazio e recalculá-los:
+
+```text
+python scripts/13_certify_service_profiles_v23.py --repo-root . --output novo_experimento_perfis
+python scripts/14_verify_service_profiles_v23.py --profiles novo_experimento_perfis --repo-root . --report nova_verificacao_perfis.json
+```
+
+As figuras em `figures/v23_verified/` são produzidas por
+`scripts/15geracao_figuras_verificadas.py` a partir dos artefatos congelados.
+A projeção EPSG:31983 é usada somente na exibição dos novos mapas; as distâncias
+de serviço permanecem Haversine. Linhas diretas não são percursos viários, e
+a união administrativa não valida imóveis ou acesso.
+
+Validação desta extensão: 78 testes e 230 subtestes; 17 certificados; verificador
+independente das métricas/primal com 2.174 checagens; 20 checagens dos valores
+plotados. HiGHS incorporado no SciPy fornece os limites de optimalidade; não
+há validação por segundo backend.
+
+A v23 não repete integralmente o pipeline principal. Reutiliza a evidência A/B
+congelada da v22 e conserva os módulos científicos principais por SHA. Os
+metadados preservam a distinção entre produtor 859023d9, verificador ab2f061
+e entrega c202b698. O novo commit registra a extensão certificada. Tempos são
+observações de execução, e não resultados cuja identidade entre máquinas se
+exige. A análise D22 é um teste de estresse cadastral, sem recuperação validada
+dos pedidos empatados; a coorte principal permanece igual.

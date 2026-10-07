@@ -1,0 +1,17 @@
+network_id,radius_km,K_heuristic,grid_feasible_K,count_excess_lower_bound,heuristic_admissible_in_union,scope
+main_KMeans-weighted_R3,3.0,82,52,30,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_KMeans-weighted_R5,5.0,40,27,13,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_KMeans-weighted_R10,10.0,17,10,7,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-ward_R3,3.0,80,52,28,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-ward_R5,5.0,42,27,15,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-ward_R10,10.0,17,10,7,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-complete_R3,3.0,88,52,36,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-complete_R5,5.0,46,27,19,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-complete_R10,10.0,19,10,9,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-average_R3,3.0,99,52,47,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-average_R5,5.0,53,27,26,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_Agglomerative-average_R10,10.0,24,10,14,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_P-Median_R5,5.0,55,27,28,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_P-Median_R10,10.0,23,10,13,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_MCLP_R5,5.0,40,27,13,True,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives
+main_MCLP_R10,10.0,15,10,5,False,continuous count minimum in administrative union for coverage95 only; no maximum/mean/municipal constraints; not a gap of clustering objectives

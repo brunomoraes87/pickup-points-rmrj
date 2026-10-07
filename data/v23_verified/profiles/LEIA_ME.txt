@@ -1,0 +1,9 @@
+Extensão isolada da v23. A condição principal da v22 não foi recalculada nem substituída.
+São 17 modelos de menor quantidade em J825, com cobertura ponderada >=95% e proximidade obrigatória opcional.
+T=4,65/6,60/12,59 km é ligeiramente mais estrito que o limiar Average do parecer.
+Média, P99 e atendimento municipal descrevem um ótimo de quantidade; não são objetivos otimizados.
+K/max é uma comparação de dois eixos, não dominância em todos os indicadores.
+J825 e grades são elegíveis na união administrativa, sem certificação de terra seca, comércio ou acessibilidade.
+O limite inferior K_heur-K_grade usa só cobertura95%, não conserva média/máximo/municípios.
+O verificador 14 recalcula métricas e primal sem importar o solver 13 ou os módulos científicos da v22.
+As certificações de otimalidade são do HiGHS; não há segundo solver. Tempos são observações operacionais.

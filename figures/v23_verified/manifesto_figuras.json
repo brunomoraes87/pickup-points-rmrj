@@ -1,0 +1,145 @@
+{
+  "script_sha256": "3787255745259a0a468752592d32ce1211b18added110d8132b433e66f9eae2d",
+  "passed": true,
+  "input_hashes": {
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Resultados\\perfis_certificados\\manifest.json": "84b89d95e7efe27b6a3e9503c26065ef7ad5fd719bb5e90b8e85028122b744dc",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Resultados\\perfis_certificados\\independent_verification.json": "94c37e704e08bd5bed5b00322460c2ee28d2a823229f9c93cd1c1d9475334db0",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Codigo\\Repositorio_v23\\data\\demanda_por_cep.csv": "c17045e618581238b6eb56c6617cbd1179219948f8e1a68855f7b0767a02b161",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Codigo\\Repositorio_v23\\data\\v22_verified\\main\\service_facilities.csv": "256c7b7caacb6731651750b4f52d25b6c7d646e0a23431ea935a39dc08fa59b9",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Codigo\\Repositorio_v23\\data\\geography\\rj_municipios_ibge.geojson": "fbb5e3ffc4516032bb865c5e376f1eb4cebe90f5d477c95b06472ee4acfce08b",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Codigo\\Repositorio_v23\\data\\geography\\scope.json": "b86c4ed939b6d446bd147ad7e04c662e8811cea8b9b96e4d84f69a8a8ff95b3a",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Codigo\\Repositorio_v23\\data\\pedidos_rmrj_geo.csv": "fe289571f201d40669b15c0c5f92f28ef5d40dc6dacfe06f2d36729eabfb47be",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Resultados\\perfis_certificados\\all_network_profiles.csv": "f311010be357d99df0e4a987320dff51bf2f22556da207dc866babf1db4c734e",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Resultados\\perfis_certificados\\networks\\J825_R3_T8.npz": "e4b22654da2c70b6133142304504891e93cea77486746f7cc984e7d1a9500666",
+    "C:\\Users\\brunmartins\\revisao_artigo_pickup_points\\versoes_artigo\\04_Versao_v23\\Resultados\\perfis_certificados\\networks\\J825_R3_T4p65.npz": "9bd4cb1099a001b32e82d316dba8a87a5430f54ac729cf01bffae32c55beff7a"
+  },
+  "checks": [
+    {
+      "network_id": "main_Agglomerative-ward_R3",
+      "field": "K",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-ward_R3",
+      "field": "weighted_avg_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-ward_R3",
+      "field": "p99_empirical_km",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-ward_R3",
+      "field": "max_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-ward_R3",
+      "field": "covered_orders",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T8",
+      "field": "K",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T8",
+      "field": "weighted_avg_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T8",
+      "field": "p99_empirical_km",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T8",
+      "field": "max_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T8",
+      "field": "covered_orders",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-average_R3",
+      "field": "K",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-average_R3",
+      "field": "weighted_avg_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-average_R3",
+      "field": "p99_empirical_km",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-average_R3",
+      "field": "max_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "main_Agglomerative-average_R3",
+      "field": "covered_orders",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T4p65",
+      "field": "K",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T4p65",
+      "field": "weighted_avg_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T4p65",
+      "field": "p99_empirical_km",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T4p65",
+      "field": "max_distance_km",
+      "passed": true
+    },
+    {
+      "network_id": "J825_R3_T4p65",
+      "field": "covered_orders",
+      "passed": true
+    }
+  ],
+  "network_ids": [
+    "main_Agglomerative-ward_R3",
+    "J825_R3_T8",
+    "main_Agglomerative-average_R3",
+    "J825_R3_T4p65"
+  ],
+  "display_crs": "EPSG:31983",
+  "service_distance": "Haversine radius6371.0088km",
+  "shared_map_limits_km": [
+    [
+      604.8032497342497,
+      7442.644655610015
+    ],
+    [
+      766.7478538692021,
+      7547.429996513497
+    ]
+  ],
+  "output_hashes": {
+    "16_mapas_perfis_R3_v23.pdf": "e5ccb5f7346fcc0afaa492b4c54dffae817c69ced5f6c2a4b6128dee90956373",
+    "16_mapas_perfis_R3_v23.png": "88c398657c104c9f1b4fdadffd0df327b72b388de1e6953fd38f806a3e98515f",
+    "17_comparacao_perfis_R3_v23.pdf": "a4cb6c724de50826cd9d3ce7b2b167e65900cdd5599635075b43858d020f09c5",
+    "17_comparacao_perfis_R3_v23.png": "7e1e60151c50eb62397e6c646ecc03beb6646242cdb6c1b1fdaf048d400547ee",
+    "legendas_figuras.txt": "1aabec475ea724a17459e76d137988b0c6fb68af1bc702de9bd258e3dfbf5a77",
+    "tres_maiores_deslocamentos.csv": "d69051a057849fb694b5547fd076f9fe62f0cfc24cd2a3d032972da76c0b3840",
+    "valores_plotados.csv": "9aa7f76e51fd0a4011ace977aab71b416271e36b114a79ab8c85ef04fedc201a"
+  }
+}
