@@ -1,4 +1,4 @@
-# Exact scientific environment used for the revised experiment; Python 3.12.14
+# Exact scientific environment used for v22; Python 3.12.14
 numpy==2.5.3
 pandas==3.0.1
 scikit-learn==1.9.1

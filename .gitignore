@@ -41,3 +41,9 @@ data/quality/geolocation_audit.csv
 
 # Reproducible local model checkpoints; compact result CSVs are versioned
 data/service_selection/checkpoints/
+
+# v22 cold runs regenerate these local caches and numeric authoring catalog
+data/v22_*/**/*.npz
+data/v22_*/**/checkpoints/
+data/v22_independent*/
+data/paper_values_v22.json

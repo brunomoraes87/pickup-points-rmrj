@@ -51,7 +51,14 @@
   "source": "IBGE API de malhas geograficas v3, qualidade maxima",
   "retrieved_date": "2026-10-06",
   "geometry_sha256": "fbb5e3ffc4516032bb865c5e376f1eb4cebe90f5d477c95b06472ee4acfce08b",
-  "geometry_reference_year": "Not supplied by the API response; exact geometry is versioned by SHA256",
+  "geometry_reference_year": 2022,
+  "reference_year_verification": {
+    "source_url": "https://servicodados.ibge.gov.br/api/v3/malhas/estados/33?intrarregiao=municipio&qualidade=maxima&formato=application/vnd.geo%2Bjson&periodo=2022",
+    "retrieved_at_utc": "2026-10-07T03:01:44Z",
+    "comparison": "Byte-identical to the existing versioned GeoJSON; all 92 municipal features also match topologically",
+    "geometry_sha256": "fbb5e3ffc4516032bb865c5e376f1eb4cebe90f5d477c95b06472ee4acfce08b"
+  },
+  "administrative_union_is_dry_land_mask": false,
   "original_geolocation_sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6",
   "review_policy": "Every valid-coordinate row outside the inclusive study polygon requires an explicit recorded decision; no percentile or distance-to-facility exclusion rule."
 }
