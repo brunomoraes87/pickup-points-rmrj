@@ -220,3 +220,6 @@ e entrega c202b698. O novo commit registra a extensão certificada. Tempos são
 observações de execução, e não resultados cuja identidade entre máquinas se
 exige. A análise D22 é um teste de estresse cadastral, sem recuperação validada
 dos pedidos empatados; a coorte principal permanece igual.
+
+O [Google Docs da v23 e os identificadores da entrega](docs/artigo_v23_links.md)
+estão registrados separadamente do commit científico congelado.
