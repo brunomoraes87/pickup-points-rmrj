@@ -223,3 +223,6 @@ dos pedidos empatados; a coorte principal permanece igual.
 
 O [Google Docs da v23 e os identificadores da entrega](docs/artigo_v23_links.md)
 estão registrados separadamente do commit científico congelado.
+
+A [versão final do artigo e os identificadores da entrega](docs/artigo_versao_final_links.md)
+também estão registrados separadamente; a versão final revisa apenas a redação.
