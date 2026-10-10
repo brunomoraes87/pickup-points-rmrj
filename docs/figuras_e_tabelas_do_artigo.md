@@ -50,17 +50,24 @@ gravados nos manifestos registram onde os arquivos estavam na execução origina
 o script usa os campos `repo_relative`, que apontam para este repositório.
 
 ```text
-python scripts/09_plot_v22.py --data-dir data --results-dir copia_de_data/v22_verified/main --figures-dir pasta_nova
+python scripts/09_plot_v22.py --data-dir data --results-dir copia_de_data_v22_verified_main --figures-dir pasta_nova_vazia
 ```
 
-Gera as Figuras 1, 2 e 3. O script grava CSVs em `--results-dir`; por isso, use
-uma cópia de `data/v22_verified/main`. Antes de desenhar, ele recalcula as curvas
-de K a partir de `checkpoints/`, que a pipeline completa gera e que ficam fora do
-Git; sem essa pasta, ele para antes das figuras. As curvas resultantes estão em
-[frontier_curves_v22.csv](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/data/v22_verified/main/frontier_curves_v22.csv).
-Num teste em 10/10/2026, usando essas curvas no lugar dos checkpoints, as
-figuras 10, 11, 12 e 13 de `figures/v22_verified/` e os CSVs das Tabelas 4 e 5
-saíram idênticos byte a byte aos do repositório.
+Gera as Figuras 1, 2 e 3. O script grava CSVs auxiliares em `--results-dir`; por
+isso, use uma cópia de `data/v22_verified/main`. Quando encontra a pasta
+`checkpoints/`, gerada pela pipeline completa e mantida fora do Git, ele recalcula
+as curvas de K a partir dela. Sem essa pasta, usa as curvas exportadas em
+[frontier_curves_v22.csv](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/data/v22_verified/main/frontier_curves_v22.csv),
+sem regravá-las. Esse caminho existe a partir do commit
+[bb294ac](https://github.com/brunomoraes87/pickup-points-rmrj/commit/bb294ac277005a03e893daf94016d360dc857564);
+no commit 952ee3a, citado no artigo, o script ainda exige os checkpoints.
+
+Num teste em 10/10/2026, a partir de bb294ac, as nove figuras de
+`figures/v22_verified/` desenhadas por este script e os CSVs das Tabelas 4 e 5
+saíram idênticos byte a byte aos do repositório, e nenhum CSV de
+`data/v22_verified/main` mudou. Os 78 testes e 230 subtestes do repositório
+passaram. Use uma pasta de figuras vazia: o `figure_manifest.json` lista todos os
+PNG da pasta de destino.
 
 Os scripts de cálculo partem dos dados públicos da Olist, identificados por
 hashes em `data/quality/summary.json`; a ordem completa de execução está no README.
