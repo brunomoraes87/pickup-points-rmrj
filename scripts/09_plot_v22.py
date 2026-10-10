@@ -175,14 +175,20 @@ def main():
                                    comparison_space='J300' if curve_scope == 'main' else 'J828',
                                    zero_coverage_municipalities=int((covered_city == 0).sum()),
                                    **row_metrics(distances, weights, radius)))
-    curves = pd.DataFrame(curve_rows).sort_values(['scope', 'method', 'radius_km', 'K']).reset_index(drop=True)
-    curves['eligible_95pct'] = curves.covered_orders >= int(np.ceil(.95*weights.sum()))
-    for metric in ['weighted_avg_distance_km', 'p99_empirical_km', 'max_distance_km', 'zero_coverage_municipalities']:
-        column = 'pareto_K_' + metric
-        curves[column] = False
-        for _, group in curves[curves.eligible_95pct].groupby(['radius_km', 'comparison_space']):
-            curves.loc[group.index, column] = nondominated(group, ['K', metric])
-    curves.to_csv(out/'frontier_curves_v22.csv', index=False)
+    if curve_rows:
+        curves = pd.DataFrame(curve_rows).sort_values(['scope', 'method', 'radius_km', 'K']).reset_index(drop=True)
+        curves['eligible_95pct'] = curves.covered_orders >= int(np.ceil(.95*weights.sum()))
+        for metric in ['weighted_avg_distance_km', 'p99_empirical_km', 'max_distance_km', 'zero_coverage_municipalities']:
+            column = 'pareto_K_' + metric
+            curves[column] = False
+            for _, group in curves[curves.eligible_95pct].groupby(['radius_km', 'comparison_space']):
+                curves.loc[group.index, column] = nondominated(group, ['K', metric])
+        curves.to_csv(out/'frontier_curves_v22.csv', index=False)
+    elif (out/'frontier_curves_v22.csv').exists():
+        # Checkpoints stay outside Git; reuse the curves exported by the complete run without rewriting them.
+        curves = pd.read_csv(out/'frontier_curves_v22.csv')
+    else:
+        raise FileNotFoundError(f'No checkpoints and no exported frontier_curves_v22.csv in {out}')
     # Figure 1: method-specific selected network sizes, discrete sensitivity explicit.
     fig, ax = plt.subplots(figsize=(10, 6))
     chart = [('main', m) for m in METHODS] + [('all_candidates_sensitivity', m) for m in ['P-Median', 'MCLP']]
