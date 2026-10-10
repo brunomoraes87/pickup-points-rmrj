@@ -17,14 +17,36 @@ e `Artigo_versao_final_marcas_de_revisao.docx`, em
 
 | Artefato | SHA-256 |
 |---|---|
-| DOCX | 03adbde925faf66be6b05499d0aaede33bca625563cc8728e51f37fa0daf1bf1 |
-| PDF, 42 páginas | a82d5f948ebf6b5aa1b415aff9de5b4a27c95001757876e2bddf34c0efca0b1e |
-| DOCX com marcas de revisão desde a v24 | a7e5a097a7ace6b1632b6d94c0e7793fea5194d56b3388c72f18fbb8f09b9f7e |
+| DOCX | ca02416ea591c95ecf9baf760d7c770b660777d3c811682916c44f170b78e7a8 |
+| PDF, 43 páginas | dfda5c1e521bb6fad0291487add8afb9e8d1479aaaab3392093c53a5c65222da |
+| DOCX com marcas de revisão desde a v24 | 4243134051e9524cbe3473e739bd4911cad4959bd10775dab30174277291a894 |
+
+O [guia de figuras e tabelas](figuras_e_tabelas_do_artigo.md) liga cada figura e
+tabela do artigo ao arquivo, ao script e aos dados de origem neste repositório.
 
 Os valores citados no texto vêm dos artefatos congelados deste repositório.
 A comparação do MCLP exato com K=14 e do Greedy Adding com K=15, em R=10 km,
 usa `data/v22_verified/exact/exact_results.csv`. A escolha de T nas alternativas
 exatas segue `data/v23_verified/profiles/LEIA_ME.txt`.
+
+## Conferência dos números
+
+`conferencia_numeros_versao_final.csv` lista 946 itens do artigo final:
+células de todas as tabelas, números do texto, comparações qualitativas, as
+cinco figuras e os caminhos de arquivo citados. Cada item indica o arquivo e o
+campo de origem no commit 952ee3a. Os 943 itens com fonte no repositório
+coincidem com ela; nenhum diverge.
+
+Três informações do texto não estão no repositório:
+
+- HiGHS 1.12.0: o repositório registra o SciPy 1.18.1, que incorpora essa versão do HiGHS.
+- Travessão e Tocos como distritos de Campos dos Goytacazes: vem dos rótulos de
+  cidade da base pública da Olist e da malha do IBGE; o repositório registra a
+  divisão dos registros desses prefixos em `omission_hypotheses.csv`.
+- Processador, núcleos e memória do computador usado: registro local da execução.
+
+As figuras do artigo correspondem, com o redimensionamento da edição, aos PNG de
+`figures/v22_verified/` e `figures/v23_verified/`.
 
 A publicação destes links é posterior ao commit científico congelado. Este
 registro não modifica modelos, entradas, certificados, métricas ou figuras:

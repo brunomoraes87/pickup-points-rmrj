@@ -226,3 +226,5 @@ estão registrados separadamente do commit científico congelado.
 
 A [versão final do artigo e os identificadores da entrega](docs/artigo_versao_final_links.md)
 também estão registrados separadamente; a versão final revisa apenas a redação.
+O [guia de figuras e tabelas](docs/figuras_e_tabelas_do_artigo.md) indica, para
+cada figura e tabela do artigo, o arquivo, o script e os dados de origem.
