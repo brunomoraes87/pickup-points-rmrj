@@ -3,15 +3,19 @@
 A versão final preserva o conteúdo científico da v23 e revisa apenas a redação:
 termos unificados, definições no ponto de uso, Quadro 1 de termos e notação,
 citação de todas as figuras e tabelas na ordem de numeração, legendas que explicam
-os rótulos internos das figuras e resumos mais diretos.
+os rótulos internos das figuras e resumos mais diretos. Na revisão de 10/10/2026,
+a figura e as tabelas do apêndice passaram a ter numeração própria (Figura A.1,
+Tabelas A.1 e A.2), todas as partes do apêndice passaram a ser citadas no texto e o
+artigo passou a citar a página principal do repositório e a versão fixa 952ee3a.
 
-- [Google Docs da versão final](https://docs.google.com/document/d/1A--MXil_nldLSVhwtTSnesUt33assTWEwxuh4byMl1Q/edit)
+- [Google Docs da versão final](https://docs.google.com/document/d/1xUpS4PLbljcJQklRWIGNv0vVoMYzacerC4eEYWf-lKo/edit)
 - [Código científico congelado da extensão v23](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498)
 - [PR de revisão](https://github.com/brunomoraes87/pickup-points-rmrj/pull/3)
 
 O acesso ao Google Docs segue as permissões do proprietário. Este arquivo não
-altera o compartilhamento do documento. Na conferência da conversão, os 175
-parágrafos e as 1.209 células de tabela do DOCX aparecem idênticos no Google Docs.
+altera o compartilhamento do documento. Na conferência da conversão, os 177
+parágrafos, as 1.209 células de tabela e os links do DOCX aparecem idênticos no
+Google Docs.
 
 Arquivos locais da entrega: `Artigo_versao_final.docx`, `Artigo_versao_final.pdf`
 e `Artigo_versao_final_marcas_de_revisao.docx`, em
@@ -19,9 +23,9 @@ e `Artigo_versao_final_marcas_de_revisao.docx`, em
 
 | Artefato | SHA-256 |
 |---|---|
-| DOCX | ca02416ea591c95ecf9baf760d7c770b660777d3c811682916c44f170b78e7a8 |
-| PDF, 43 páginas | dfda5c1e521bb6fad0291487add8afb9e8d1479aaaab3392093c53a5c65222da |
-| DOCX com marcas de revisão desde a v24 | 4243134051e9524cbe3473e739bd4911cad4959bd10775dab30174277291a894 |
+| DOCX | 4694aa1124deae1c389e4b1933af247d103525fa47a779a21f574613309b84b2 |
+| PDF, 43 páginas | eedaf33d58bbb9f27141ceccda9593016bc8323fb9d195ee328b80e88bd96825 |
+| DOCX com marcas de revisão desde a v24 | d63dc82c28b899c7708f635785cddfa341593b81708e2653ef1a5dc5d353a590 |
 
 O [guia de figuras e tabelas](figuras_e_tabelas_do_artigo.md) liga cada figura e
 tabela do artigo ao arquivo, ao script e aos dados de origem neste repositório.
@@ -33,11 +37,12 @@ exatas segue `data/v23_verified/profiles/LEIA_ME.txt`.
 
 ## Conferência dos números
 
-`conferencia_numeros_versao_final.csv` lista 946 itens do artigo final:
+`conferencia_numeros_versao_final.csv` lista 961 itens do artigo final:
 células de todas as tabelas, números do texto, comparações qualitativas, as
-cinco figuras e os caminhos de arquivo citados. Cada item indica o arquivo e o
-campo de origem no commit 952ee3a. Os 943 itens com fonte no repositório
-coincidem com ela; nenhum diverge.
+cinco figuras, os caminhos de arquivo citados e a correspondência entre as
+legendas das figuras, a tabela do Apêndice A.6 e os arquivos do repositório.
+Cada item indica o arquivo e o campo de origem no commit 952ee3a. Os 958 itens
+com fonte no repositório coincidem com ela; nenhum diverge.
 
 Três informações do texto não estão no repositório:
 
