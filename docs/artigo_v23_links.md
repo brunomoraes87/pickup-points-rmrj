@@ -4,8 +4,8 @@ A v23 preserva a condição principal da v22 e apresenta recomendações geográ
 por prioridade de atendimento, apoiadas nas comparações e referências certificadas.
 
 - [Google Docs da v23](https://docs.google.com/document/d/1TYwoaXwpuMgEEolxJfnQ2SNCIohWc2pn7_9Ktlq8bXo/edit)
-- [Código científico congelado da extensão v23](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498)
-- [PR de revisão](https://github.com/brunomoraes87/pickup-points-rmrj/pull/3)
+- [Código científico congelado da extensão v23](https://github.com/brunomoraes87/pickup-points-rmrj/tree/e688d15cc475e58bef9128ff5bbc8fa036fe50f4)
+- [Correspondência entre os commits antigos e os atuais](correspondencia_de_commits.md)
 
 O acesso ao Google Docs segue as permissões do proprietário. Este arquivo não
 altera o compartilhamento do documento.

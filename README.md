@@ -2,15 +2,18 @@
 
 ## Artigo final: por onde começar
 
-- [Artigo final (Google Docs)](https://docs.google.com/document/d/1GvZhmW-66mDRrjC3LvmnKCOZlo-fidlIEVk_apecpv8/edit)
+- [Artigo final (Google Docs)](https://docs.google.com/document/d/16rnmLJBuQjc4s1-DIsMsp0J9lSgzlBNisw43vKZnOWU/edit)
 - [Guia de figuras e tabelas](docs/figuras_e_tabelas_do_artigo.md): para cada figura
   e tabela, o arquivo, o script que a desenha, os dados de origem e as funções que
   fazem o cálculo.
 - [Registro da versão final](docs/artigo_versao_final_links.md): hashes dos arquivos
   entregues e conferência de cada número do artigo.
-- [Versão científica fixa, commit 952ee3a](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498):
+- [Versão científica fixa, commit e688d15](https://github.com/brunomoraes87/pickup-points-rmrj/tree/e688d15cc475e58bef9128ff5bbc8fa036fe50f4):
   os números, as figuras e os caminhos citados no artigo correspondem a essa versão.
   O guia e o registro foram publicados depois dela e não existem dentro do commit.
+- [Correspondência de commits](docs/correspondencia_de_commits.md): as mensagens
+  dos commits foram traduzidas para o português em 10/10/2026, sem mudar nenhum arquivo;
+  a tabela liga cada identificador anterior ao atual.
 
 As saídas usadas no artigo final estão em `data/v22_verified/`, `data/v23_verified/`,
 `figures/v22_verified/` e `figures/v23_verified/`; a demanda que entra nos cálculos
@@ -170,11 +173,11 @@ usa seu próprio `--work-dir`. Microdados por pedido, caches e PDFs acadêmicos
 permanecem no material local. A cópia integral dos CSVs públicos Olist é lida em
 `02_Versao_revisada/Dados_Olist/Originais` e seus hashes são conferidos.
 
-As reproduções A/B partiram do arquivo Git 859023d9, com diretórios de saída
+As reproduções A/B partiram do arquivo Git 4cf30b9, com diretórios de saída
 vazios. A etapa de sensibilidades foi interrompida e retomada apenas com seus
 próprios checkpoints. O verificador foi corrigido instrumentalmente no commit
-273f846 para resolver as chaves canônicas pelos caminhos de entrada registrados;
-o commit ab2f061 distingue ainda o manifesto nativo assinado do lote consolidado,
+e66161f para resolver as chaves canônicas pelos caminhos de entrada registrados;
+o commit 818d17a distingue ainda o manifesto nativo assinado do lote consolidado,
 sem aceitar hashes divergentes. Os algoritmos científicos congelados permaneceram
 intactos. As tentativas FAILED do verificador foram preservadas. Não são execuções
 ininterruptas, e os valores de tempo incluem essa circunstância quando indicado.
@@ -251,8 +254,8 @@ há validação por segundo backend.
 
 A v23 não repete integralmente o pipeline principal. Reutiliza a evidência A/B
 congelada da v22 e conserva os módulos científicos principais por SHA. Os
-metadados preservam a distinção entre produtor 859023d9, verificador ab2f061
-e entrega c202b698. O novo commit registra a extensão certificada. Tempos são
+metadados preservam a distinção entre produtor 4cf30b9, verificador 818d17a
+e entrega b8a0894. O novo commit registra a extensão certificada. Tempos são
 observações de execução, e não resultados cuja identidade entre máquinas se
 exige. A análise D22 é um teste de estresse cadastral, sem recuperação validada
 dos pedidos empatados; a coorte principal permanece igual.

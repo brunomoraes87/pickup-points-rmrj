@@ -6,13 +6,13 @@ citação de todas as figuras e tabelas na ordem de numeração, legendas que ex
 os rótulos internos das figuras e resumos mais diretos. Na revisão de 10/10/2026,
 a figura e as tabelas do apêndice passaram a ter numeração própria (Figura A.1,
 Tabelas A.1 e A.2), todas as partes do apêndice passaram a ser citadas no texto e o
-artigo passou a citar a página principal do repositório e a versão fixa 952ee3a.
+artigo passou a citar a página principal do repositório e a versão fixa e688d15.
 Em seguida, os caminhos de arquivo das legendas e do Apêndice A.6 viraram links para
 a versão fixa, e a Disponibilidade passou a trazer o link do guia de figuras e tabelas.
 
-- [Google Docs da versão final](https://docs.google.com/document/d/1GvZhmW-66mDRrjC3LvmnKCOZlo-fidlIEVk_apecpv8/edit)
-- [Código científico congelado da extensão v23](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498)
-- [PR de revisão](https://github.com/brunomoraes87/pickup-points-rmrj/pull/3)
+- [Google Docs da versão final](https://docs.google.com/document/d/16rnmLJBuQjc4s1-DIsMsp0J9lSgzlBNisw43vKZnOWU/edit)
+- [Código científico congelado da extensão v23](https://github.com/brunomoraes87/pickup-points-rmrj/tree/e688d15cc475e58bef9128ff5bbc8fa036fe50f4)
+- [Correspondência entre os commits antigos e os atuais](correspondencia_de_commits.md)
 
 O acesso ao Google Docs segue as permissões do proprietário. Este arquivo não
 altera o compartilhamento do documento. Na conferência da conversão, os 177
@@ -25,9 +25,9 @@ e `Artigo_versao_final_marcas_de_revisao.docx`, em
 
 | Artefato | SHA-256 |
 |---|---|
-| DOCX | 0eed8f1bf2b46905d1b8ee38b40c6582739e046a44863cbbb222a4110f8638f4 |
-| PDF, 43 páginas | 4a53c2ab5977b385257e25f8bb5d4d2763a8ed510dea598578393ff346c05b14 |
-| DOCX com marcas de revisão desde a v24 | c098a3d4b2fe171a50c42abd8c26be2896590bb8bcf5ef410dd949a6c63dbb0e |
+| DOCX | a9e2a53ef0266749a31f61cbc7948150e1568de8d23af387ae6e34481bfb5eaf |
+| PDF, 43 páginas | f37b74f4b3c434aa21b156ea491ec80471477bbb79292aa11d6802cc7f24337e |
+| DOCX com marcas de revisão desde a v24 | 55114f72d5f94c5f99b668bb1d70a51b7be2b9af12eed36640b2fc9936264534 |
 
 O [guia de figuras e tabelas](figuras_e_tabelas_do_artigo.md) liga cada figura e
 tabela do artigo ao arquivo, ao script, aos dados de origem e às funções de cálculo
@@ -45,7 +45,7 @@ células de todas as tabelas, números do texto, comparações qualitativas, as
 cinco figuras, os caminhos de arquivo citados, a correspondência entre as
 legendas das figuras, a tabela do Apêndice A.6 e os arquivos do repositório, e os
 50 links de caminhos, cada um conferido contra o arquivo que abre. Cada item indica
-o arquivo e o campo de origem: no commit 952ee3a ou, para o guia, no `main`. Os
+o arquivo e o campo de origem: no commit e688d15 ou, para o guia, no `main`. Os
 1.009 itens com fonte no repositório coincidem com ela; nenhum diverge.
 
 Três informações do texto não estão no repositório:
