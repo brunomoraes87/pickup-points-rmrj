@@ -5,11 +5,13 @@ termos unificados, definições no ponto de uso, Quadro 1 de termos e notação,
 citação de todas as figuras e tabelas na ordem de numeração, legendas que explicam
 os rótulos internos das figuras e resumos mais diretos.
 
+- [Google Docs da versão final](https://docs.google.com/document/d/1A--MXil_nldLSVhwtTSnesUt33assTWEwxuh4byMl1Q/edit)
 - [Código científico congelado da extensão v23](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498)
 - [PR de revisão](https://github.com/brunomoraes87/pickup-points-rmrj/pull/3)
 
-O documento editável fica no Google Drive do autor. Este arquivo não altera o
-compartilhamento de nenhum documento.
+O acesso ao Google Docs segue as permissões do proprietário. Este arquivo não
+altera o compartilhamento do documento. Na conferência da conversão, os 175
+parágrafos e as 1.209 células de tabela do DOCX aparecem idênticos no Google Docs.
 
 Arquivos locais da entrega: `Artigo_versao_final.docx`, `Artigo_versao_final.pdf`
 e `Artigo_versao_final_marcas_de_revisao.docx`, em
