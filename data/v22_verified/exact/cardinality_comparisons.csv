@@ -1,0 +1,7 @@
+method,scope,R,candidate_set,selected_K,coverage_cardinality_optimum,cardinality_excess_pct,same_candidate_space,note
+P-Median,main,5.0,J300,55,35,57.142857142857146,True,Coverage-cardinality benchmark; not a p-median distance-objective gap
+P-Median,main,10.0,J300,23,12,91.66666666666667,True,Coverage-cardinality benchmark; not a p-median distance-objective gap
+MCLP,main,5.0,J300,40,35,14.285714285714286,True,Coverage-cardinality benchmark; not a p-median distance-objective gap
+MCLP,main,10.0,J300,15,12,25.0,True,Coverage-cardinality benchmark; not a p-median distance-objective gap
+P-Median,all_candidates_sensitivity,3.0,J828,90,61,47.540983606557376,True,Coverage-cardinality benchmark; not a p-median distance-objective gap
+MCLP,all_candidates_sensitivity,3.0,J828,64,61,4.918032786885246,True,Coverage-cardinality benchmark; not a p-median distance-objective gap

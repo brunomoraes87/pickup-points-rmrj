@@ -1,318 +1,237 @@
-"""
-03_plot_figures.py
-==================
-Gera as 8 figuras do artigo a partir dos dados processados e resultados:
-  Figuras antigas (exploratórias e baseline):
-    01 — Distribuição espacial e histograma de demanda
-    02 — Cobertura efetiva vs K (raios 3, 5, 10 km)
-    03 — Distância média ponderada vs K
-    04_K15 — Mapas espaciais em K=15 (exploratório)
-    05 — Trade-off cobertura curta vs longa
-  Figuras do paper (v18):
-    04_K70 — Mapas espaciais em K=70 (Figura 3 do paper)
-    07_saturacao_K70 — Curvas de saturação que fundamentam K=70 (Figura 1)
-    08_dominancia_linkages — Dominância intra-paradigma do Agglomerative (Figura 2)
-"""
-import sys
+"""Reproducible figures; K=70 is a reference scenario, not an optimum."""
+import argparse
+import colorsys
+import json
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent))
-
-import pandas as pd
 import numpy as np
+import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from methods import (method_agglomerative, method_kmeans_weighted,
-                      method_pmedian_heuristic, method_mclp_heuristic,
-                      haversine_to_centers, evaluate)
+                     method_pmedian_heuristic, method_mclp_heuristic,
+                     haversine_to_centers, evaluate)
 
-DATA = Path("../data")
-FIGS = Path("../figures")
-FIGS.mkdir(parents=True, exist_ok=True)
+REPO = Path(__file__).resolve().parents[1]
+DATA = REPO / "data"
+FIGS = REPO / "figures"
+CANDIDATES = 300
+BOUNDARIES = []
+MEAN_WARNINGS = np.empty((0,2))
+NAMES = ["KMeans-weighted", "Agglomerative-ward", "Agglomerative-complete",
+         "Agglomerative-average", "P-Median", "MCLP-R3km"]
+COLORS = dict(zip(NAMES, ["#238b45", "#2171b5", "#756bb1", "#8c564b", "#cb181d", "#e6550d"]))
+plt.rcParams.update({"font.family": "DejaVu Sans", "figure.dpi": 140})
 
-plt.rcParams['font.family'] = 'DejaVu Sans'
-plt.rcParams['figure.dpi'] = 130
+def save(fig, name):
+    fig.tight_layout()
+    fig.savefig(FIGS / name, dpi=160, bbox_inches="tight")
+    plt.close(fig)
 
-COLORS = {
-    'Agglomerative-ward':     '#1f77b4',
-    'Agglomerative-complete': '#9467bd',
-    'Agglomerative-average':  '#8c564b',
-    'KMeans-weighted':        '#2ca02c',
-    'P-Median':               '#d62728',
-    'MCLP':                   '#ff7f0e',
-}
-MARKERS = {
-    'Agglomerative-ward':     'o',
-    'Agglomerative-complete': 's',
-    'Agglomerative-average':  'v',
-    'KMeans-weighted':        '^',
-    'P-Median':               'D',
-    'MCLP':                   'P',
-}
-METHODS = ['Agglomerative-ward', 'Agglomerative-complete', 'KMeans-weighted', 'P-Median']
+def geo_axis(ax, title):
+    for ring in BOUNDARIES:
+        xy = np.asarray(ring)
+        ax.plot(xy[:, 0], xy[:, 1], color="#a0a0a0", lw=.45, zorder=0)
+    ax.set(xlabel="Longitude", ylabel="Latitude", title=title,
+           xlim=(-44.15, -42.45), ylim=(-23.15, -22.15))
+    ax.set_aspect(1 / np.cos(np.radians(-22.7)))
+    ax.set_xticks([-44.0, -43.5, -43.0, -42.5])
+    ax.grid(alpha=.18, lw=.4)
+    ax.tick_params(labelsize=11)
+    ax.xaxis.label.set_size(12)
+    ax.yaxis.label.set_size(12)
+    ax.title.set_size(13)
 
+def models(df, k):
+    top = df.nlargest(min(CANDIDATES, len(df)), "n_pedidos").index.values
+    return [
+        (NAMES[0], method_kmeans_weighted(df, n_clusters=k)),
+        (NAMES[1], method_agglomerative(df, n_clusters=k, linkage="ward")),
+        (NAMES[2], method_agglomerative(df, n_clusters=k, linkage="complete")),
+        (NAMES[3], method_agglomerative(df, n_clusters=k, linkage="average")),
+        (NAMES[4], method_pmedian_heuristic(df, p=k, candidates_idx=top)),
+        (NAMES[5], method_mclp_heuristic(df, p=k, radius_km=3, candidates_idx=top)),
+    ]
 
-def fig01_exploracao(demanda):
-    fig, axes = plt.subplots(1, 2, figsize=(15, 7))
-    axes[0].scatter(demanda['lng'], demanda['lat'],
-                    s=np.sqrt(demanda['n_pedidos'])*4, alpha=0.5,
-                    c=demanda['n_pedidos'], cmap='YlOrRd',
-                    edgecolors='black', linewidth=0.3)
-    axes[0].set(xlabel='Longitude', ylabel='Latitude',
-                xlim=(-44.1, -42.5), ylim=(-23.1, -22.3),
-                title='Distribuição espacial da demanda — RMRJ\n(tamanho/cor ∝ nº pedidos por CEP)')
-    axes[0].grid(alpha=0.3)
-    axes[1].hist(demanda['n_pedidos'], bins=50, color='steelblue', edgecolor='black')
-    axes[1].set(xlabel='Nº pedidos por CEP', ylabel='Frequência (CEPs)',
-                title='Distribuição de demanda por CEP')
-    axes[1].set_yscale('log'); axes[1].grid(alpha=0.3)
-    plt.tight_layout()
-    plt.savefig(FIGS / '01_exploracao_demanda.png', dpi=130, bbox_inches='tight')
-    plt.close()
+def map_panel(ax, df, labels, centers, title):
+    # Every facility receives a separate color; IDs are local to each method.
+    palette = [colorsys.hsv_to_rgb((i * .61803398875) % 1, .72, .72)
+               for i in range(len(centers))]
+    point_colors = [palette[int(i)] if i >= 0 else (.6, .6, .6) for i in labels]
+    geo_axis(ax, title)
+    ax.scatter(df.lng, df.lat, s=np.sqrt(df.n_pedidos)*3,
+               c=point_colors, alpha=.75, linewidths=0, zorder=2)
+    if len(MEAN_WARNINGS):
+        ax.scatter(MEAN_WARNINGS[:,1], MEAN_WARNINGS[:,0], s=75, marker="s",
+                   facecolors="none", edgecolors="#d00000", linewidths=1.2, zorder=4)
+    ax.scatter(centers[:, 1], centers[:, 0], s=26, marker="x",
+               c="#111111", linewidths=.9, zorder=3)
 
+def figures_maps(df):
+    for k in (15, 70):
+        fig, axes = plt.subplots(3, 2, figsize=(10, 11))
+        for ax, (name, (native, centers, runtime)) in zip(axes.flat, models(df, k)):
+            d = haversine_to_centers(df.lat.values, df.lng.values, centers[:, 0], centers[:, 1])
+            nearest = d.argmin(axis=1)
+            map_panel(ax, df, nearest, centers, f"{name} | {len(centers)} pontos")
+        fig.suptitle(f"Atribuição ao ponto mais próximo | referência K={k}\n"
+                     "Demanda por prefixo de CEP; cruzes: instalações propostas; limites: IBGE\n"
+                     "Quadrados vermelhos: médias derivadas fora da união municipal",
+                     fontsize=13)
+        save(fig, f"04_mapas_K{k}.png")
 
-def fig02_cobertura_vs_K(res):
+def exploration(df):
+    fig, axes = plt.subplots(1, 2, figsize=(13, 6))
+    geo_axis(axes[0], "Demanda após a checagem de coordenadas")
+    axes[0].scatter(df.lng, df.lat, s=np.sqrt(df.n_pedidos)*4,
+                    c=df.n_pedidos, cmap="YlOrRd", alpha=.7, linewidths=.2, edgecolors="#444")
+    axes[1].hist(df.n_pedidos, bins=50, color="#2171b5", edgecolor="white")
+    axes[1].set(xlabel="Pedidos por prefixo de CEP", ylabel="Frequência de prefixos",
+                yscale="log", title=f"{len(df)} prefixos | {int(df.n_pedidos.sum()):,} pedidos")
+    axes[1].grid(alpha=.2)
+    save(fig, "01_exploracao_demanda.png")
+
+def result_curves(res):
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
-    for ax, metric, title, R in zip(axes,
-                                     ['coverage_3km_%','coverage_5km_%','coverage_10km_%'],
-                                     ['Cobertura 3 km','Cobertura 5 km','Cobertura 10 km'],
-                                     [3, 5, 10]):
-        for m in METHODS:
-            sub = res[res['method']==m].sort_values('K_target')
-            ax.plot(sub['K_target'], sub[metric], '-',
-                    color=COLORS[m], marker=MARKERS[m], label=m,
-                    linewidth=2, markersize=7)
-        mclp = res[res['method']==f'MCLP-R{R}km'].sort_values('K_target')
-        ax.plot(mclp['K_target'], mclp[metric], '-',
-                color=COLORS['MCLP'], marker=MARKERS['MCLP'],
-                label=f'MCLP (R={R}km, ótimo)', linewidth=2.5, markersize=9,
-                markeredgecolor='black', markeredgewidth=0.5)
-        dbs = res[res['method']=='DBSCAN'].sort_values('n_facilities')
-        ax.plot(dbs['n_facilities'], dbs[metric], '--', color='gray',
-                marker='x', label='DBSCAN', alpha=0.6)
-        ax.set(xlabel='Número de pontos de retirada (K)',
-               ylabel='% da demanda coberta', title=title, ylim=(0,105))
-        ax.grid(alpha=0.3); ax.legend(fontsize=8, loc='lower right')
-    plt.tight_layout()
-    plt.savefig(FIGS / '02_cobertura_vs_K.png', dpi=130, bbox_inches='tight')
-    plt.close()
-
-
-def fig03_distancia_vs_K(res):
-    fig, ax = plt.subplots(figsize=(9, 5))
-    for m in METHODS:
-        sub = res[res['method']==m].sort_values('K_target')
-        ax.plot(sub['K_target'], sub['weighted_avg_distance_km'],
-                color=COLORS[m], marker=MARKERS[m], label=m,
-                linewidth=2, markersize=7)
-    mclp = res[res['method']=='MCLP-R5km'].sort_values('K_target')
-    ax.plot(mclp['K_target'], mclp['weighted_avg_distance_km'],
-            color=COLORS['MCLP'], marker=MARKERS['MCLP'],
-            label='MCLP (R=5km)', linewidth=2, markersize=8,
-            markeredgecolor='black', markeredgewidth=0.5)
-    dbs = res[res['method']=='DBSCAN'].sort_values('n_facilities')
-    ax.plot(dbs['n_facilities'], dbs['weighted_avg_distance_km'],
-            '--', color='gray', marker='x', label='DBSCAN', alpha=0.6)
-    ax.set(xlabel='Número de pontos de retirada (K)',
-           ylabel='Distância média ponderada (km)',
-           title='Distância média ponderada por demanda vs número de pontos')
-    ax.grid(alpha=0.3); ax.legend()
-    plt.tight_layout()
-    plt.savefig(FIGS / '03_distancia_vs_K.png', dpi=130, bbox_inches='tight')
-    plt.close()
-
-
-def _plot_mapa_panel(ax, demanda, labels, centers, title):
-    ax.scatter(demanda['lng'], demanda['lat'],
-               s=np.sqrt(demanda['n_pedidos'])*3,
-               c='lightgray', alpha=0.5, edgecolors='none')
-    for c in np.unique(labels):
-        mk = labels == c
-        ax.scatter(demanda.loc[mk,'lng'], demanda.loc[mk,'lat'],
-                   s=np.sqrt(demanda.loc[mk,'n_pedidos'])*3,
-                   alpha=0.55, edgecolors='none')
-    ax.scatter(centers[:,1], centers[:,0], s=180, marker='*',
-               c='red', edgecolors='black', linewidths=1.5, zorder=5)
-    ax.set(xlabel='Longitude', ylabel='Latitude',
-           xlim=(-44.0, -42.5), ylim=(-23.1, -22.3),
-           title=title)
-    ax.grid(alpha=0.3)
-
-
-def fig04_mapas_K15(demanda):
-    """Mapas exploratórios em K=15."""
-    fig, axes = plt.subplots(2, 3, figsize=(18, 11))
-    TOP = demanda.nlargest(100, 'n_pedidos').index.values
-    K = 15
-    configs = [
-        ('Agglomerative-ward',     lambda d: method_agglomerative(d, n_clusters=K, linkage='ward')[:2]),
-        ('Agglomerative-complete', lambda d: method_agglomerative(d, n_clusters=K, linkage='complete')[:2]),
-        ('KMeans-weighted',        lambda d: method_kmeans_weighted(d, n_clusters=K)[:2]),
-        ('P-Median',               lambda d: method_pmedian_heuristic(d, p=K, candidates_idx=TOP)[:2]),
-        ('MCLP (R=3 km)',          lambda d: method_mclp_heuristic(d, p=K, radius_km=3, candidates_idx=TOP)[:2]),
-        ('MCLP (R=5 km)',          lambda d: method_mclp_heuristic(d, p=K, radius_km=5, candidates_idx=TOP)[:2]),
-    ]
-    for ax, (name, fn) in zip(axes.flat, configs):
-        labels, centers = fn(demanda)
-        _plot_mapa_panel(ax, demanda, labels, centers, f'{name} — K={K}')
-    plt.tight_layout()
-    plt.savefig(FIGS / '04_mapas_K15.png', dpi=130, bbox_inches='tight')
-    plt.close()
-
-
-def fig04_mapas_K70(demanda):
-    """Mapas em K=70 (Figura 3 do paper) — configuração final analisada."""
-    fig, axes = plt.subplots(2, 3, figsize=(18, 11))
-    TOP = demanda.nlargest(100, 'n_pedidos').index.values
-    K = 70
-    configs = [
-        ('K-Means weighted',         lambda d: method_kmeans_weighted(d, n_clusters=K)[:2]),
-        ('Agglomerative-Ward',       lambda d: method_agglomerative(d, n_clusters=K, linkage='ward')[:2]),
-        ('Agglomerative-complete',   lambda d: method_agglomerative(d, n_clusters=K, linkage='complete')[:2]),
-        ('Agglomerative-average',    lambda d: method_agglomerative(d, n_clusters=K, linkage='average')[:2]),
-        ('P-Median',                 lambda d: method_pmedian_heuristic(d, p=K, candidates_idx=TOP)[:2]),
-        ('MCLP (R=3 km)',            lambda d: method_mclp_heuristic(d, p=K, radius_km=3, candidates_idx=TOP)[:2]),
-    ]
-    for ax, (name, fn) in zip(axes.flat, configs):
-        labels, centers = fn(demanda)
-        _plot_mapa_panel(ax, demanda, labels, centers, f'{name} — K={K}')
-    plt.tight_layout()
-    plt.savefig(FIGS / '04_mapas_K70.png', dpi=130, bbox_inches='tight')
-    plt.close()
-
-
-def fig05_tradeoff(res):
+    for ax, radius in zip(axes, (3, 5, 10)):
+        for name in NAMES[:-1] + [f"MCLP-R{radius}km"]:
+            sub = res[res.method == name].sort_values("K_target")
+            color = COLORS.get(name, "#e6550d")
+            ax.plot(sub.K_target, sub[f"coverage_{radius}km_%"], "-o",
+                    color=color, label=name, ms=4)
+        ax.set(xlabel="K solicitado", ylabel="Pedidos no raio (%)",
+               title=f"Cobertura a {radius} km", ylim=(0, 102))
+        ax.grid(alpha=.2)
+        ax.legend(fontsize=7)
+    save(fig, "02_cobertura_vs_K.png")
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for name in NAMES:
+        sub = res[res.method == name].sort_values("K_target")
+        ax.plot(sub.K_target, sub.weighted_avg_distance_km, "-o",
+                label=name, color=COLORS[name], ms=4)
+    ax.set(xlabel="K solicitado", ylabel="Distância média por pedido (km)",
+           title="Distância ao ponto mais próximo")
+    ax.legend(fontsize=8); ax.grid(alpha=.2)
+    save(fig, "03_distancia_vs_K.png")
     fig, ax = plt.subplots(figsize=(9, 6))
-    for m in METHODS:
-        sub = res[res['method']==m].sort_values('K_target')
-        ax.plot(sub['coverage_3km_%'], sub['coverage_10km_%'],
-                color=COLORS[m], marker=MARKERS[m], label=m,
-                linewidth=2, markersize=9)
-        for _, r in sub.iterrows():
-            ax.annotate(f'K={int(r["K_target"])}',
-                        (r['coverage_3km_%'], r['coverage_10km_%']),
-                        fontsize=7, alpha=0.6, xytext=(3,3), textcoords='offset points')
-    mclp3 = res[res['method']=='MCLP-R3km'].sort_values('K_target')
-    ax.plot(mclp3['coverage_3km_%'], mclp3['coverage_10km_%'],
-            color=COLORS['MCLP'], marker=MARKERS['MCLP'],
-            linestyle='-', label='MCLP (R=3km, ótimo cobertura curta)',
-            linewidth=2.5, markersize=10, markeredgecolor='black', markeredgewidth=0.5)
-    mclp10 = res[res['method']=='MCLP-R10km'].sort_values('K_target')
-    ax.plot(mclp10['coverage_3km_%'], mclp10['coverage_10km_%'],
-            color='#ffb87a', marker=MARKERS['MCLP'],
-            linestyle='--', label='MCLP (R=10km, ótimo cobertura longa)',
-            linewidth=2, markersize=10, markeredgecolor='black', markeredgewidth=0.5)
-    dbs = res[res['method']=='DBSCAN']
-    ax.scatter(dbs['coverage_3km_%'], dbs['coverage_10km_%'],
-               color='gray', marker='x', s=60, label='DBSCAN', alpha=0.6)
-    ax.set(xlabel='Cobertura 3 km (%)', ylabel='Cobertura 10 km (%)',
-           title='Trade-off cobertura curta vs longa\n(linhas MCLP delimitam a fronteira de Pareto)')
-    ax.grid(alpha=0.3); ax.legend(fontsize=8, loc='lower right')
-    plt.tight_layout()
-    plt.savefig(FIGS / '05_tradeoff_cobertura.png', dpi=130, bbox_inches='tight')
-    plt.close()
+    for name in NAMES:
+        sub = res[res.method == name].sort_values("K_target")
+        ax.plot(sub["coverage_3km_%"], sub["coverage_10km_%"], "-o",
+                color=COLORS[name], label=name, ms=4)
+    ax.set(xlabel="Cobertura a 3 km (%)", ylabel="Cobertura a 10 km (%)",
+           title="Cobertura nos cenários testados")
+    ax.legend(fontsize=8); ax.grid(alpha=.2)
+    save(fig, "05_tradeoff_cobertura.png")
 
+def reference_curves(df):
+    top = df.nlargest(min(CANDIDATES, len(df)), "n_pedidos").index.values
+    rows = []
+    for k in range(10, 161, 10):
+        configs = [
+            (NAMES[0], method_kmeans_weighted(df, n_clusters=k)),
+            (NAMES[1], method_agglomerative(df, n_clusters=k, linkage="ward")),
+            (NAMES[5], method_mclp_heuristic(df, p=k, radius_km=3, candidates_idx=top)),
+        ]
+        for name, (labels, centers, runtime) in configs:
+            rows.append({"method": name, "K_target": k, "runtime_s": runtime,
+                         **evaluate(df, labels, centers)})
+    curves = pd.DataFrame(rows)
+    curves.to_csv(DATA / "reference_curves_K10_K160.csv", index=False)
+    fig, axes = plt.subplots(1, 2, figsize=(13, 4.5))
+    for name in (NAMES[0], NAMES[1], NAMES[5]):
+        sub = curves[curves.method == name]
+        axes[0].plot(sub.K_target, sub["coverage_3km_%"], "-o", label=name, color=COLORS[name], ms=4)
+        axes[1].plot(sub.K_target, sub.weighted_avg_distance_km, "-o", label=name, color=COLORS[name], ms=4)
+    for ax in axes:
+        ax.axvline(70, ls="--", color="#555", lw=1, label="K=70: cenário de referência")
+        ax.set_xlabel("K solicitado")
+        ax.grid(alpha=.2); ax.legend(fontsize=8)
+    axes[0].set(ylabel="Pedidos a até 3 km (%)", title="Cobertura com a ampliação da rede")
+    axes[1].set(ylabel="Distância média por pedido (km)", title="Distância com a ampliação da rede")
+    save(fig, "07_saturacao_K70.png")
 
-def fig07_saturacao_K70(demanda):
-    """Figura 1 do paper — saturação das curvas em K=70."""
-    TOP = demanda.nlargest(100, 'n_pedidos').index.values
-    K_range = list(range(10, 161, 10))
+def linkage_comparison(res):
+    sub = res[(res.K_target == 70) & res.method.isin(NAMES[1:4])]
+    metrics = [
+        ("weighted_avg_distance_km", "Média (km)"),
+        ("coverage_3km_%", "Cobertura 3 km (%)"),
+        ("p95_distance_km", "P95 por pedido (km)"),
+        ("p99_distance_km", "P99 por pedido (km)"),
+        ("max_distance_km", "Máximo (km)"),
+    ]
+    fig, axes = plt.subplots(2, 3, figsize=(10, 6.5))
+    axes.flat[-1].axis("off")
+    labels = ["Ward", "complete", "average"]
+    vals = sub.set_index("method").reindex(NAMES[1:4])
+    for ax, (col, title) in zip(axes.flat, metrics):
+        ax.bar(labels, vals[col], color=[COLORS[n] for n in NAMES[1:4]])
+        for i, value in enumerate(vals[col]):
+            ax.text(i, value, f"{value:.2f}", ha="center", va="bottom", fontsize=11)
+        ax.set_title(title, fontsize=12)
+        ax.tick_params(axis="x", labelrotation=20)
+        ax.grid(axis="y", alpha=.2)
+        ax.margins(y=.18)
+    fig.suptitle("Linkages em K=70 | atribuição ao ponto mais próximo", fontsize=13)
+    save(fig, "08_dominancia_linkages.png")
 
-    series = {
-        'K-Means weighted':    ('#2ca02c', '^', []),
-        'Agglomerative-Ward':  ('#1f77b4', 'o', []),
-        'MCLP — R=3 km':       ('#ff7f0e', 'P', []),
-    }
-    series_dist = {k: ('#2ca02c', '^', []) if k == 'K-Means weighted'
-                   else ('#1f77b4', 'o', []) if k == 'Agglomerative-Ward'
-                   else ('#ff7f0e', 'P', []) for k in series}
-
-    for K in K_range:
-        _, c_kmeans, _ = method_kmeans_weighted(demanda, n_clusters=K)
-        _, c_ward, _ = method_agglomerative(demanda, n_clusters=K, linkage='ward')
-        _, c_mclp, _ = method_mclp_heuristic(demanda, p=K, radius_km=3, candidates_idx=TOP)
-        coords = demanda[['lat','lng']].values
-        weights = demanda['n_pedidos'].values.astype(float)
-        total = weights.sum()
-        for name, centers in [('K-Means weighted', c_kmeans),
-                              ('Agglomerative-Ward', c_ward),
-                              ('MCLP — R=3 km', c_mclp)]:
-            D = haversine_to_centers(coords[:,0], coords[:,1], centers[:,0], centers[:,1])
-            min_d = D.min(axis=1)
-            cov_3 = float(weights[min_d <= 3].sum() / total * 100)
-            dw = float(np.average(min_d, weights=weights))
-            series[name][2].append(cov_3)
-            series_dist[name][2].append(dw)
-
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-    for name, (color, marker, vals) in series.items():
-        axes[0].plot(K_range, vals, color=color, marker=marker,
-                     label=name, linewidth=2, markersize=7)
-    axes[0].axvline(70, color='red', linestyle='--', alpha=0.7, label='K=70')
-    axes[0].set(xlabel='Número de pontos de retirada (K)',
-                ylabel='Cobertura efetiva em 3 km (%)',
-                title='Saturação da cobertura efetiva')
-    axes[0].grid(alpha=0.3); axes[0].legend(fontsize=9)
-
-    for name, (color, marker, vals) in series_dist.items():
-        axes[1].plot(K_range, vals, color=color, marker=marker,
-                     label=name, linewidth=2, markersize=7)
-    axes[1].axvline(70, color='red', linestyle='--', alpha=0.7, label='K=70')
-    axes[1].set(xlabel='Número de pontos de retirada (K)',
-                ylabel='Distância média ponderada (km)',
-                title='Estabilização da distância média')
-    axes[1].grid(alpha=0.3); axes[1].legend(fontsize=9)
-    plt.tight_layout()
-    plt.savefig(FIGS / '07_saturacao_K70.png', dpi=130, bbox_inches='tight')
-    plt.close()
-
-
-def fig08_dominancia_linkages(demanda):
-    """Figura 2 do paper — dominância intra-paradigma do Agglomerative em K=70."""
-    K = 70
-    coords = demanda[['lat','lng']].values
-    weights = demanda['n_pedidos'].values.astype(float)
-    total = weights.sum()
-
-    metrics = {'d̄w (km)': [], 'Cobertura 3km (%)': [], 'P95 (km)': []}
-    linkages = ['average', 'complete', 'ward']
-    colors_lk = ['#d62728', '#9467bd', '#1f77b4']  # average vermelho destacando dominância
-    for lk in linkages:
-        _, centers, _ = method_agglomerative(demanda, n_clusters=K, linkage=lk)
-        D = haversine_to_centers(coords[:,0], coords[:,1], centers[:,0], centers[:,1])
-        min_d = D.min(axis=1)
-        metrics['d̄w (km)'].append(float(np.average(min_d, weights=weights)))
-        metrics['Cobertura 3km (%)'].append(float(weights[min_d <= 3].sum() / total * 100))
-        metrics['P95 (km)'].append(float(np.percentile(min_d, 95)))
-
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
-    for ax, (metric, vals) in zip(axes, metrics.items()):
-        bars = ax.bar(linkages, vals, color=colors_lk, edgecolor='black')
-        for bar, v in zip(bars, vals):
-            ax.text(bar.get_x()+bar.get_width()/2, v, f'{v:.2f}',
-                    ha='center', va='bottom', fontsize=10, fontweight='bold')
-        ax.set_title(f'{metric} — Agglomerative em K={K}')
-        ax.set_ylabel(metric)
-        ax.grid(alpha=0.3, axis='y')
-    plt.suptitle('Dominância intra-paradigma: average (vermelho) é dominado em todas as métricas',
-                 fontsize=11, y=1.02)
-    plt.tight_layout()
-    plt.savefig(FIGS / '08_dominancia_linkages.png', dpi=130, bbox_inches='tight')
-    plt.close()
-
+def assignment_diagnostic():
+    assignments = pd.read_csv(DATA / "assignments_K70.csv")
+    facilities = pd.read_csv(DATA / "facilities_K70.csv")
+    chosen = ["KMeans-weighted", "Agglomerative-ward"]
+    fig, axes = plt.subplots(2, 2, figsize=(13, 12))
+    examples = []
+    for row, name in enumerate(chosen):
+        sub = assignments[assignments.method == name].copy().reset_index(drop=True)
+        fs = facilities[facilities.method == name].sort_values("facility_id")
+        centers = fs[["lat", "lng"]].to_numpy()
+        for col, label_col in enumerate(("native_label", "nearest_facility")):
+            map_panel(axes[row, col], sub, sub[label_col].to_numpy(), centers,
+                      f"{name} | {'grupos nativos' if col == 0 else 'ponto mais próximo'}")
+        sub["distance_difference_km"] = sub.native_distance_km - sub.distance_km
+        far = sub[sub.distance_difference_km > 1e-6].nlargest(3, "distance_difference_km")
+        for _, point in far.iterrows():
+            native = int(point.native_label)
+            if native < 0: continue
+            axes[row, 0].plot([point.lng, centers[native, 1]],
+                              [point.lat, centers[native, 0]], color="#d00000", lw=1)
+            examples.append(point.to_dict())
+    fig.suptitle("Grupos de formação e atribuição operacional\n"
+                 "Linhas vermelhas: três maiores reduções de distância ao trocar a atribuição",
+                 fontsize=12)
+    save(fig, "09_grupos_nativos_vs_ponto_proximo.png")
+    pd.DataFrame(examples).to_csv(DATA / "native_assignment_examples.csv", index=False)
 
 def main():
-    demanda = pd.read_csv(DATA / 'demanda_por_cep.csv')
-    res = pd.read_csv(DATA / 'results_full.csv')
-
-    print("Figura 01 — exploração...");        fig01_exploracao(demanda)
-    print("Figura 02 — cobertura vs K...");    fig02_cobertura_vs_K(res)
-    print("Figura 03 — distância vs K...");    fig03_distancia_vs_K(res)
-    print("Figura 04 K=15 — mapas explor...");  fig04_mapas_K15(demanda)
-    print("Figura 04 K=70 — mapas paper...");   fig04_mapas_K70(demanda)
-    print("Figura 05 — trade-off...");          fig05_tradeoff(res)
-    print("Figura 07 — saturação K=70...");     fig07_saturacao_K70(demanda)
-    print("Figura 08 — dominância linkages..."); fig08_dominancia_linkages(demanda)
-    print(f"\nTodas as figuras salvas em {FIGS}/")
-
+    global DATA, FIGS, CANDIDATES, BOUNDARIES, MEAN_WARNINGS
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-dir", type=Path, default=DATA)
+    parser.add_argument("--figures-dir", type=Path, default=FIGS)
+    parser.add_argument("--candidates", type=int, default=300)
+    args = parser.parse_args()
+    DATA, FIGS, CANDIDATES = args.data_dir, args.figures_dir, args.candidates
+    FIGS.mkdir(parents=True, exist_ok=True)
+    scope = json.loads((DATA / "geography/scope.json").read_text(encoding="utf-8-sig"))
+    geo = json.loads((DATA / "geography/rj_municipios_ibge.geojson").read_text(encoding="utf-8-sig"))
+    for feature in geo["features"]:
+        code = str(feature["properties"]["codarea"])
+        if code not in [str(c) for c in scope["municipality_codes"]]: continue
+        geom = feature["geometry"]
+        polygons = [geom["coordinates"]] if geom["type"] == "Polygon" else geom["coordinates"]
+        BOUNDARIES.extend(ring for poly in polygons for ring in poly)
+    MEAN_WARNINGS = pd.read_csv(DATA / "quality/aggregated_means_outside_region.csv")[["lat","lng"]].to_numpy()
+    df = pd.read_csv(DATA / "demanda_por_cep.csv")
+    res = pd.read_csv(DATA / "results_full.csv")
+    for name, fn in [
+        ("exploração", lambda: exploration(df)),
+        ("curvas comparativas", lambda: result_curves(res)),
+        ("mapas", lambda: figures_maps(df)),
+        ("curvas de referência", lambda: reference_curves(df)),
+        ("comparação dos linkages", lambda: linkage_comparison(res)),
+        ("grupos nativos", assignment_diagnostic),
+    ]:
+        print(f"Gerando {name}...", flush=True)
+        fn()
+    print(f"Figuras e tabelas auxiliares salvas em {FIGS}", flush=True)
 
 if __name__ == "__main__":
     main()

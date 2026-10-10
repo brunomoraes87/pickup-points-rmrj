@@ -1,0 +1,20 @@
+{
+  "source_hashes": {
+    "demanda_por_cep.csv": "c17045e618581238b6eb56c6617cbd1179219948f8e1a68855f7b0767a02b161",
+    "pedidos_rmrj_geo.csv": "fe289571f201d40669b15c0c5f92f28ef5d40dc6dacfe06f2d36729eabfb47be"
+  },
+  "geometry_test": "Administrative union; no claim of a dry-land, water or road mask",
+  "figures": {
+    "10_instalacoes_por_raio.png": "d9d7de682e9f5dbd9ba55b9e95b3290b8766cd3deddcb867ae3f54dbf85ef58d",
+    "11_fronteiras_R10.png": "9b5f9ae5e4728dc1555099ce84e6e37882891ff0c7524716b762e37d37a8ddc5",
+    "11_fronteiras_R3.png": "358e6cc01dd1357d35c39a20c7664f592c32f7ced8f917ad9ac0d666cb349aec",
+    "11_fronteiras_R5.png": "a814698c5e19cf3655db11e93d1cdf150c264abbc8e79c34efee07a75bd31fa1",
+    "11_perfis_selecionados_R3.png": "094dfc21d1874bc0bc6138d00734d7d1d0c14bee10006c90be7e352d436adcb3",
+    "12_mapas_selecao_R10.png": "a85d510b71c8779ebc5906c2f390d3a1f7dcce7dda54fe56e559eef36816872e",
+    "12_mapas_selecao_R3.png": "1eb3a11b28ad2a8fe81514d3fb26ab889c14ac780d8c1f5ab13a6cac72d2e8ad",
+    "12_mapas_selecao_R5.png": "26a1e5e18b2ab4db8c4b905b97ca4517afe2acfae77cd9856c2a4b3556e2cd43",
+    "13_grupos_nativos_vs_proximidade_R3.png": "ce6347fafa4dd427188543e9f40fb606ad6b4ce07869f88f72cf0ecaad2b5d7e"
+  },
+  "curve_count": 1690,
+  "map_extremes_count": 54
+}

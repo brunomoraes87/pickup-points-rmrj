@@ -1,0 +1,85 @@
+{
+  "started_at_utc": "2026-10-07T04:06:11.777644+00:00",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "pandas": "3.0.1",
+    "scipy": "1.18.1",
+    "shapely": "2.1.2",
+    "pyproj": "3.8.0"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "total_orders": 9691,
+  "n_prefixes": 828,
+  "required_orders": 9207,
+  "input_sha256": {
+    "demand": "c17045e618581238b6eb56c6617cbd1179219948f8e1a68855f7b0767a02b161",
+    "orders": "fe289571f201d40669b15c0c5f92f28ef5d40dc6dacfe06f2d36729eabfb47be",
+    "geometry": "fbb5e3ffc4516032bb865c5e376f1eb4cebe90f5d477c95b06472ee4acfce08b",
+    "scope": "b86c4ed939b6d446bd147ad7e04c662e8811cea8b9b96e4d84f69a8a8ff95b3a",
+    "reference_metadata": "6bbb08e2036c766fe25f4a0469b57eed45e577d305dcd42790d7f71166ab99a6",
+    "reference_selection": "7be26fb6bfa5c82cb5152c6fdde5c0572d3a7bf8b2d470e18009d334cb4e6394",
+    "reference_curves": "bb1fa59d8dbfecedb58b70c5add3765a8d778dd46ea6d71294de04d434ba0e24"
+  },
+  "code_sha256": {
+    "07_run_exact_benchmarks.py": "6ae36b9cca24c09c9b4d3193d58e961be247ecb58555b798f184f7952ccef189",
+    "exact_benchmarks.py": "94dae8ab0e9b79ad90c4a186794246728e2bed8f3396538cefedd538060aee4b",
+    "candidate_sets.py": "37de2e118e3fc34a17597a48d8c3c18852d2729c7119d14e7e5784f9c1b2a56d"
+  },
+  "solver": "embedded HiGHS via scipy.optimize.milp",
+  "solver_options": {
+    "time_limit_s": 300.0,
+    "mip_rel_gap": 0.0
+  },
+  "assignment": "nearest selected facility by Haversine; first minimum resolves distance ties",
+  "municipality": "city_norm declared per delivered order; no inferred municipality in principal",
+  "candidate_scope": "finite candidate sets; municipal union is an administrative proxy",
+  "interpretation": "no continuous/economic optimum; metrics describe a particular returned optimum",
+  "principal_condition": "v21 canonical J300 and degree-based clustering preserved elsewhere",
+  "runtime_scope": "solver_runtime_s excludes setup, distance matrix and export; total run is separate",
+  "tail_scenarios": {
+    "3": [
+      null,
+      15,
+      10,
+      8,
+      5
+    ],
+    "5": [
+      null,
+      15,
+      10,
+      8
+    ],
+    "10": [
+      null,
+      30,
+      20,
+      15
+    ]
+  },
+  "run_state": "complete",
+  "volatile_fields": [
+    "solver_runtime_s",
+    "setup_runtime_s",
+    "started_at_utc",
+    "finished_at_utc",
+    "total_runtime_s"
+  ],
+  "finished_at_utc": "2026-10-07T04:10:47.115417+00:00",
+  "total_runtime_s": 275.23127789999126,
+  "result_count": 45,
+  "certified_optimal_count": 43,
+  "certified_infeasible_count": 2,
+  "input_files_unchanged": true,
+  "output_sha256": {
+    "candidate_sets.json": "3113e34221b8ddfcefbc93c207455964e9b7971e5207dcb9dde08b014365f943",
+    "cardinality_comparisons.csv": "39c9fe176e147debd9d02ee6add0da46f0a13546642e9b152514ff3c12b3d826",
+    "exact_assignments.csv": "5056f0cdd59bdebd5ac977357810fd035efc91b2e3cf9e69db1b8cb660a50da2",
+    "exact_facilities.csv": "34b84cc4942834c90fd50abc74ee069a78691d7f39f508350e8140fb74e48920",
+    "exact_municipalities.csv": "becc9247a99cd5e9a49b071a78176791638d8ec24e2066850fb977a9614a9652",
+    "exact_results.csv": "446cd29db63a1b8b99db39ef8d28ad9ad98bfea89648d761cbe988ae6f2999e4",
+    "exact_results.json": "5b3bb440060e81774acff6c35a1163df0a2086586967a9a8aee62c91f74641e7",
+    "pmedian_comparisons.csv": "a28d9c8587e6fc39d6e2e46cb1c230958b493a07138d8323275d662328807db7"
+  }
+}
