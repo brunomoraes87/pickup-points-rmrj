@@ -1,4 +1,28 @@
-# Localização de pontos de retirada na RMRJ — v22
+# Localização de pontos de retirada na Região Metropolitana do Rio de Janeiro por cenários de cobertura e perfis de atendimento
+
+## Artigo final: por onde começar
+
+- [Artigo final (Google Docs)](https://docs.google.com/document/d/1GvZhmW-66mDRrjC3LvmnKCOZlo-fidlIEVk_apecpv8/edit)
+- [Guia de figuras e tabelas](docs/figuras_e_tabelas_do_artigo.md): para cada figura
+  e tabela, o arquivo, o script que a desenha, os dados de origem e as funções que
+  fazem o cálculo.
+- [Registro da versão final](docs/artigo_versao_final_links.md): hashes dos arquivos
+  entregues e conferência de cada número do artigo.
+- [Versão científica fixa, commit 952ee3a](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498):
+  os números, as figuras e os caminhos citados no artigo correspondem a essa versão.
+  O guia e o registro foram publicados depois dela e não existem dentro do commit.
+
+As saídas usadas no artigo final estão em `data/v22_verified/`, `data/v23_verified/`,
+`figures/v22_verified/` e `figures/v23_verified/`; a demanda que entra nos cálculos
+está em `data/demanda_por_cep.csv` e `data/pedidos_rmrj_geo.csv`. As pastas
+`data/service_selection/` e `figures/service_selection/`, as figuras da raiz de
+`figures/` e os arquivos com K=70 descritos em `data/README.md` vêm de versões
+anteriores do estudo. Os resultados exploratórios do DBSCAN, citados no artigo,
+estão em `data/results_full.csv` e `data/results_clustering.csv`.
+
+O restante deste README descreve a pipeline e as verificações das versões v22 e v23.
+
+## Pipeline v22 e v23
 
 Código da revisão do manuscrito de Bruno M. Moraes. A condição principal conserva
 a coorte de 9.691 pedidos entregues, representados por 828 centroides de prefixo
@@ -195,12 +219,24 @@ python -m pytest -q
 python scripts/14_verify_service_profiles_v23.py --profiles data/v23_verified/profiles --repo-root . --report verification_profiles_v23.json
 ```
 
-Gerar novos casos em um diretório vazio e recalculá-los:
+Redesenhar as Figuras 4 e A.1 do artigo a partir dos perfis congelados, numa pasta nova:
+
+```text
+python scripts/15geracao_figuras_verificadas.py --profiles data/v23_verified/profiles --output pasta_nova_vazia
+```
+
+Gerar novos casos em um diretório vazio, recalculá-los e desenhar as figuras:
 
 ```text
 python scripts/13_certify_service_profiles_v23.py --repo-root . --output novo_experimento_perfis
-python scripts/14_verify_service_profiles_v23.py --profiles novo_experimento_perfis --repo-root . --report nova_verificacao_perfis.json
+python scripts/14_verify_service_profiles_v23.py --profiles novo_experimento_perfis --repo-root .
+python scripts/15geracao_figuras_verificadas.py --profiles novo_experimento_perfis --output novas_figuras_perfis
 ```
+
+Sem `--report`, o script 14 grava `independent_verification.json` dentro da pasta
+dos perfis, e o script 15 exige esse arquivo; com `--report` fora da pasta, o 15
+para com erro. Na verificação dos perfis congelados, acima, o `--report` fora da
+pasta evita sobrescrever o relatório versionado.
 
 As figuras em `figures/v23_verified/` são produzidas por
 `scripts/15geracao_figuras_verificadas.py` a partir dos artefatos congelados.
@@ -221,10 +257,6 @@ observações de execução, e não resultados cuja identidade entre máquinas s
 exige. A análise D22 é um teste de estresse cadastral, sem recuperação validada
 dos pedidos empatados; a coorte principal permanece igual.
 
-O [Google Docs da v23 e os identificadores da entrega](docs/artigo_v23_links.md)
-estão registrados separadamente do commit científico congelado.
-
-A [versão final do artigo e os identificadores da entrega](docs/artigo_versao_final_links.md)
-também estão registrados separadamente; a versão final revisa apenas a redação.
-O [guia de figuras e tabelas](docs/figuras_e_tabelas_do_artigo.md) indica, para
-cada figura e tabela do artigo, o arquivo, o script e os dados de origem.
+Registro histórico: [Google Docs da v23 e identificadores daquela entrega](docs/artigo_v23_links.md).
+O artigo final, o guia de figuras e tabelas e o registro da versão final estão no
+início deste README.

@@ -4,6 +4,8 @@ Este guia liga cada figura e tabela da versão final do artigo aos arquivos do
 commit científico congelado
 [952ee3a](https://github.com/brunomoraes87/pickup-points-rmrj/tree/952ee3a26e4b47a69ca2491b2420507df8ed8498),
 o mesmo citado no artigo. O Apêndice A.6 do artigo traz a mesma correspondência.
+Este guia foi publicado depois dessa versão e não existe dentro dela: ele fica no
+`main`, e todos os links de arquivos abaixo apontam para o commit 952ee3a.
 
 A numeração dos arquivos não segue a do artigo. Há figuras com o mesmo nome em
 pastas de versões anteriores (`figures/` e `figures/service_selection/`): as do
@@ -34,10 +36,44 @@ O Quadro 1 e a Tabela 9 não têm arquivo próprio: reúnem definições e resul
 das demais tabelas. Os demais números do texto estão, item a item, em
 [conferencia_numeros_versao_final.csv](conferencia_numeros_versao_final.csv).
 
+## Funções que fazem o cálculo
+
+Os scripts de desenho (09 e 15) só leem resultados já calculados. O cálculo fica
+nas funções abaixo, no commit 952ee3a; cada link abre as linhas da função.
+
+Figuras 1, 2 e 3; Tabelas 1, 2 e A.2:
+
+| Etapa | Função | Onde |
+|---|---|---|
+| Pedidos exigidos pela meta de 95% (9.207) | `required_orders` | [05_select_service_k.py, linhas 58–64](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L58-L64) |
+| Mediana, P95 e P99 empíricos, ponderados por pedidos | `empirical_quantile` | [05_select_service_k.py, linhas 67–77](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L67-L77) |
+| Cobertura, média, P95, P99 e máximo de uma rede em cada raio | `radius_metrics` | [05_select_service_k.py, linhas 80–104](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L80-L104) |
+| Primeiro K que atende à meta, depois de testar todos os K menores (K-Means: nas cinco sementes) | `first_feasible_k` | [05_select_service_k.py, linhas 115–131](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L115-L131) |
+| MCLP por Greedy Adding | `mclp_greedy_trajectory` | [05_select_service_k.py, linhas 143–167](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L143-L167) |
+| Ajuste de K-Means ponderado, Ward, Complete, Average e p-mediana em cada K | `ServiceSearch.fit` | [05_select_service_k.py, linhas 317–347](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L317-L347) |
+| Registro da rede selecionada e das métricas exportadas | `ServiceSearch.select` | [05_select_service_k.py, linhas 372–398](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/05_select_service_k.py#L372-L398) |
+| Centro ponderado e agrupamentos hierárquicos | `weighted_centroid`, `method_agglomerative` | [methods.py, linhas 36–65](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/methods.py#L36-L65) |
+| P-mediana por construção gulosa e trocas | `method_pmedian_heuristic` | [methods.py, linhas 182–250](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/methods.py#L182-L250) |
+| Escolha dos 300 candidatos de maior demanda, com desempate pelo prefixo | `select_candidate_indices` | [candidate_sets.py, linhas 31–67](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/candidate_sets.py#L31-L67) |
+
+Tabela 8; Figuras 4 e A.1:
+
+| Etapa | Função | Onde |
+|---|---|---|
+| Percentis, métricas e perfil municipal das alternativas exatas | `empirical`, `metrics`, `municipal_profile` | [13_certify_service_profiles_v23.py, linhas 61–94](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/13_certify_service_profiles_v23.py#L61-L94) |
+| Menor quantidade de instalações, com proximidade obrigatória opcional (otimização inteira) | `solve_count` | [13_certify_service_profiles_v23.py, linhas 97–157](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/scripts/13_certify_service_profiles_v23.py#L97-L157) |
+
 ## Como refazer as figuras
 
-Na raiz do repositório, no commit 952ee3a, com o ambiente de
-`requirements-reproduction.txt`:
+Use o ambiente de `requirements-reproduction.txt` e uma pasta de saída vazia. O que
+roda apenas com os arquivos do repositório depende da versão:
+
+| Figuras | No commit 952ee3a, citado no artigo | No `main`, a partir do commit [bb294ac](https://github.com/brunomoraes87/pickup-points-rmrj/commit/bb294ac277005a03e893daf94016d360dc857564) |
+|---|---|---|
+| 4 e A.1 (script 15) | roda | roda |
+| 1, 2 e 3 (script 09) | exige a pasta `checkpoints/`, gerada pela execução completa da busca e mantida fora do Git | roda: sem `checkpoints/`, usa as curvas exportadas em `frontier_curves_v22.csv` |
+
+### Figuras 4 e A.1: commit 952ee3a ou `main`
 
 ```text
 python scripts/15geracao_figuras_verificadas.py --profiles data/v23_verified/profiles --output pasta_nova_vazia
@@ -49,18 +85,24 @@ saíram idênticos byte a byte aos de `figures/v23_verified/`. Os caminhos `C:\.
 gravados nos manifestos registram onde os arquivos estavam na execução original;
 o script usa os campos `repo_relative`, que apontam para este repositório.
 
+Para perfis novos, rode antes o script 14 sem `--report`: assim ele grava
+`independent_verification.json` dentro da pasta dos perfis, arquivo que o script 15
+exige (comandos completos no README). Num teste em 10/10/2026 com uma cópia dos
+perfis congelados, essa sequência gerou figuras e CSVs idênticos byte a byte aos
+de `figures/v23_verified/`; com `--report` fora da pasta, o script 15 parou por
+falta desse arquivo.
+
+### Figuras 1, 2 e 3: `main`, ou qualquer commit a partir de bb294ac
+
 ```text
 python scripts/09_plot_v22.py --data-dir data --results-dir copia_de_data_v22_verified_main --figures-dir pasta_nova_vazia
 ```
 
-Gera as Figuras 1, 2 e 3. O script grava CSVs auxiliares em `--results-dir`; por
-isso, use uma cópia de `data/v22_verified/main`. Quando encontra a pasta
-`checkpoints/`, gerada pela pipeline completa e mantida fora do Git, ele recalcula
-as curvas de K a partir dela. Sem essa pasta, usa as curvas exportadas em
+O script grava CSVs auxiliares em `--results-dir`; por isso, use uma cópia de
+`data/v22_verified/main`. Quando encontra a pasta `checkpoints/`, ele recalcula as
+curvas de K a partir dela. Sem essa pasta, usa as curvas exportadas em
 [frontier_curves_v22.csv](https://github.com/brunomoraes87/pickup-points-rmrj/blob/952ee3a26e4b47a69ca2491b2420507df8ed8498/data/v22_verified/main/frontier_curves_v22.csv),
-sem regravá-las. Esse caminho existe a partir do commit
-[bb294ac](https://github.com/brunomoraes87/pickup-points-rmrj/commit/bb294ac277005a03e893daf94016d360dc857564);
-no commit 952ee3a, citado no artigo, o script ainda exige os checkpoints.
+sem regravá-las. No commit 952ee3a, o script ainda exige os checkpoints.
 
 Num teste em 10/10/2026, a partir de bb294ac, as nove figuras de
 `figures/v22_verified/` desenhadas por este script e os CSVs das Tabelas 4 e 5
