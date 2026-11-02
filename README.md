@@ -23,6 +23,10 @@ está em `data/demanda_por_cep.csv` e `data/pedidos_rmrj_geo.csv`. As pastas
 anteriores do estudo. Os resultados exploratórios do DBSCAN, citados no artigo,
 estão em `data/results_full.csv` e `data/results_clustering.csv`.
 
+A pasta [`dea/`](dea/README.md) reúne o código e os resultados de uma Análise Envoltória de Dados (DEA)
+das redes deste estudo, preparada para um artigo à parte; ela só lê as saídas de `data/` e não altera nada
+do estudo original.
+
 O restante deste README descreve a pipeline e as verificações das versões v22 e v23.
 
 ## Pipeline v22 e v23
